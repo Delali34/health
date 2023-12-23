@@ -112,7 +112,7 @@ const RecentBlog = () => {
   });
 
   return (
-    <section className="py-20 bg-light overflow-x-hidden">
+    <section className="py-20 bg-light overflow-x-hidden font-mont">
       <div className="container px-4 mx-auto">
         <div className="lg:flex justify-between items-center mb-10">
           <div className="lg:w-5/12 mb-10 lg:mb-0">

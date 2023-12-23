@@ -72,7 +72,7 @@ const footerContent = {
 
 const Footer = () => {
   return (
-    <footer role="contentinfo" className="py-20 bg-white">
+    <footer role="contentinfo" className="py-20 bg-white font-mont">
       <div className="container px-4 mx-auto ">
         <div className="block lg:flex gap-20 mb-10 pb-10">
           <div className="w-full mb-10 lg:mb-0 lg:w-4/12">

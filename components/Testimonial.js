@@ -50,7 +50,7 @@ const Testimonials = () => {
     });
   });
   return (
-    <section className="py-20 bg-light">
+    <section className="py-20 bg-light font-mont">
       <div className="container px-4 mx-auto">
         <div className="lg:flex justify-between items-center ">
           <div className="lg:w-4/12 lg:pr-24 mb-10 lg:mb-0">

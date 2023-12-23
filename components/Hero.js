@@ -29,7 +29,7 @@ const Hero = () => {
     });
   });
   return (
-    <section className="py-20">
+    <section className="py-20 font-mont">
       <div className="container px-4 mx-auto">
         <div className="lg:flex justify-between items-center">
           <div className="lg:w-5/12 mb-10 lg:mb-0">
@@ -40,7 +40,7 @@ const Hero = () => {
               {heroContent.text.subheading}
             </span>
             <h1
-              className="text-4xl lg:text-5xl fontbold text-heading mb-7"
+              className="text-4xl lg:text-5xl font-bold text-heading mb-7"
               data-aos="fade-up"
               data-aos-delay="100"
             >

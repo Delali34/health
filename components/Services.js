@@ -66,7 +66,7 @@ const Services = () => {
     });
   });
   return (
-    <section className="py-20 bg-light">
+    <section className="py-20 bg-light font-mont">
       <div className="container px-4 mx-auto">
         <div className="max-w-xl mx-auto text-center mb-20">
           <span

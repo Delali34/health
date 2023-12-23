@@ -17,6 +17,12 @@ module.exports = {
         greenLight: "#CCF0EE",
         purpleLight: "#AEA3E1",
       },
+      fontFamily: {
+        hero: ['"Ultra"', "serif"],
+        maintext: ['"Almarai"', "sans-serif"],
+        header: ['"Acme"', " sans-serif"],
+        mont: ['"Montserrat","sans-serif"'],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

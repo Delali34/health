@@ -55,7 +55,7 @@ const Solutions = () => {
     });
   });
   return (
-    <section className="py-32 bg-light overflow-x-hidden">
+    <section className="py-32 bg-light overflow-x-hidden font-mont">
       <div className="container px-4 mx-auto">
         <div className="lg:flex space-x-2 justify-between ">
           <div
