@@ -1,0 +1,138 @@
+"use client";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { IoMenuOutline } from "react-icons/io5";
+import { IoMdClose } from "react-icons/io";
+import { FaChevronRight } from "react-icons/fa";
+
+function navigation() {
+  const navigationMenu = [
+    {
+      href: "#",
+      label: "Home",
+    },
+    {
+      href: "#",
+      label: "How We Work",
+    },
+    {
+      href: "#",
+      label: "Our mission",
+    },
+    {
+      href: "#",
+      label: "About",
+    },
+    {
+      href: "#",
+      label: "Contact",
+    },
+  ];
+
+  const [navOpen, setNavOpen] = useState(false);
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+  const mobileMenuHandler = () => {
+    setNavOpen(!navOpen);
+  };
+  useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+      if (dimensions.width > 768 && navOpen) {
+        setNavOpen(false);
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    return (_) => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
+  return (
+    <div className="py-7">
+      <div className="container mx-auto px-4 ">
+        <div className="flex justify-between items-center">
+          <div>
+            <Link href="/">
+              <Image
+                src="/ahpo-Logo-768x183.png"
+                width={157}
+                height={30}
+                alt="Africa-health-promotion-logo"
+              />
+            </Link>
+          </div>
+          <div className="hidden lg:block text-center">
+            <ul className="flex space-x-7">
+              {navigationMenu.map((item, index) => (
+                <li key={item.label}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <Link
+              href="#"
+              className="px-5 py-4 bg-primary text-white rounded-lg hidden lg:inline-block "
+            >
+              Get Started
+            </Link>
+            <button className="block lg:hidden" onClick={mobileMenuHandler}>
+              <IoMenuOutline className="text-3xl" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className={
+          navOpen
+            ? "py-0 block fixed w-screen z-[9999]"
+            : "py-0  fixed w-screen z-[9999] hidden"
+        }
+      >
+        <div
+          className="h-screen w-screen z-[999] top-0 fixed bg-black bg-opacity-50 "
+          onClick={mobileMenuHandler}
+        ></div>
+        <div className="bg-white w-[380px] top-0 right-0 z-[9999] h-screen fixed">
+          <div className="h-14 px-10 border-b flex items-center ">
+            <button
+              className="flex items-center space-x-3"
+              onClick={mobileMenuHandler}
+            >
+              <IoMdClose />
+              <span>Close</span>
+            </button>
+          </div>
+          <div className="h-full py-3 px-10 pb-20 overflow-y-scroll scroll-smooth">
+            <ul className="block mb-7">
+              {" "}
+              {navigationMenu.map((item, index) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="group flex items-center py-2 duration-300 transition-all ease-in-out hover:text-primary "
+                  >
+                    <span>{item.label}</span>
+                    <span className="left-2 relative duration-300 transition-all ease-in-out opacity-0 group-hover:opacity-100 group-hover:left-3">
+                      <FaChevronRight className="text-xl" />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default navigation;
