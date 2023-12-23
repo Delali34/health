@@ -23,7 +23,7 @@ const StatContent = {
   getStarted: {
     heading: "Get started with Our Service",
     description:
-      "Africa Health Promotion Organization is an NGO dedicated to promoting public health using research-driven and evidence-based approaches.promoting public health.",
+      " An NGO dedicated to promoting public health using research-driven and evidence-based approaches promoting public health.",
     img: "/info3.svg",
     cta: {
       cta_href: "#",
@@ -65,7 +65,7 @@ const Stats = () => {
             </div>
           </div>
           <div className="w-full lg:w-5/12">
-            <div className="bg-light py-10 px7 lg:px-10 !pr-28 md:!pr-32 lg:!pr-40 rounded-lg relative">
+            <div className="bg-light py-10 px-7 lg:px-10 !pr-28 md:!pr-32 lg:!pr-40 rounded-lg relative">
               {StatContent.getStarted.img && (
                 <img
                   src={StatContent.getStarted.img}
