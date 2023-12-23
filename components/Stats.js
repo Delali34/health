@@ -55,7 +55,7 @@ const Stats = () => {
                     data-aos="fade-up"
                     data-aos-delay={index}
                   >
-                    <strong className="text-primary text-4xl xl:text-[52px] font-bold block leading-tight">
+                    <strong className="text-primary text-2xl md:text-4xl xl:text-[52px] font-bold block leading-tight">
                       {stat.number}
                     </strong>
                     <span>{stat.label}</span>
@@ -85,7 +85,7 @@ const Stats = () => {
               )}
               {StatContent.getStarted.description && (
                 <p
-                  className=" text-xl mb-5"
+                  className=" md:text-xl text-[16px] mb-5"
                   data-aos="fade-left"
                   data-aos-delay="100"
                 >
