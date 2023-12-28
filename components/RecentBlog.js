@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { getPosts } from "@/services/index";
 
 const blogContent = {
   heading: {
@@ -84,7 +85,7 @@ const blogContent = {
   },
 };
 
-const RecentBlog = () => {
+const RecentBlog = ({ post }) => {
   useEffect(() => {
     AOS.init({
       duration: 700,
@@ -110,6 +111,19 @@ const RecentBlog = () => {
     if (!sliderRef.current) return;
     sliderRef.current.swiper.slideNext();
   });
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getPosts();
+        setPosts(data.slice(0, 5)); // Only keep the first 5 posts
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <section className="py-20 bg-light overflow-x-hidden font-mont">
@@ -200,47 +214,47 @@ const RecentBlog = () => {
           onSlideChange={(swiper) => setSlideIndex(swiper.activeIndex)}
           className="z-50 py-32 mb-24 relative flex items-stretch !overflow-visible before:content-[''] before:z-50 before:py-32 before:right-full before:w-screen before:absolute before:-top-5 before:-bottom-5 before:bg-light"
         >
-          {blogContent.recentBlog.map((blog, index) => (
-            <SwiperSlide className="overflow-visible h-full" key={blog.title}>
+          {posts.map(({ node: post }, index) => (
+            <SwiperSlide className="overflow-visible h-full" key={index}>
               <div
                 className="p-5 rounded-lg bg-white relative mt-10"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
                 <Link
-                  href={blog.permalink}
+                  href={`/post/${post.slug}`}
                   className="relative -mt-10 inline-block overflow-hidden rounded-lg mb-4"
                 >
-                  <Image
-                    src={blog.featuredImg}
-                    width={782}
-                    height={467}
-                    alt="africahealthpromotion"
-                  />
+                  {post.featuredImage?.url ? (
+                    <Image
+                      src={post.featuredImage.url}
+                      width={782}
+                      height={467}
+                      alt={post.title || "Post image"}
+                    />
+                  ) : (
+                    <div style={{ width: "782px", height: "467px" }}>
+                      Image not available
+                    </div>
+                  )}
                 </Link>
-                <h2 className="text-heading text-lg font-bold leading-7 mb-5">
-                  <Link href={blog.permalink} className="relative text-heading">
-                    {blog.title}
+                <div className="text-primary mt-5">
+                  <h2 className="lg:text-2xl">
+                    #{post.categories[0]?.name || "Category"}
+                  </h2>
+                </div>
+                <h2 className="text-heading text-lg font-bold leading-7 mb-5 mt-2">
+                  <Link
+                    href={`/post/${post.slug}`}
+                    className="relative text-heading"
+                  >
+                    {post.title}
                   </Link>
                 </h2>
-                <p className="relative mb-6">{blog.exerpt}</p>
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <Image
-                      src={blog.author.img}
-                      width={50}
-                      height={50}
-                      alt="africahealthpromotion"
-                      className="rounded-full object-cover w-14 h-14 "
-                    />
-                  </div>
-                  <div className="leading-5">
-                    <strong className="text-primary">{blog.author.name}</strong>
-                    <span className="block text-sm">
-                      {blog.author.titleRole}
-                    </span>
-                  </div>
-                </div>
+                <p className="relative mb-6">
+                  {post.excerpt || "No excerpt available."}
+                </p>
+                {/* Add author and other post details as needed */}
               </div>
             </SwiperSlide>
           ))}

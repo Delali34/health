@@ -6,3 +6,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.paragraph {
+  padding-top: 20px; /* Adjust as needed */
+}
