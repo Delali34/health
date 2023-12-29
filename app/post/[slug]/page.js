@@ -24,7 +24,7 @@ const Page = ({ params }) => {
   if (!post) {
     return (
       <div className="bg-white flex justify-center items-center h-screen">
-        loading
+        <span className="loader"></span>
       </div>
     );
   }

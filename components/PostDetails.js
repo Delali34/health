@@ -60,7 +60,7 @@ const PostDetail = ({ post }) => {
             width={40}
             height={40}
           />
-          <p className="text-green-500 font-semibold text-sm">
+          <p className="text-primary font-semibold text-sm">
             {moment(post.createdAt).format("MMM DD, YYYY")}
           </p>
         </div>
