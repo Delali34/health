@@ -79,7 +79,7 @@ const blogContent = {
     },
   ],
   cta: {
-    href: "#",
+    href: "/blog",
     label: "To View All posts",
     labelSuffix: "Click here",
   },

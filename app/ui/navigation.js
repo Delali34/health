@@ -10,7 +10,7 @@ function Navigation() {
   const navigationMenu = [
     { href: "#", label: "Home" },
     { href: "#", label: "How We Work" },
-    { href: "#", label: "Our mission" },
+    { href: "/blog", label: "Health News" },
     { href: "#", label: "About" },
     { href: "#", label: "Contact" },
   ];
