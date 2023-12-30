@@ -7,52 +7,109 @@ import { GiFruitBowl } from "react-icons/gi";
 import { FaBaby } from "react-icons/fa";
 import { IoMdHappy } from "react-icons/io";
 import { AiFillTool } from "react-icons/ai";
+import { FaCheckDouble } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const serviceContent = {
   heading: {
     headingSubTitle: "Our Experiences",
-    headingTitle: "Our Services",
+    headingTitle: "Our Experiences",
     description:
-      "We provide ourselves in attention to details with content development, audio-visual, graphical layout and designs, and production of topnotch promotional materials and digital solution herein;",
+      " AfricaHPO Experiences Since the conception of Africa HPO, we have led and provided support to international and local development partners including the Ghana Health Service, GIZ, World Vision Ghana, UNICEF, WHO amongst others on health promotion policy, programme planning and implementation.",
   },
   items: [
     {
-      icon: <MdOutlineLocalHospital className="text-primary text-4xl" />,
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
       title: "Disease Prevention Campaigns",
       description:
-        "These would involve spreading awareness about common diseases in the region, such as malaria, HIV/AIDS, and tuberculosis. The organization could conduct workshops, distribute informational pamphlets, and use local media to educate the public on prevention methods, signs, and symptoms, and the importance of early treatment.",
+        "Partnered with GIZ Ghana and enrolled a total of Sixty-seven Thousand (67,000) Students and community members in ninty nine (99) junior and senior high schools and catchment communities onto the National Health Insurance Scheme to promote accessibility and affordability of healthcare.",
     },
     {
-      icon: <FaSyringe className="text-primary text-4xl" />,
-      title: "Vaccination Drives",
-      description:
-        "Organizing and implementing vaccination campaigns for preventable diseases, especially for children and vulnerable populations. This might include coordination with local health clinics to provide vaccines for diseases like measles, polio, and human papillomavirus (HPV).",
-    },
-    {
-      icon: <GiFruitBowl className="text-primary text-4xl" />,
-      title: "Nutrition and Hygiene Education",
-      description:
-        " Providing education on proper nutrition, hygiene practices, and clean water usage to prevent malnutrition and waterborne diseases. This could involve teaching about the importance of a balanced diet, safe cooking practices, and the need for regular handwashing.",
-    },
-    {
-      icon: <FaBaby className="text-primary text-4xl" />,
-      title: "Maternal and Child Health Services",
-      description:
-        " Offering services focused on the health of mothers and children, including prenatal care, safe childbirth practices, breastfeeding support, and child immunizations. Programs might also provide nutritional supplements for pregnant and nursing mothers and young children.",
-    },
-    {
-      icon: <IoMdHappy className="text-primary text-4xl" />,
-      title: "Mental Health Support",
-      description:
-        " Establishing support systems for mental health, including counseling services, support groups, and awareness campaigns to destigmatize mental health issues. This could also involve training community members in basic psychological first aid and mental health awareness.",
-    },
-    {
-      icon: <AiFillTool className="text-primary text-4xl" />,
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
       title: "Health Infrastructure Development",
       description:
-        " Working to improve health infrastructure by supporting the construction or enhancement of local clinics and hospitals, providing medical equipment, and training healthcare workers and community health volunteers to provide better health services.",
+        " Partnered with GIZ Ghana, “COVID-19: Comprehensive Pandemic Management for Employees, Families and Communities” enrolled a ballpark of Sixteen Thousand (16,000) Youth Employment Agency (YEA) Fellows in Eight (8) regions onto the National Health Insurance Scheme to promote accessibility and affordability of healthcare.",
+    },
+
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Nutrition and Hygiene Education",
+      description:
+        " Provided support to UNIDO on capacity building of apparel industries and small scale businesses on building resilience during public health emergencies and pandemics.",
+    },
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Maternal and Child Health Services",
+      description:
+        " Provided technical and community level services to UN Food and Agriculture Organization on the One Health framework for West Africa.",
+    },
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Mental Health Support",
+      description:
+        " Conducted research on non-communicable behavioural landscape in six regions to establish evidence for NCDs intervention in Ghana",
+    },
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Health Infrastructure Development",
+      description:
+        " We have been part of the working groups for planning polio and COVID-19 vaccination activities, review and development of social and behaviour change communication materials and tools.",
+    },
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Maternal and Child Health Services",
+      description:
+        " Provided technical and community level services to UN Food and Agriculture Organization on the One Health framework for West Africa.",
+    },
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Mental Health Support",
+      description:
+        " Partnered with GIZ Ghana and enrolled a total of Three Thousand Eight Hundred (3,800) students and community members at Academic City University College onto the National Health Insurance Scheme to promote accessibility and affordability of healthcare",
+    },
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Health Infrastructure Development",
+      description:
+        "Production of fine-arts banners, posters, 3D signage for branding the Call Centre at the National level, pull-up banners for UNICEF funded risk communication and community engagement capacity building in 150 districts.",
+    },
+
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Maternal and Child Health Services",
+      description:
+        " Production of braille material on COVID-19 FAQs and vaccination in collaboration with WHO and Ghana Health Service for the blind union.",
+    },
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Mental Health Support",
+      description:
+        " AFRICA HPO partnered with World Vision Ghana to produce an educative audio-visual documentary targeted at persons living with hearing impairment for COVID-19 vaccine demand generation and acceptance.",
+    },
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Health Infrastructure Development",
+      description:
+        " Lead the production of Frequently Asked Questions (FAQ) manual and build the capacity of staff manning the Ghana Health Service-Health Promotion Division call centre.",
+    },
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Maternal and Child Health Services",
+      description:
+        "Provided capacity building support on behavioural change to social mobilizers on climate change activities in the six northern regions",
+    },
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Mental Health Support",
+      description:
+        " As part of our social responsibilities, we supported the Ghana Health Service at Prampram Polyclinic and New Ningo CHPS to provide free health screening for 2,244 persons during the 2022 Homowo festivities.",
+    },
+    {
+      icon: <FaCheckDouble className="text-primary text-4xl" />,
+      title: "Vaccination Drives",
+      description:
+        "Partnered with WHO and AMA on air pollution and climate change mitigations.",
     },
   ],
 };
@@ -66,7 +123,7 @@ const Services = () => {
     });
   });
   return (
-    <section className="py-20 bg-light font-mont">
+    <section className="py-20 font-mont">
       <div className="container px-4 mx-auto">
         <div className="max-w-xl mx-auto text-center mb-20">
           <span
@@ -105,15 +162,6 @@ const Services = () => {
                   </span>
                 </div>
                 <div>
-                  {item.title && (
-                    <h3
-                      className="text-heading font-bold text-md mb-3"
-                      data-aos="fade-up"
-                      data-aos-delay={index}
-                    >
-                      {item.title}
-                    </h3>
-                  )}
                   {item.description && (
                     <p
                       className="leading-relaxed"

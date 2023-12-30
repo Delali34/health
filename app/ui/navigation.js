@@ -8,8 +8,8 @@ import { FaChevronRight } from "react-icons/fa";
 
 function Navigation() {
   const navigationMenu = [
-    { href: "#", label: "Home" },
-    { href: "#", label: "How We Work" },
+    { href: "/", label: "Home" },
+    { href: "/experience", label: "Our Experiences" },
     { href: "/blog", label: "Health News" },
     { href: "#", label: "About" },
     { href: "#", label: "Contact" },
@@ -105,6 +105,7 @@ function Navigation() {
                   <li key={index}>
                     <Link
                       href={item.href}
+                      onClick={mobileMenuHandler}
                       className="group flex items-center py-2 duration-300 transition-all ease-in-out hover:text-primary"
                     >
                       <span>{item.label}</span>
