@@ -12,7 +12,7 @@ function Navigation() {
     { href: "/experience", label: "Our Experiences" },
     { href: "/blog", label: "Health News" },
     { href: "#", label: "About" },
-    { href: "#", label: "Contact" },
+    { href: "/contact", label: "Contact" },
   ];
 
   const [navOpen, setNavOpen] = useState(false);
