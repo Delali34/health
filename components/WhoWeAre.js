@@ -34,13 +34,13 @@ const WhoWeAre = () => {
             data-aos-duration="1000"
           >
             <Image
-              className="object-cover h-[400px] md:max-w-[700px] max-w-[90vw] rounded-t-3xl"
+              className="object-cover h-[400px] md:max-w-[80vw] max-w-[90vw] rounded-t-3xl"
               src="/vision.jpg"
               width={1000}
               height={1000}
               alt=""
             />
-            <div className="bg-black/60 inset-0 top-0 right-0 left-0 rounded-t-3xl h-[400px] max-w-[700px] bottom-0 absolute"></div>
+            <div className="bg-black/60 inset-0 top-0 right-0 left-0 rounded-t-3xl h-[400px] md:max-w-[80vw] max-w-[90vw] bottom-0 absolute"></div>
             {About.map((about, index) => {
               return (
                 <div className="pl-5 absolute top-0 flex items-center text-white right-0 bottom-0 left-0">
@@ -48,7 +48,7 @@ const WhoWeAre = () => {
                     <h1 className="text-center md:text-4xl text-3xl font-bold">
                       {about.name}
                     </h1>
-                    <p className="pt-5 md:text-xl text-[17px] ">{about.item}</p>
+                    <p className="pt-5 md:text-xl text-[15px] ">{about.item}</p>
                   </div>
                 </div>
               );
