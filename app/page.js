@@ -5,13 +5,15 @@ import Services from "@/components/Services";
 import Solutions from "@/components/Solutions";
 import Testimonials from "@/components/Testimonial";
 import RecentBlog from "@/components/RecentBlog";
+import WhoWeAre from "@/components/WhoWeAre";
 
 function page() {
   return (
     <div>
       <Hero />
       <Stats />
-      <Services />
+      <WhoWeAre />
+      {/* <Services /> */}
       <Solutions />
       <Testimonials />
       <RecentBlog />
