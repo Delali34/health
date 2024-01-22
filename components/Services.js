@@ -69,7 +69,6 @@ const Services = () => {
     <section className="py-20 bg2 font-mont">
       <div className="container px-4 mx-auto">
         <h1 className="text-3xl text-center font-bold">
-          {" "}
           {serviceContent.heading.headingTitle}
         </h1>
         <div className=" max-w-[450px] mx-auto pt-2">
