@@ -8,6 +8,7 @@ import "swiper/css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { getPosts } from "@/services/index";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 const blogContent = {
   heading: {
@@ -125,6 +126,10 @@ const RecentBlog = ({ post }) => {
     fetchData();
   }, []);
 
+  const [text] = useTypewriter({
+    words: ["News", "Updates", "Campaignes", "Articles"],
+    loop: false,
+  });
   return (
     <section className="py-20 bg-light overflow-x-hidden font-mont">
       <div className="container px-4 mx-auto">
@@ -136,13 +141,17 @@ const RecentBlog = ({ post }) => {
             >
               {blogContent.heading.headingSubTitle}
             </span>
-            <h2
+            <div
               className="text-heading text-2xl lg:text-4xl font-bold mb-5"
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              {blogContent.heading.headingTitle}
-            </h2>
+              <h1 className="text-black pt-2 text-2xl  font-bold">
+                Get Our Latest
+                <span className="text-blue-500"> {text}</span>{" "}
+                <Cursor cursorColor="#60A5FA" />
+              </h1>
+            </div>
             <p
               className="text-body leading-relaxed"
               data-aos="fade-up"

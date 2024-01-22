@@ -1,6 +1,9 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const serviceContent = {
   heading: {
@@ -39,9 +42,16 @@ const serviceContent = {
 };
 
 const Solutions2 = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      easing: "slide",
+      once: true,
+    });
+  });
   return (
     <section>
-      <div className="relative min-h-[100vh] h-[1500px]">
+      <div className="relative lg:h-[100vh] h-[1300px]">
         <Image
           src="/solution.jpg"
           width={2500}
@@ -60,10 +70,15 @@ const Solutions2 = () => {
             <div className="md:w-[300px] w-[200px] h-1 bg-blue-400"></div>
           </div>
 
-          <div className=" h-full container mx-auto md:p-20 p-14 grid grid-cols-1 md:grid-cols-2 gap-5  place-items-center">
+          <div className=" container mx-auto md:p-20 p-5 grid grid-cols-1 md:grid-cols-2 gap-5  place-items-center">
             {serviceContent.items.map((items, index) => {
+              index *= 100;
               return (
-                <div className="flex justify-center gap-5  flex-col items-center bg-white p-4">
+                <div
+                  className="flex justify-center gap-5  flex-col items-center bg-white p-4"
+                  data-aos="fade-down"
+                  data-aos-delay={index}
+                >
                   <Image
                     className="w-[70px] h-[70px] "
                     src={items.icon}
@@ -83,12 +98,12 @@ const Solutions2 = () => {
               );
             })}
           </div>
-          <div className="flex space-x-3 ">
+          <div className="flex space-x-3 " data-aos="fade-up">
             <Link
               href=""
               className="py-4 px-5 mb-10 bg-primary text-white rounded-lg duration-300 transition-all ease-in-out hover:bg-[#134761] hover:shadow-lg inline-block hover:-top-1 relative top-0"
             >
-              <h1>Read More</h1>
+              <h1>Learn More</h1>
             </Link>
           </div>
         </div>
