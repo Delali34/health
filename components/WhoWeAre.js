@@ -34,13 +34,13 @@ const WhoWeAre = () => {
             data-aos-duration="1000"
           >
             <Image
-              className="object-cover h-[400px] md:max-w-[80vw] max-w-[90vw] rounded-t-3xl"
+              className="object-cover md:h-[400px] h-[320px] md:max-w-[80vw] max-w-[90vw] rounded-t-3xl"
               src="/vision.jpg"
               width={1000}
               height={1000}
               alt=""
             />
-            <div className="bg-black/60 inset-0 top-0 right-0 left-0 rounded-t-3xl h-[400px] md:max-w-[80vw] max-w-[90vw] bottom-0 absolute"></div>
+            <div className="bg-black/60 inset-0 top-0 right-0 left-0 rounded-t-3xl md:h-[400px] h-[320px] md:max-w-[80vw] max-w-[90vw] bottom-0 absolute"></div>
             {About.map((about, index) => {
               return (
                 <div className="pl-5 absolute top-0 flex items-center text-white right-0 bottom-0 left-0">
@@ -64,13 +64,13 @@ const WhoWeAre = () => {
             data-aos-duration="1000"
           >
             <Image
-              className="object-cover h-[400px] md:max-w-[80vw] max-w-[90vw] rounded-t-3xl"
+              className="object-cover md:h-[400px] h-[320px] md:max-w-[80vw] max-w-[90vw] rounded-t-3xl"
               src="/mission.jpg"
               width={1000}
               height={1000}
               alt=""
             />
-            <div className="bg-black/60 inset-0 top-0 right-0 left-0 rounded-t-3xl h-[400px] md:max-w-[80vw] max-w-[90vw] bottom-0 absolute"></div>
+            <div className="bg-black/60 inset-0 top-0 right-0 left-0 rounded-t-3xl md:h-[400px] h-[320px] md:max-w-[80vw] max-w-[90vw] bottom-0 absolute"></div>
             {About.map((about, index) => {
               return (
                 <div className="pl-5 pr-1 absolute top-0 flex items-center text-white right-0 bottom-0 left-0">
