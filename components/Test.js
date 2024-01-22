@@ -53,7 +53,7 @@ export default function App() {
         >
           <SwiperSlide>
             <div className="flex items-center justify-center h-full ">
-              <div className="max-w-[700px] mx-auto px-5 text-[14px] md:text-[18px]  p-4 text-black border-4 border-blue-600 rounded-xl">
+              <div className="max-w-[700px] mx-auto px-5 text-[14px] md:text-[18px] bg-white  p-4 text-black border-4 border-blue-600 rounded-xl">
                 The program has greatly benefited final-year students, enhancing
                 their skills in presentation, leadership, and entrepreneurship.
                 The SRC President commends Eminence Lead International for their
@@ -73,7 +73,7 @@ export default function App() {
           <SwiperSlide>
             {" "}
             <div className="flex items-center justify-center h-full">
-              <div className="max-w-[700px] mx-auto px-5 text-[14px] md:text-[18px]  p-4 text-black border-4 border-blue-600 rounded-xl">
+              <div className="max-w-[700px] mx-auto px-5 text-[14px] md:text-[18px] bg-white   p-4 text-black border-4 border-blue-600 rounded-xl">
                 ……., and leadership programs have built my confidence level as a
                 medical student , helped me with learning tools, how to plan and
                 set personal goals , and how to take leadership initiatives. The
@@ -93,7 +93,7 @@ export default function App() {
           <SwiperSlide>
             {" "}
             <div className="flex items-center justify-center h-full">
-              <div className="max-w-[700px] mx-auto px-5 text-[14px] md:text-[18px]  p-4 text-black border-4 border-blue-600 rounded-xl">
+              <div className="max-w-[700px] mx-auto px-5 text-[14px] md:text-[18px] bg-white   p-4 text-black border-4 border-blue-600 rounded-xl">
                 …... I have learnt a lot from International’s engagement program
                 for the past months, I can boldly say that I’m ready for the
                 future. I have learnt how to lead people with good leadership
@@ -115,7 +115,7 @@ export default function App() {
           <SwiperSlide>
             {" "}
             <div className="flex items-center justify-center h-full">
-              <div className="max-w-[700px] mx-auto px-5 text-[14px] md:text-[18px]  p-4 text-black border-4 border-blue-600 rounded-xl">
+              <div className="max-w-[700px] mx-auto px-5 text-[14px] md:text-[18px] bg-white   p-4 text-black border-4 border-blue-600 rounded-xl">
                 ……, I say big thank for supporting my nursing education through
                 their sponsorship program, empowering me to focus on my
                 education and also building my confidence level to take my
