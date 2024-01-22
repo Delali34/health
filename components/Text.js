@@ -13,7 +13,7 @@ const Text = () => {
   return (
     <div>
       <h1 className="text-white pt-2 text-3xl md:text-6xl font-bold">
-        <span>{text}</span> <Cursor cursorColor="blue" />
+        <span>{text}</span> <Cursor cursorColor="#60A5FA" />
       </h1>
     </div>
   );

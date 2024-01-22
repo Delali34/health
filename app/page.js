@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "@/components/Hero2";
-import Stats from "@/components/Stats";
+import Stats from "@/components/Stats2";
 import Services from "@/components/Services";
 import Solutions from "@/components/Solutions";
 import Testimonials from "@/components/Testimonial";

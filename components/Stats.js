@@ -41,7 +41,7 @@ const Stats = () => {
     });
   });
   return (
-    <section className="pt-20 pb-10 font-mont">
+    <section className="pt-20  pb-10 font-mont">
       <div className="container px-4 mx-auto">
         <div className="lg:flex justify-between items-center space-x-0  ">
           <div className="w-full lg:w-7/12 mb-20 lg:mb-0">
