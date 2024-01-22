@@ -13,7 +13,7 @@ function page() {
       <Hero />
       <Stats />
       <WhoWeAre />
-      {/* <Services /> */}
+      <Services />
       <Solutions />
       <Testimonials />
       <RecentBlog />
