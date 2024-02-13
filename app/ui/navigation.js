@@ -5,14 +5,23 @@ import Image from "next/image";
 import { IoMenuOutline } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { FaChevronRight } from "react-icons/fa";
+import { FaWhatsappSquare } from "react-icons/fa";
 
 function Navigation() {
   const navigationMenu = [
     { href: "/", label: "Home" },
     { href: "/experience", label: "Our Experiences" },
     { href: "/blog", label: "Health News" },
-    { href: "#", label: "About" },
+    { href: "/AboutUs", label: "About" },
     { href: "/contact", label: "Contact" },
+  ];
+  const navigationMenu2 = [
+    { href: "/", label: "Home" },
+    { href: "/experience", label: "Our Experiences" },
+    { href: "/blog", label: "Health News" },
+    { href: "/AboutUs", label: "About" },
+    { href: "/contact", label: "Contact" },
+    { href: "#", label: "Chat Us On WhatsApp" },
   ];
 
   const [navOpen, setNavOpen] = useState(false);
@@ -75,7 +84,7 @@ function Navigation() {
               href="#"
               className="px-5 py-4 bg-primary text-white rounded-lg hidden lg:inline-block"
             >
-              Get Started
+              Chat Us On WhatsApp
             </Link>
             <button className="block lg:hidden" onClick={mobileMenuHandler}>
               <IoMenuOutline className="text-3xl" />
@@ -101,7 +110,7 @@ function Navigation() {
             </div>
             <div className="h-full py-3 px-10 pb-20 overflow-y-scroll scroll-smooth">
               <ul className="block mb-7">
-                {navigationMenu.map((item, index) => (
+                {navigationMenu2.map((item, index) => (
                   <li key={index}>
                     <Link
                       href={item.href}
