@@ -9,6 +9,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { getPosts } from "@/services/index";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+import Typewriter from "typewriter-effect";
 
 const blogContent = {
   heading: {
@@ -129,6 +130,7 @@ const RecentBlog = ({ post }) => {
   const [text] = useTypewriter({
     words: ["News", "Updates", "Campaignes", "Articles"],
     loop: false,
+    delaySpeed: 1500,
   });
   return (
     <section className="py-20 bg-light overflow-x-hidden font-mont">
@@ -142,15 +144,23 @@ const RecentBlog = ({ post }) => {
               {blogContent.heading.headingSubTitle}
             </span>
             <div
-              className="text-heading text-2xl lg:text-4xl font-bold mb-5"
+              className="text-heading text-2xl lg:text-4xl font-bold mb-5 gap-2 flex items-center"
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              <h1 className="text-black pt-2 text-2xl  font-bold">
+              <h1 className="text-black  text-2xl  font-bold">
                 Get Our Latest
-                <span className="text-blue-500"> {text}</span>{" "}
-                <Cursor cursorColor="#60A5FA" />
               </h1>
+              <span className="text-blue-500 text-2xl">
+                <Typewriter
+                  options={{
+                    strings: ["Updates", "Campaigns", "News"],
+                    autoStart: true,
+                    loop: true,
+                    pauseFor: 5000,
+                  }}
+                />
+              </span>
             </div>
             <p
               className="text-body leading-relaxed"
