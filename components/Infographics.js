@@ -41,7 +41,7 @@ const InfoGraphicChart = () => {
     },
     colors: ["#3366cc", "#109618", "#ff9900"], // Customize color scheme
     backgroundColor: "transparent",
-    legend: { textStyle: { color: "white", fontSize: 12 } },
+    legend: { textStyle: { color: "white", fontSize: 11 } },
   };
 
   return (
