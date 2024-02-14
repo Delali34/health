@@ -54,7 +54,7 @@ export default function App() {
         >
           <SwiperSlide>
             <div className="flex items-center justify-center h-full ">
-              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-600 rounded-xl">
+              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
                     src="/health1.jpg"
@@ -80,7 +80,7 @@ export default function App() {
           <SwiperSlide>
             {" "}
             <div className="flex items-center justify-center h-full">
-              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-600 rounded-xl">
+              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
                     src="/health1.jpg"
@@ -106,7 +106,7 @@ export default function App() {
           <SwiperSlide>
             {" "}
             <div className="flex items-center justify-center h-full">
-              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-600 rounded-xl">
+              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
                     src="/health1.jpg"
