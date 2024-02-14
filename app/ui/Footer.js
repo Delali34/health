@@ -20,19 +20,16 @@ const footerContent = {
       heading: "Organization",
       links: [
         {
-          href: "#",
+          href: "/",
           label: "Home",
         },
+
         {
-          href: "#",
-          label: "How we work",
-        },
-        {
-          href: "#",
+          href: "/AboutUs",
           label: "About",
         },
         {
-          href: "#",
+          href: "/contact",
           label: "Contact",
         },
       ],
@@ -41,15 +38,15 @@ const footerContent = {
       heading: "Resources",
       links: [
         {
-          href: "#",
+          href: "/blog",
           label: "Blog",
         },
         {
-          href: "#",
+          href: "/contact",
           label: "Support",
         },
         {
-          href: "#",
+          href: "/experience",
           label: "Our Experience",
         },
       ],
