@@ -100,10 +100,10 @@ const Solutions2 = () => {
           </div>
           <div className="flex space-x-3 " data-aos="fade-up">
             <Link
-              href=""
+              href="/experience"
               className="py-4 px-5 mb-10 bg-primary text-white rounded-lg duration-300 transition-all ease-in-out hover:bg-[#134761] hover:shadow-lg inline-block hover:-top-1 relative top-0"
             >
-              <h1>Learn More</h1>
+              <h1 className="text-sm">Learn More</h1>
             </Link>
           </div>
         </div>
