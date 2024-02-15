@@ -63,7 +63,7 @@ const footerContent = {
     },
   },
   copyright: {
-    labelOne: "Copyright 2023. Africa HPO",
+    labelOne: "Copyright 2024. Africa HPO",
   },
 };
 
