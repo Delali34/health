@@ -70,7 +70,7 @@ function Navigation() {
               />
             </Link>
           </div>
-          <div className="hidden lg:block text-center">
+          <div className="hidden cursor-pointer hover:text-primary lg:block text-center">
             <ul className="flex space-x-7">
               {navigationMenu.map((item, index) => (
                 <li key={index}>
