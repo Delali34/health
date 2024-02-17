@@ -81,7 +81,7 @@ function Navigation() {
           </div>
           <div>
             <Link
-              href="#"
+              href="https://wa.me/233246622156"
               className="px-5 py-4 bg-primary text-white rounded-lg hidden lg:inline-block"
             >
               Chat Us On WhatsApp
