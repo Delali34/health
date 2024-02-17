@@ -21,7 +21,7 @@ function Navigation() {
     { href: "/blog", label: "Health News" },
     { href: "/AboutUs", label: "About" },
     { href: "/contact", label: "Contact" },
-    { href: "#", label: "Chat Us On WhatsApp" },
+    { href: "https://wa.me/233246622156", label: "Chat Us On WhatsApp" },
   ];
 
   const [navOpen, setNavOpen] = useState(false);
