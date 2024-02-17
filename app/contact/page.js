@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { MdMarkEmailRead } from "react-icons/md";
@@ -18,31 +19,40 @@ const Contact = () => {
           we'll respond within 24 hours.
         </p>
 
-        <form className="space-y-6">
+        <form
+          className="space-y-6"
+          method="POST"
+          action="https://getform.io/f/vbmKJOeY"
+        >
           <div className="flex gap-4">
             <input
               type="text"
+              name="firstname"
               placeholder="First name"
               className="border-2 border-gray-200 rounded px-4 py-2 w-full focus:outline-none focus:border-primary-300"
             />
             <input
               type="text"
               placeholder="Last name"
+              name="lastname"
               className="border-2 border-gray-200 rounded px-4 py-2 w-full focus:outline-none focus:border-primary-300"
             />
           </div>
           <input
             type="email"
             placeholder="Email address"
+            name="email"
             className="border-2 border-gray-200 rounded px-4 py-2 w-full focus:outline-none focus:border-primary"
           />
           <input
             type="tel"
             placeholder="Phone number"
+            name="phone number"
             className="border-2 border-gray-200 rounded px-4 py-2 w-full focus:outline-none focus:border-primary"
           />
           <textarea
             placeholder="Leave us a message"
+            name="message"
             className="border-2 border-gray-200 rounded px-4 py-2 w-full focus:outline-none focus:border-primary"
             rows="4"
           ></textarea>
@@ -57,8 +67,6 @@ const Contact = () => {
       </div>
       <div className="flex flex-col items-center justify-center">
         <div className="bg-blue-100 rounded-full p-8 mb-8">
-          {/* Include your image here. For example: <img src="/path-to-your-image.jpg" alt="Contact Person" /> */}
-          {/* Remember to replace the src attribute with the path to your actual image */}
           <Image src="/image1.jpg" width={500} height={500} />
         </div>
         <div className="bg-blue-100 p-4 rounded-lg shadow space-y-4">
