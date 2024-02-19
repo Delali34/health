@@ -26,9 +26,14 @@ function Navigation() {
 
   const [navOpen, setNavOpen] = useState(false);
   const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
+  const [active, setActive] = useState(false);
 
   const mobileMenuHandler = () => {
     setNavOpen(!navOpen);
+  };
+
+  const indicaticator = () => {
+    setActive(true);
   };
 
   useEffect(() => {
@@ -70,10 +75,22 @@ function Navigation() {
               />
             </Link>
           </div>
-          <div className="hidden cursor-pointer  lg:block text-center">
+          <div
+            className="hidden cursor-pointer  lg:block text-center"
+            onClick={indicaticator}
+          >
             <ul className="flex  space-x-7">
               {navigationMenu.map((item, index) => (
-                <li className="hover:text-primary hover:font-bold" key={index}>
+                <li
+                  className={
+                    item.href === "/"
+                      ? active
+                        ? "font-bold text-primary"
+                        : ""
+                      : "text-primary"
+                  }
+                  key={index}
+                >
                   <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}

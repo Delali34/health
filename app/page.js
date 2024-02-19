@@ -13,7 +13,7 @@ function page() {
     <div>
       <Hero />
       <Stats />
-      <Infographics />
+      {/* <Infographics /> */}
       <WhoWeAre />
       <Services />
       <Solutions />

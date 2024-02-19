@@ -43,7 +43,7 @@ const Stats2 = () => {
     });
   });
   return (
-    <section className="bg pt-20 pb-10 font-mont">
+    <section className="bg  pt-20 pb-10 font-mont">
       {/* statistic component */}
       <div className="container px-4 mx-auto">
         {/* cards */}
