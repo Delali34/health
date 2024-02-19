@@ -82,7 +82,7 @@ const NavLinks = () => {
                         ? setSubHeading(slinks.Head)
                         : setSubHeading("")
                     }
-                    className="py-4 pl-7  font-semibold text-white  flex justify-between items-center md:pr-0 pr-5"
+                    className="py-4 pl-7  font-semibold text-white  flex justify-between mx-7 items-center md:pr-0 pr-5"
                   >
                     {slinks.Head}
                     <span className="text-xl text-white md:mt-1 md:ml-2 inline">
