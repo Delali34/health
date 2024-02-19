@@ -25,7 +25,7 @@ const Navbar = () => {
             className="text-3xl md:hidden cursor-pointer"
             onClick={() => setOpen(!open)}
           >
-            {open ? <FaTimes /> : <FaBars />}
+            {open ? <FaTimes className="text-white" /> : <FaBars />}
           </div>
         </div>
         <ul className="md:flex hidden uppercase items-center gap-8 font-mont">
@@ -37,13 +37,10 @@ const Navbar = () => {
         {/* Mobile nav */}
         <ul
           className={`
-            md:hidden bg-white z-20 fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4
+            md:hidden bg-primary z-20 fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4
             duration-500 ${open ? "left-0" : "left-[-100%]"}
           `}
         >
-          <Link href="/" className="py-7 px-3 inline-block">
-            <li>Home</li>
-          </Link>
           <div className="">
             <NavLinks />
           </div>

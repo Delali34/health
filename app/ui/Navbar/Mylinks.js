@@ -1,173 +1,90 @@
 export const links = [
   {
-    name: "Men",
+    name: "About Us",
     submenu: true,
     sublinks: [
       {
-        Head: "Topwear",
+        Head: "How we work",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Placeholder1", link: "/" },
+          { name: "Placeholder2", link: "/" },
+          { name: "Placeholder3", link: "/" },
+          { name: "Placeholder4", link: "/" },
+          { name: "Placeholder5", link: "/" },
         ],
       },
       {
-        Head: "Bottomwear",
+        Head: "Location",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Regions", link: "/" },
+          { name: "Placeholder1", link: "/" },
+          { name: "Placeholder2", link: "/" },
+          { name: "Placeholder3", link: "/" },
+          { name: "Placeholder4", link: "/" },
         ],
       },
       {
-        Head: "innerwear",
+        Head: "Team",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-
-      {
-        Head: "sleepwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Officers", link: "/" },
+          { name: "Placeholder1", link: "/" },
+          { name: "Placeholder2", link: "/" },
+          { name: "Placeholder2", link: "/" },
+          { name: "Placeholder4", link: "/" },
         ],
       },
       {
-        Head: "footwear",
+        Head: "Board Members",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Officers", link: "/" },
+          { name: "Placeholder1", link: "/" },
+          { name: "Placeholder2", link: "/" },
+          { name: "Placeholder3", link: "/" },
+          { name: "Placeholder4", link: "/" },
         ],
       },
     ],
   },
   {
-    name: "Women",
+    name: "Our Experience",
     submenu: true,
     sublinks: [
       {
-        Head: "Topwear",
+        Head: "Placeholder1",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Works", link: "/" },
+          { name: "placeholder", link: "/" },
         ],
       },
       {
-        Head: "Bottomwear",
+        Head: "Placeholder2",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "innerwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-
-      {
-        Head: "sleepwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "footwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Works", link: "/" },
+          { name: "placeholder", link: "/" },
         ],
       },
     ],
   },
   {
-    name: "Kid's",
+    name: "Impact Reports",
     submenu: true,
     sublinks: [
       {
-        Head: "Topwear",
+        Head: "Placeholder3",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "Bottomwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
-      {
-        Head: "innerwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Works", link: "/" },
+          { name: "placeholder", link: "/" },
         ],
       },
 
       {
-        Head: "sleepwear",
+        Head: "Placeholder4",
         sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
+          { name: "Works", link: "/" },
+          { name: "placeholder", link: "/" },
         ],
       },
-      {
-        Head: "footwear",
-        sublink: [
-          { name: "T-shirt", link: "/" },
-          { name: "Casual shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-          { name: "formal shirts", link: "/" },
-        ],
-      },
+      ,
     ],
   },
 ];
