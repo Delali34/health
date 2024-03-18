@@ -67,6 +67,55 @@ export const getRecentPosts = async () => {
     throw new Error("Failed to fetch posts");
   }
 };
+
+export const getLatestPost = async () => {
+  const query = gql`
+    query GetLatestPost() {
+      posts(
+        orderBy: createdAt_DESC
+        first: 1
+      ) {
+        title
+        featuredImage {
+          url
+        }
+        createdAt
+        slug
+      }
+    }
+  `;
+
+  try {
+    const result = await request(graphqlAPI, query);
+    return result.posts[0]; // Return the first post since it will be the latest
+  } catch (error) {
+    throw new Error("Failed to fetch latest post");
+  }
+};
+export const getRandomPosts = async () => {
+  const query = gql`
+    query GetAllPosts {
+      posts {
+        title
+        featuredImage {
+          url
+        }
+        createdAt
+        slug
+      }
+    }
+  `;
+
+  try {
+    const result = await request(graphqlAPI, query);
+    const allPosts = result.posts;
+    const randomPosts = getRandomElements(allPosts, 4); // Select four random posts
+    return randomPosts;
+  } catch (error) {
+    throw new Error("Failed to fetch random posts");
+  }
+};
+
 export const getSimilarPosts = async (categories, slug) => {
   const query = gql`
     query GetPostDetails($slug: String!, $categories: [String!]) {

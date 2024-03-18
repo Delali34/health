@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getLatestPost } from "../services/index"; // Import the function to fetch the latest post
 
-const Blogbanner = ({ post }) => {
-  // Function to truncate text to a certain length
+const Blogbanner = () => {
+  const [latestPost, setLatestPost] = useState(null);
+
+  useEffect(() => {
+    const fetchLatestPostData = async () => {
+      try {
+        const latestPostData = await getLatestPost();
+        setLatestPost(latestPostData);
+      } catch (error) {
+        console.error("Error fetching latest post:", error);
+      }
+    };
+
+    fetchLatestPostData();
+  }, []);
+
   const truncateText = (text, maxLength) => {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   };
@@ -15,28 +30,28 @@ const Blogbanner = ({ post }) => {
           <img
             width={2500}
             height={2500}
-            src={post.featuredImage.url}
+            src={latestPost?.featuredImage?.url || ""}
             alt="the bro code blog"
             className="md:h-[750px] h-[550px] w-full object-cover"
           />
           <div className="gradient-overlay2"></div>
-          <Link href={`/category/${post.categories[0]?.slug || "#"}`}>
+          <Link href={`/category/${latestPost?.categories?.[0]?.slug || "#"}`}>
             <div className="bg-black absolute lg:top-[55%] top-[50%] hover:scale-110 left-[4%] text-white py-2 border-white border-2 px-10 rounded-[35px] cursor-pointer">
               <h2 className="lg:text-2xl">
-                {post.categories[0]?.name || "Category"}
+                {latestPost?.categories?.[0]?.name || "Category"}
               </h2>
             </div>
           </Link>
-          <Link href={`/post/${post.slug}`}>
+          <Link href={`/post/${latestPost?.slug || "#"}`}>
             <div className="absolute lg:top-[70%] top-[60%] left-[4%] text-secondary py-2 cursor-pointer">
               <h2 className="md:text-3xl text-[16px] font-extrabold">
-                {post.title}
+                {latestPost?.title || "Title"}
               </h2>
             </div>
           </Link>
           <div className="absolute lg:top-[85%] top-[70%] left-[4%] text-white py-2 ">
             <p className="md:text-xl text-sm w-full">
-              {truncateText(post.excerpt, 150)}
+              {truncateText(latestPost?.excerpt || "", 150)}
             </p>
           </div>
         </div>
