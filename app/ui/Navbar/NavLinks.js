@@ -108,7 +108,11 @@ const NavLinks = () => {
                     }`}
                   >
                     {slinks.sublink.map((slink) => (
-                      <Link key={slink.name} href={slink.link}>
+                      <Link
+                        key={slink.name}
+                        href={slink.link}
+                        onClick={handleLinkClick}
+                      >
                         {" "}
                         <li className="py-3 pl-14 text-[12px] text-white">
                           {slink.name}{" "}

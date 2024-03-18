@@ -30,13 +30,16 @@ const Navbar = () => {
     <nav className="bg-white font-mont" ref={navRef}>
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full  flex justify-between">
-          <Image
-            src="/ahpo-Logo-768x183.png"
-            width={550}
-            height={500}
-            alt="logo"
-            className="md:cursor-pointer w-[90px] h-[30px]"
-          />
+          <Link href="/">
+            <Image
+              src="/ahpo-Logo-768x183.png"
+              width={550}
+              height={500}
+              alt="logo"
+              className="md:cursor-pointer w-[90px] h-[30px]"
+            />
+          </Link>
+
           <div
             className="text-3xl md:hidden cursor-pointer"
             onClick={() => setOpen(!open)}
