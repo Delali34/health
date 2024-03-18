@@ -13,7 +13,7 @@ const NavLinks = () => {
         <div className="z-10" key={link.name}>
           <div className="px-3 text-left md:cursor-pointer group font-mont">
             <h1
-              className={`bg-primary  px-5 flex py-2 items-center justify-between md:justify-center hover:bg-blue-500 duration-200 text-white group ${
+              className={`lg:text-[12px] text-[10px]  px-2 flex py-2 items-center justify-between md:justify-center hover:bg-blue-500 duration-200 text-black group ${
                 heading === link.name ? "bg-blue-500" : ""
               }`}
               onClick={() => {
@@ -21,11 +21,12 @@ const NavLinks = () => {
                 setSubHeading("");
               }}
             >
-              {link.name}
-              <span className="text-xl md:hidden inline">
+              <h1 className="-mb-1"> {link.name}</h1>
+
+              <span className="text-sm md:hidden inline">
                 {heading === link.name ? <FaChevronUp /> : <FaChevronDown />}
               </span>
-              <span className="text-xl md:mt-1 md:ml-2 md:block hidden group-hover:rotate-180 group-hover:-mt-2">
+              <span className="text-sm md:mt-1 md:ml-2 md:block hidden group-hover:rotate-180 group-hover:-mt-1">
                 <FaAngleDown />
               </span>
             </h1>
@@ -38,14 +39,14 @@ const NavLinks = () => {
                 >
                   <div className="py-3">
                     <div
-                      className="w-4 h-4 left-5 absolute 
+                      className="w-4 h-4 left-14 absolute 
                     mt-1 bg-white rotate-45 "
                     ></div>
                   </div>
-                  <div className="bg-white p-8 rounded-[20px] grid grid-cols-3 gap-10">
+                  <div className="bg-white w-[200px] p-3 rounded-[10px]  gap-10">
                     {link.sublinks.map((mysublinks) => (
                       <div key={mysublinks.Head}>
-                        <h1 className="text-[14px] text-white text-center p-2 bg-primary font-semibold">
+                        <h1 className="text-[10px] text-white text-center p-2 bg-primary font-semibold">
                           {mysublinks.Head}
                         </h1>
                         {mysublinks.sublink.map((slink) => (
@@ -54,7 +55,7 @@ const NavLinks = () => {
                             href={slink.link}
                             className="hover:text-primary"
                           >
-                            <li className="text-sm text-black hover:text-primary hover:font-bold my-2.5">
+                            <li className="text-[9px] text-black hover:text-primary hover:font-bold my-2.5">
                               {slink.name}
                             </li>
                           </Link>

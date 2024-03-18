@@ -23,7 +23,7 @@ const About = () => {
       <div className="relative  ">
         <Image
           src="/image3.jpg"
-          className=" w-full h-[50vh] object-cover"
+          className=" w-full h-[50vh]   object-cover"
           width={1000}
           height={1000}
           alt=""

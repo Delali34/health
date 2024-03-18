@@ -13,7 +13,7 @@ const Author = ({ author }) => {
             unoptimized
             width={50}
             height={50}
-            className="align-middle rounded-full w-[100px] h-[100px]"
+            className="align-middle rounded-full w-[100px] h-[100px] "
           />
         </div>
         <h3 className="text-white my-4 text-xl font-semibold">{author.name}</h3>

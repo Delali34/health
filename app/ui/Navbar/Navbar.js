@@ -16,10 +16,10 @@ const Navbar = () => {
         <div className="z-50 p-5 md:w-auto w-full  flex justify-between">
           <Image
             src="/ahpo-Logo-768x183.png"
-            width={100}
+            width={150}
             height={100}
             alt="logo"
-            className="md:cursor-pointer h-9"
+            className="md:cursor-pointer w-[90px] h-[30px]"
           />
           <div
             className="text-3xl md:hidden cursor-pointer"

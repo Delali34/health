@@ -8,7 +8,7 @@ const Accordion = () => {
         FAQs
       </h1>
       <div className="body my-52">
-        <section className="accordion">
+        <section className="accordion ">
           <div className="tab">
             <input type="checkbox" name="accordion-1" id="cb1" defaultChecked />
             <label htmlFor="cb1" className="tab__label">

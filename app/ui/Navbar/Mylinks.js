@@ -23,26 +23,6 @@ export const links = [
           { name: "Placeholder4", link: "/" },
         ],
       },
-      {
-        Head: "Team",
-        sublink: [
-          { name: "Officers", link: "/" },
-          { name: "Placeholder1", link: "/" },
-          { name: "Placeholder2", link: "/" },
-          { name: "Placeholder2", link: "/" },
-          { name: "Placeholder4", link: "/" },
-        ],
-      },
-      {
-        Head: "Board Members",
-        sublink: [
-          { name: "Officers", link: "/" },
-          { name: "Placeholder1", link: "/" },
-          { name: "Placeholder2", link: "/" },
-          { name: "Placeholder3", link: "/" },
-          { name: "Placeholder4", link: "/" },
-        ],
-      },
     ],
   },
   {
