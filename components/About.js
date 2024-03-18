@@ -36,12 +36,12 @@ const About = () => {
           </h1>
         </div>
       </div>
-      <section className="container mx-auto px-4 py-10">
+      <section className="max-w-[1280px] mx-auto px-10 py-10">
         <h1 className="text-blue-500 font-bold text-4xl">Who We Are</h1>
         <div>
           <section className="flex flex-col lg:flex-row items-center w-full gap-10 justify-between">
             <div className="flex-1">
-              <p className="md:text-[20px] text-[14px] pt-4">
+              <p className="md:text-[16px] text-[14px] pt-4">
                 {AboutUs.heading.description}
               </p>
             </div>
@@ -58,7 +58,7 @@ const About = () => {
         </div>
       </section>
       <div className="bg-gray-200">
-        <section className="flex container px-4 mx-auto flex-col py-20 lg:flex-row items-center w-full gap-10 justify-between">
+        <section className="flex max-w-[1280px] mx-auto px-10  flex-col py-20 lg:flex-row items-center w-full gap-10 justify-between">
           <div className="flex-1 w-full">
             <Image
               className="object-cover w-full md:h-[400px] h-[300px] rounded-3xl"
@@ -69,7 +69,7 @@ const About = () => {
             />
           </div>
           <div className="flex-1">
-            <p className="md:text-[20px] text-[14px] pt-4">
+            <p className="md:text-[16px] text-[14px] pt-4">
               {AboutUs.heading2.description}
             </p>
           </div>

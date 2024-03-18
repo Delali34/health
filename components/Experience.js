@@ -138,13 +138,12 @@ const Services = () => {
       <div className="container px-4 mx-auto py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
           {serviceContent.items.map((item, index) => {
-            index *= 100;
             return (
               <div
                 className=""
                 key={item.title}
                 data-aos="fade-up"
-                data-aos-delay={index}
+                data-aos-delay="100"
               >
                 <div className="">
                   <Image src={item.icon} width={600} height={600} alt="" />

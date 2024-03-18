@@ -4,24 +4,24 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "How we work",
+        Head: "What we do",
         sublink: [
-          { name: "Placeholder1", link: "/" },
-          { name: "Placeholder2", link: "/" },
-          { name: "Placeholder3", link: "/" },
-          { name: "Placeholder4", link: "/" },
-          { name: "Placeholder5", link: "/" },
+          { name: "Mission", link: "/#Mission" },
+          { name: "Vision", link: "/#Vission" },
+          { name: "Read More", link: "/AboutUs" },
         ],
       },
       {
-        Head: "Location",
+        Head: "The Organization",
         sublink: [
-          { name: "Regions", link: "/" },
-          { name: "Placeholder1", link: "/" },
-          { name: "Placeholder2", link: "/" },
-          { name: "Placeholder3", link: "/" },
-          { name: "Placeholder4", link: "/" },
+          { name: "Team", link: "/" },
+          { name: "Board Of Directors", link: "/" },
         ],
+      },
+
+      {
+        Head: "Our Blog",
+        sublink: [{ name: "Latest News", link: "/blog" }],
       },
     ],
   },
@@ -30,17 +30,17 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Placeholder1",
+        Head: "Achievements",
         sublink: [
-          { name: "Works", link: "/" },
-          { name: "placeholder", link: "/" },
+          { name: "Works", link: "/experience" },
+          { name: "Partners", link: "/" },
         ],
       },
       {
-        Head: "Placeholder2",
+        Head: "Projects",
         sublink: [
-          { name: "Works", link: "/" },
-          { name: "placeholder", link: "/" },
+          { name: "Events", link: "/" },
+          { name: "Campaigns", link: "/" },
         ],
       },
     ],
@@ -50,19 +50,13 @@ export const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Placeholder3",
-        sublink: [
-          { name: "Works", link: "/" },
-          { name: "placeholder", link: "/" },
-        ],
+        Head: "2022",
+        sublink: [{ name: "Download the report", link: "/" }],
       },
 
       {
-        Head: "Placeholder4",
-        sublink: [
-          { name: "Works", link: "/" },
-          { name: "placeholder", link: "/" },
-        ],
+        Head: "2023",
+        sublink: [{ name: "Download the report", link: "/" }],
       },
       ,
     ],

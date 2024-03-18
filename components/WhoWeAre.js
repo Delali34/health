@@ -26,7 +26,7 @@ const WhoWeAre = () => {
   });
   return (
     <section className="py-20 bg-light  font-mont">
-      <div className="container px-4 mx-auto bg-white rounded-md">
+      <div id="Vission" className="container px-4 mx-auto bg-white rounded-md">
         <div className="flex justify-center items-center">
           <div
             className=" relative mx-auto bg-light   mt-20 flex justify-center items-center"
@@ -56,7 +56,7 @@ const WhoWeAre = () => {
           </div>
         </div>
       </div>
-      <div className="container px-4 mx-auto bg-white rounded-md">
+      <div id="Mission" className="container px-4 mx-auto bg-white rounded-md">
         <div className="flex justify-center items-center">
           <div
             className=" relative mx-auto bg-light   mt-20 flex justify-center items-center"

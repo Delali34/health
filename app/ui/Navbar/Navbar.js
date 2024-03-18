@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa"; // Import the necessary icons
@@ -9,15 +9,31 @@ import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const navRef = useRef(null); // Create a ref for the nav element
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target) && open) {
+        // Add the '&& open' condition
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+    // ... rest of your useEffect (adding and removing the listener)
+  }, [open]);
 
   return (
-    <nav className="bg-white font-mont">
+    <nav className="bg-white font-mont" ref={navRef}>
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full  flex justify-between">
           <Image
             src="/ahpo-Logo-768x183.png"
-            width={150}
-            height={100}
+            width={550}
+            height={500}
             alt="logo"
             className="md:cursor-pointer w-[90px] h-[30px]"
           />
@@ -28,7 +44,7 @@ const Navbar = () => {
             {open ? <FaTimes className="text-white" /> : <FaBars />}
           </div>
         </div>
-        <ul className="md:flex hidden uppercase items-center gap-8 font-mont">
+        <ul className="md:flex hidden  items-center gap-8 font-mont">
           <NavLinks />
         </ul>
         <div className="md:block hidden">
@@ -41,7 +57,7 @@ const Navbar = () => {
             duration-500 ${open ? "left-0" : "left-[-100%]"}
           `}
         >
-          <div className="">
+          <div className="text-xl">
             <NavLinks />
           </div>
           <div className="py-5">

@@ -51,7 +51,7 @@ const Solutions2 = () => {
   });
   return (
     <section>
-      <div className="relative lg:h-[100vh] h-[1300px]">
+      <div className="relative md:h-[1000px] h-[1300px]">
         <Image
           src="/solution.jpg"
           width={2500}

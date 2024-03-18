@@ -7,14 +7,18 @@ const NavLinks = () => {
   const [heading, setHeading] = useState("");
   const [subHeading, setSubHeading] = useState("");
 
+  const handleLinkClick = () => {
+    setOpen(false); // Close the nav
+  };
+
   return (
     <>
       {links.map((link) => (
         <div className="z-10" key={link.name}>
           <div className="px-3 text-left md:cursor-pointer group font-mont">
-            <h1
-              className={`lg:text-[12px] text-[10px]  px-2 flex py-2 items-center justify-between md:justify-center hover:bg-blue-500 duration-200 text-black group ${
-                heading === link.name ? "bg-blue-500" : ""
+            <div
+              className={`lg:text-[12px] md:px-2 px-5 md:text-[10px] text-[14px] flex py-2 items-center justify-between md:justify-center hover:bg-blue-500 rounded-lg duration-200 text-white md:text-black group ${
+                heading === link.name ? "bg-blue-500 rounded-lg" : ""
               }`}
               onClick={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
@@ -29,7 +33,7 @@ const NavLinks = () => {
               <span className="text-sm md:mt-1 md:ml-2 md:block hidden group-hover:rotate-180 group-hover:-mt-1">
                 <FaAngleDown />
               </span>
-            </h1>
+            </div>
             {link.submenu && (
               <div>
                 <div
@@ -53,6 +57,7 @@ const NavLinks = () => {
                           <Link
                             key={slink.name}
                             href={slink.link}
+                            onClick={handleLinkClick}
                             className="hover:text-primary"
                           >
                             <li className="text-[9px] text-black hover:text-primary hover:font-bold my-2.5">
@@ -83,17 +88,17 @@ const NavLinks = () => {
                         ? setSubHeading(slinks.Head)
                         : setSubHeading("")
                     }
-                    className="py-4 pl-7  font-semibold text-white  flex justify-between mx-7 items-center md:pr-0 pr-5"
+                    className="py-4 pl-7  font-semibold text-[13px] text-white  flex justify-between mx-7 items-center md:pr-0 pr-5"
                   >
                     {slinks.Head}
-                    <span className="text-xl text-white md:mt-1 md:ml-2 inline">
+                    <span className="text-[13px] text-white md:mt-1 md:ml-2 inline">
                       {subHeading === slinks.Head ? (
                         <FaChevronUp />
                       ) : (
                         <FaChevronDown />
                       )}
                     </span>
-                    <span className="text-xl md:mt-1 md:ml-2 md:block hidden group-hover:rotate-180 group-hover:-mt-2">
+                    <span className="text-[13px] md:mt-1 md:ml-2 md:block hidden group-hover:rotate-180 group-hover:-mt-2">
                       <FaAngleDown />
                     </span>
                   </h1>
@@ -105,7 +110,9 @@ const NavLinks = () => {
                     {slinks.sublink.map((slink) => (
                       <Link key={slink.name} href={slink.link}>
                         {" "}
-                        <li className="py-3 pl-14 text-white">{slink.name} </li>
+                        <li className="py-3 pl-14 text-[12px] text-white">
+                          {slink.name}{" "}
+                        </li>
                       </Link>
                     ))}
                   </div>
