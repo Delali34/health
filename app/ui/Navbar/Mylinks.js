@@ -14,6 +14,10 @@ export const links = [
           { name: "Board Of Directors", link: "/" },
         ],
       },
+      {
+        Head: "Contact Us",
+        sublink: [{ name: "Contact", link: "/contact" }],
+      },
     ],
   },
   {
