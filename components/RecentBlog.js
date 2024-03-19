@@ -257,12 +257,12 @@ const RecentBlog = ({ post }) => {
                     </div>
                   )}
                 </Link>
-                <div className="text-primary mt-5">
-                  <h2 className="lg:text-2xl">
+                <div className="text-primary ">
+                  <h2 className="lg:text-xl">
                     #{post.categories[0]?.name || "Category"}
                   </h2>
                 </div>
-                <h2 className="text-heading text-lg font-bold leading-7 mb-5 mt-2">
+                <h2 className="text-heading text-[13px] font-bold leading-7 mb-5 mt-2">
                   <Link
                     href={`/post/${post.slug}`}
                     className="relative text-heading"
@@ -270,7 +270,7 @@ const RecentBlog = ({ post }) => {
                     {post.title}
                   </Link>
                 </h2>
-                <p className="relative mb-6">
+                <p className="relative mb-6 text-[10px]">
                   {post.excerpt || "No excerpt available."}
                 </p>
                 {/* Add author and other post details as needed */}
