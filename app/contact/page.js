@@ -1,10 +1,35 @@
 "use client";
-import React from "react";
+
 import Image from "next/image";
 import { MdMarkEmailRead } from "react-icons/md";
 import { TbPhoneCall } from "react-icons/tb";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import Link from "next/link";
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("service_mo1be1b", "template_9u8lcyi", form.current, {
+        publicKey: "9e-dDk8AcnnCTTCUv",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+          // Redirect to the "thank you" page
+          window.location.href = "/Thank-you"; // Replace "thank-you-page.html" with the actual URL of your thank you page
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
+    e.target.reset();
+  };
+
   return (
     <div className="bg-white container px-4 mx-auto p-8 py-5 font-mont rounded-lg shadow-lg grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div>
@@ -19,11 +44,7 @@ const Contact = () => {
           we'll respond within 24 hours.
         </p>
 
-        <form
-          className="space-y-6"
-          method="POST"
-          action="https://getform.io/f/vbmKJOeY"
-        >
+        <form className="space-y-6" ref={form} onSubmit={sendEmail}>
           <div className="flex gap-4">
             <input
               type="text"
@@ -47,7 +68,7 @@ const Contact = () => {
           <input
             type="tel"
             placeholder="Phone number"
-            name="phone number"
+            name="phone_number"
             className="border-2 border-gray-200 rounded px-4 py-2 w-full focus:outline-none focus:border-primary"
           />
           <textarea
