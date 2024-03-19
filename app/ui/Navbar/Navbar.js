@@ -27,7 +27,7 @@ const Navbar = () => {
   }, [open]);
 
   return (
-    <nav className="bg-white font-mont" ref={navRef}>
+    <nav className="bg-white  border-b font-mont" ref={navRef}>
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full  flex justify-between">
           <Link href="/">
