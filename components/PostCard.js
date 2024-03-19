@@ -32,7 +32,7 @@ const PostCard = ({ post }) => {
           </Link>
           <Link href={`/post/${post.slug}`}>
             <div className="   text-black py-3 ">
-              <h2 className="md:text-[16px] text-[13px] font-semibold">
+              <h2 className="md:text-[16px] text-[13px] hover:underline font-semibold">
                 {post.title}
               </h2>
             </div>
