@@ -24,8 +24,8 @@ export default function Home() {
         <div className="max-w-[1800px] mx-auto lg:px-20 px-5 mb-8">
           <div className="lg:mt-20 mt-10">
             <div>
-              <h1 className="lg:text-4xl text-2xl mb-5 lg:font-bold font-medium text-black">
-                Latest News
+              <h1 className="lg:text-3xl text-xl mb-5 lg:font-bold font-medium text-black">
+                Recent Posts
               </h1>
             </div>
 

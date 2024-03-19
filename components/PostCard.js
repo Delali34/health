@@ -8,7 +8,7 @@ const PostCard = ({ post }) => {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   };
   return (
-    <div className="lg:mt-20 mt-5">
+    <div className=" mt-5">
       <div className="">
         <div className="relative  cursor-pointer ">
           <div className="overflow-hidden rounded-[10px]">
@@ -25,14 +25,14 @@ const PostCard = ({ post }) => {
           {/* <div className="gradient-overlay3"></div> */}
           <Link href="/">
             <div className="text-primary mt-5">
-              <h2 className="lg:text-2xl">
+              <h2 className="lg:text-xl">
                 #{post.categories[0]?.name || "Category"}
               </h2>
             </div>
           </Link>
           <Link href={`/post/${post.slug}`}>
             <div className="   text-black py-3 ">
-              <h2 className="md:text-[19px] text-[15px] font-semibold">
+              <h2 className="md:text-[16px] text-[13px] font-semibold">
                 {post.title}
               </h2>
             </div>

@@ -23,6 +23,10 @@ const Blogbanner = () => {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   };
 
+  if (!latestPost) {
+    return <div className="text-center mt-20">Loading...</div>;
+  }
+
   return (
     <div className="bg-white">
       <div className="">
@@ -35,13 +39,11 @@ const Blogbanner = () => {
             className="md:h-[750px] h-[550px] w-full object-cover"
           />
           <div className="gradient-overlay2"></div>
-          <Link href={`/category/${latestPost?.categories?.[0]?.slug || "#"}`}>
-            <div className="bg-black absolute lg:top-[55%] top-[50%] hover:scale-110 left-[4%] text-white py-2 border-white border-2 px-10 rounded-[35px] cursor-pointer">
-              <h2 className="lg:text-2xl">
-                {latestPost?.categories?.[0]?.name || "Category"}
-              </h2>
-            </div>
-          </Link>
+
+          <div className="bg-black absolute lg:top-[55%] top-[50%] hover:scale-110 left-[4%] text-white py-2 border-white border-2 px-10 rounded-[35px] cursor-pointer">
+            <h2 className="lg:text-2xl">Latest News</h2>
+          </div>
+
           <Link href={`/post/${latestPost?.slug || "#"}`}>
             <div className="absolute lg:top-[70%] top-[60%] left-[4%] text-secondary py-2 cursor-pointer">
               <h2 className="md:text-3xl text-[16px] font-extrabold">
