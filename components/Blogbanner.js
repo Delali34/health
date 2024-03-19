@@ -31,7 +31,8 @@ const Blogbanner = () => {
     <div className="bg-white">
       <div className="">
         <div className="relative">
-          <img
+          <Image
+            priority
             width={2500}
             height={2500}
             src={latestPost?.featuredImage?.url || ""}
