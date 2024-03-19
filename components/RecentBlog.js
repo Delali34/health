@@ -262,7 +262,7 @@ const RecentBlog = ({ post }) => {
                     #{post.categories[0]?.name || "Category"}
                   </h2>
                 </div>
-                <h2 className="text-heading text-[13px] font-bold leading-7 mb-5 mt-2">
+                <h2 className="text-heading text-[13px] font-bold  mb-5 mt-2">
                   <Link
                     href={`/post/${post.slug}`}
                     className="relative text-heading"
