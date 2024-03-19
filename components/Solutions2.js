@@ -72,12 +72,11 @@ const Solutions2 = () => {
 
           <div className=" container mx-auto md:p-20 p-5 grid grid-cols-1 md:grid-cols-2 gap-5  place-items-center">
             {serviceContent.items.map((items, index) => {
-              index *= 100;
               return (
                 <div
                   className="flex justify-center gap-5  flex-col items-center bg-white p-4"
                   data-aos="fade-down"
-                  data-aos-delay={index}
+                  data-aos-delay="100"
                 >
                   <Image
                     className="w-[70px] h-[70px] "
