@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { links } from "./Mylinks";
 import { FaAngleDown, FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const NavLinks = () => {
   const [heading, setHeading] = useState("");
@@ -115,7 +116,10 @@ const NavLinks = () => {
                       >
                         {" "}
                         <li className="py-3 pl-14 text-[12px] text-white">
-                          {slink.name}{" "}
+                          <div className="flex items-center gap-2">
+                            {slink.name}
+                            <FaExternalLinkAlt />
+                          </div>
                         </li>
                       </Link>
                     ))}
