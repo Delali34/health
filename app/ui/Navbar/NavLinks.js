@@ -60,7 +60,7 @@ const NavLinks = () => {
                             onClick={handleLinkClick}
                             className="hover:text-primary"
                           >
-                            <li className="text-[9px] text-black hover:text-primary hover:font-bold my-2.5">
+                            <li className="text-[14px] text-black hover:text-primary hover:font-bold my-2.5">
                               {slink.name}
                             </li>
                           </Link>
