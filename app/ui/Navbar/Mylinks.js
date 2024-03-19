@@ -14,11 +14,6 @@ export const links = [
           { name: "Board Of Directors", link: "/" },
         ],
       },
-
-      {
-        Head: "Our Blog",
-        sublink: [{ name: "Latest News", link: "/blog" }],
-      },
     ],
   },
   {
@@ -42,17 +37,12 @@ export const links = [
     ],
   },
   {
-    name: "Impact Reports",
+    name: "Our Blog",
     submenu: true,
     sublinks: [
       {
-        Head: "2022",
-        sublink: [{ name: "Download the report", link: "/" }],
-      },
-
-      {
-        Head: "2023",
-        sublink: [{ name: "Download the report", link: "/" }],
+        Head: "Updates",
+        sublink: [{ name: "Latest News", link: "/blog" }],
       },
       ,
     ],
