@@ -9,17 +9,17 @@ const StatContent = {
     {
       img: "/information.jpg",
       number: "100%",
-      label: "Accurate Information ",
+      label: "Nationwide coverage ",
     },
     {
       img: "/screening.jpg",
-      number: "39,000",
-      label: "Safe Health Screening",
+      number: "6.9 million",
+      label: "Million Direct Beneficiaries",
     },
     {
       img: "/lives.jpg",
-      number: "157,000",
-      label: "Lives imapacted ",
+      number: "106",
+      label: "Community Projects Implemented ",
     },
   ],
   getStarted: {
@@ -65,7 +65,7 @@ const Stats2 = () => {
                   <h1 className="text-center pt-3 lg:text-3xl text-2xl font-bold">
                     {stat.number}
                   </h1>
-                  <p className="text-center lg:text-2xl text-xl pt-3 font-medium">
+                  <p className="text-center lg:text-[16px] text-sm pt-3 font-medium">
                     {stat.label}
                   </p>
                 </div>

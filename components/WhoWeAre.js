@@ -7,12 +7,12 @@ import "aos/dist/aos.css";
 const About = [
   {
     name: "Vision",
-    item: "Africa Health Promotion Organization is an NGO dedicated to promoting public health using research-driven and evidence-based approaches. We are a centre of excellence for capacity building, community engagement and advocacy within the One Health concept",
+    item: "We envisage an empowered society where all persons irrespective of race, gender, age or state of their disability, are well informed, and have the needed capacity to positively influence their health determinants.",
   },
   {
     name1: "Mission",
     item2:
-      "We are strategically positioned within Africa’s most pressing priorities in the areas of public health and health promotion. Our operations are driven by scientific research and evidence",
+      "We exist to promote public health through health literacy capacity building, advocacy for social equity and community development interventions.",
   },
 ];
 

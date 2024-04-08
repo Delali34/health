@@ -8,6 +8,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
+import { FaWhatsappSquare } from "react-icons/fa";
 
 const footerContent = {
   about: {
@@ -153,6 +154,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex items-center justify-center gap-5 text-white pb-5 text-5xl ">
+          <Link href="https://wa.me/233246622156" target="_blank">
+            {" "}
+            <FaWhatsappSquare className="hover:animate-bounce" />
+          </Link>
           <Link href="#">
             {" "}
             <FaLinkedin className="hover:animate-bounce" />

@@ -5,9 +5,7 @@ import Solutions2 from "./Solutions2";
 const AboutUs = {
   heading: {
     image: "/image1.jpg",
-    description: `Africa Health Promotion Organization is an NGO dedicated to promoting public health using research-driven and evidence-based approaches. We are a centre of excellence for capacity building, community engagement and advocacy within the One Health concept…
-
-    We are strategically positioned within Africa’s most pressing priorities in the areas of public health and health promotion. Our operations are driven by scientific research and evidence…`,
+    description: `Africa Health Promotion Organization is an NGO dedicated to empowering individuals and communities to improve their health. At Africa HPO, we believe everyone at all ages has the potential to achieve their life aspirations. We’re therefore poised to help address barriers that limit people in the pursuit of their life purposes. We are here to reach out to society through effective people engagement, health literacy capacity building, and community development. Every encounter with us leaves our beneficiaries with lovely memories for life…..`,
   },
   heading2: {
     image: "/image4.jpg",

@@ -27,7 +27,6 @@ const NavLinks = () => {
               }}
             >
               <h1 className="-mb-1"> {link.name}</h1>
-
               <span className="text-sm md:hidden inline">
                 {heading === link.name ? <FaChevronUp /> : <FaChevronDown />}
               </span>

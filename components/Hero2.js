@@ -41,9 +41,11 @@ const Hero2 = () => {
         {/* text on image */}
         <div className="container font-mont lg:px-10  px-4 mx-auto absolute w-full md:h-[850px] h-[650px] flex flex-col justify-center   right-0 left-0 top-0 bottom-0">
           <div className="">
-            <h2 className="text-white text-2xl md:text-4xl font-semibold">
+            <h2 className="text-white text-xl md:text-2xl font-semibold">
               Welcome to{" "}
-              <span className="font-bold text-blue-400">Africa HPO</span>
+              <span className="font-bold text-blue-400">
+                Africa Health Promotion Organization
+              </span>
             </h2>
             <Text />
           </div>

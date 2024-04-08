@@ -47,8 +47,20 @@ const Navbar = () => {
             {open ? <FaTimes className="text-white" /> : <FaBars />}
           </div>
         </div>
-        <ul className="md:flex hidden  items-center gap-8 font-mont">
+        <ul className="md:flex hidden  items-center gap-1 font-mont">
+          <Link
+            className="lg:text-[12px] -mb-1 md:text-[10px] text-[14px] md:px-2 px-5 py-2 hover:bg-blue-500 rounded-lg duration-200 text-white md:text-black"
+            href="/"
+          >
+            Home
+          </Link>
           <NavLinks />
+          <Link
+            className="lg:text-[12px] -mb-1 md:text-[10px] text-[14px] md:px-2 px-5 py-2 hover:bg-blue-500 rounded-lg duration-200 text-white md:text-black"
+            href="/Partner"
+          >
+            Partner Us
+          </Link>
         </ul>
         <div className="md:block hidden">
           <Button />
@@ -61,7 +73,19 @@ const Navbar = () => {
           `}
         >
           <div className="text-xl">
+            <Link
+              className="lg:text-[12px] pl-8  -mb-1 md:text-[10px] text-[14px] md:px-2 px-5 py-2 hover:bg-blue-500 rounded-lg duration-200 text-white md:text-black"
+              href="/"
+            >
+              Home
+            </Link>
             <NavLinks />
+            <Link
+              className="lg:text-[12px] pl-8  -mb-1 md:text-[10px] text-[14px] md:px-2 px-5 py-2 hover:bg-blue-500 rounded-lg duration-200 text-white md:text-black"
+              href="/Partner"
+            >
+              Partner Us
+            </Link>
           </div>
           <div className="py-5">
             <Button />

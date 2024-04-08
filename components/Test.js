@@ -57,23 +57,19 @@ export default function App() {
               <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
-                    src="/health1.jpg"
+                    src="/noimage.png"
                     className="p-5 rounded-3xl"
                     width={500}
                     height={500}
                     alt=""
                   />
                 </div>
-                The program has greatly benefited final-year students, enhancing
-                their skills in presentation, leadership, and entrepreneurship.
-                The SRC President commends Eminence Lead International for their
-                inspiring role and urges continued support for Ghana's
-                <div className="mt-2">
-                  <h3 className="font-bold">
-                    Bonsu Ransford – SRC President – Presbyterian Midwifery
-                    &amp; Nursing Training College
-                  </h3>
-                </div>
+                At first, reading was my biggest problem in school. My friends
+                used to mock at me and I felt like dropping out. So when I heard
+                that we are going to have a reading programme, I was the first
+                person to show up. Now I can read like any other student….
+                Thanks to the people who brought this programme to our school.
+                <div className="mt-2"></div>
               </div>
             </div>
           </SwiperSlide>
@@ -83,23 +79,18 @@ export default function App() {
               <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
-                    src="/health1.jpg"
+                    src="/noimage.png"
                     className="p-5 rounded-3xl"
                     width={500}
                     height={500}
                     alt=""
                   />
                 </div>
-                ……., and leadership programs have built my confidence level as a
-                medical student , helped me with learning tools, how to plan and
-                set personal goals , and how to take leadership initiatives. The
-                organization has really helped me to excel academically,
-                <div className="mt-2">
-                  <h3 className="font-bold">
-                    - Prince Yawanke – Student of Presbyterian Midwifery &amp;
-                    Nursing Training College Agogo
-                  </h3>
-                </div>
+                This nutrition programme taught me a life lesson. I thought I
+                needed lots of money to prepare good food for my family. This
+                programme taught me how to combine our local foods to make my
+                children grow healthy and strong.
+                <div className="mt-2"></div>
               </div>
             </div>
           </SwiperSlide>
@@ -109,23 +100,84 @@ export default function App() {
               <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
-                    src="/health1.jpg"
+                    src="/noimage.png"
                     className="p-5 rounded-3xl"
                     width={500}
                     height={500}
                     alt=""
                   />
                 </div>
-                …... I have learnt a lot from International’s engagement program
-                for the past months, I can boldly say that I’m ready for the
-                future. I have learnt how to lead people with good leadership
-                tools, self-presentation, confidence, public speaking skills,
-                <div className="mt-2">
-                  <h3 className="font-bold">
-                    - Kezia Quansah – Student of Presbyterian Midwifery &amp;
-                    Nursing Training College Agogo
-                  </h3>
+                How I wish this training programme came earlier to our
+                community. Those times we used get a lot of money from our
+                businesses but we didn’t manage it well. It’s not like now that
+                things are difficult. But with this knowledge I am sure I can
+                save some money and expand my business
+                <div className="mt-2"></div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            {" "}
+            <div className="flex items-center justify-center h-full">
+              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
+                <div className="w-[200px] h-[200px] ">
+                  <Image
+                    src="/noimage.png"
+                    className="p-5 rounded-3xl"
+                    width={500}
+                    height={500}
+                    alt=""
+                  />
                 </div>
+                I never did family planning because the way people talk about
+                family planning was frightening. I now understand that family
+                planning is not only by injection. I didn’t know you have to
+                make your own choice. Now I can have my next child when I am
+                ready. I thank Africa HPO.
+                <div className="mt-2"></div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            {" "}
+            <div className="flex items-center justify-center h-full">
+              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
+                <div className="w-[200px] h-[200px] ">
+                  <Image
+                    src="/noimage.png"
+                    className="p-5 rounded-3xl"
+                    width={500}
+                    height={500}
+                    alt=""
+                  />
+                </div>
+                : I was not going to the hospital because my insurance was dead
+                some long time ago. But after GIZ and the NGO came and renewed
+                it, I started visiting the hospital. That was when I realized I
+                had a serious health problem but thank God I have been treated.
+                <div className="mt-2"></div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            {" "}
+            <div className="flex items-center justify-center h-full">
+              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
+                <div className="w-[200px] h-[200px] ">
+                  <Image
+                    src="/noimage.png"
+                    className="p-5 rounded-3xl"
+                    width={500}
+                    height={500}
+                    alt=""
+                  />
+                </div>
+                How I wish this training programme came earlier to our
+                community. Those times we used get a lot of money from our
+                businesses but we didn’t manage it well. It’s not like now that
+                things are difficult. But with this knowledge I am sure I can
+                save some money and expand my business
+                <div className="mt-2"></div>
               </div>
             </div>
           </SwiperSlide>
