@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { links } from "./Mylinks";
 import { FaAngleDown, FaChevronUp, FaChevronDown } from "react-icons/fa";
@@ -7,24 +7,10 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 const NavLinks = () => {
   const [heading, setHeading] = useState("");
   const [subHeading, setSubHeading] = useState("");
-  const submenuRef = useRef(null);
 
   const handleLinkClick = () => {
     setOpen(false); // Close the nav
   };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (submenuRef.current && !submenuRef.current.contains(event.target)) {
-        setHeading(""); // Reset heading to close the submenu
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   return (
     <>
@@ -49,7 +35,7 @@ const NavLinks = () => {
               </span>
             </div>
             {link.submenu && (
-              <div ref={submenuRef} className="z-10">
+              <div>
                 <div
                   className={`hidden absolute top-[55px] ${
                     heading === link.name ? "md:block" : "hidden"
@@ -64,7 +50,7 @@ const NavLinks = () => {
                   <div className="bg-white shadow-lg w-[200px] p-3 rounded-[10px]  gap-10">
                     {link.sublinks.map((mysublinks) => (
                       <div key={mysublinks.Head}>
-                        <h1 className="text-[10px] cursor-default text-white text-center p-2 bg-primary font-semibold">
+                        <h1 className="text-[10px] text-white text-center p-2 bg-primary font-semibold">
                           {mysublinks.Head}
                         </h1>
                         {mysublinks.sublink.map((slink) => (
@@ -74,7 +60,7 @@ const NavLinks = () => {
                             onClick={handleLinkClick}
                             className="hover:text-primary"
                           >
-                            <li className="text-[14px] text-black hover:text-primary  hover:font-bold my-2.5">
+                            <li className="text-[14px] text-black hover:text-primary hover:bg-blue-300 lg:p-1 hover:font-bold my-2.5">
                               {slink.name}
                             </li>
                           </Link>

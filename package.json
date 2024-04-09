@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
+    "@formkit/auto-animate": "^0.8.1",
     "@graphcms/rich-text-react-renderer": "^0.6.1",
     "@ionic/core": "^7.7.2",
     "@nextui-org/react": "^2.2.9",

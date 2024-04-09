@@ -37,7 +37,7 @@ const Hero2 = () => {
           />
         ))}
         {/* background opacity */}
-        <div className="bg-black/50 inset-0 top-0 right-0 left-0 md:h-[850px] h-[650px] bottom-0 absolute"></div>
+        <div className="bg-black/50 inset-0 top-0  right-0 left-0 md:h-[850px] h-[650px] bottom-0 absolute"></div>
         {/* text on image */}
         <div className="container font-mont lg:px-10  px-4 mx-auto absolute w-full md:h-[850px] h-[650px] flex flex-col justify-center   right-0 left-0 top-0 bottom-0">
           <div className="">

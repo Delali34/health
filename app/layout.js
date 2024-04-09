@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "./ui/Navbar/Navbar";
+import Navbar from "./ui/Nav";
 import Footer from "./ui/Footer";
 import { GrLinkTop } from "react-icons/gr";
 
@@ -35,7 +36,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="z-[9999]">
-          <Navigation />
+          <Navbar />
         </div>
 
         {children}

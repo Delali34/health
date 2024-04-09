@@ -63,6 +63,7 @@ const Navbar = () => {
             >
               Home
             </Link>
+
             <NavLinks />
             <Link
               className="lg:text-[12px] pl-8  -mb-1 md:text-[10px] text-[14px] md:px-2 px-5 py-2 hover:bg-blue-500 rounded-lg duration-200 text-white md:text-black"

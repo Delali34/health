@@ -5,14 +5,14 @@ export const links = [
     sublinks: [
       {
         Head: "What we do",
-        sublink: [
-          { name: "About Us", link: "/AboutUs" },
-          { name: "Team", link: "/" },
-        ],
+        sublink: [{ name: "About Us", link: "/AboutUs" }],
       },
       {
-        Head: "Abuse",
-        sublink: [{ name: "Report Abuse", link: "/contact" }],
+        Head: "The Organization",
+        sublink: [
+          { name: "Team", link: "/" },
+          { name: "Board Of Directors", link: "/" },
+        ],
       },
       {
         Head: "Contact Us",
@@ -21,17 +21,6 @@ export const links = [
     ],
   },
 
-  {
-    name: "Our Blog",
-    submenu: true,
-    sublinks: [
-      {
-        Head: "Updates",
-        sublink: [{ name: "Latest News", link: "/blog" }],
-      },
-      ,
-    ],
-  },
   {
     name: "Our Experience",
     submenu: true,
@@ -50,6 +39,17 @@ export const links = [
           { name: "Campaigns", link: "/" },
         ],
       },
+    ],
+  },
+  {
+    name: "Our Blog",
+    submenu: true,
+    sublinks: [
+      {
+        Head: "Updates",
+        sublink: [{ name: "Latest News", link: "/blog" }],
+      },
+      ,
     ],
   },
 ];
