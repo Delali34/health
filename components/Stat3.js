@@ -13,13 +13,13 @@ const StatContent = {
     },
     {
       img: "/screening.jpg",
-      number: "39,000",
-      label: "Safe Health Screening",
+      number: "6.9 million",
+      label: "Million Direct Beneficiaries",
     },
     {
       img: "/lives.jpg",
-      number: "157,000",
-      label: "Lives imapacted ",
+      number: "106",
+      label: "Community Projects Implemented ",
     },
   ],
   getStarted: {

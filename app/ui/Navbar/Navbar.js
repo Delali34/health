@@ -9,25 +9,9 @@ import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const navRef = useRef(null); // Create a ref for the nav element
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (navRef.current && !navRef.current.contains(event.target) && open) {
-        // Add the '&& open' condition
-        setOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-    // ... rest of your useEffect (adding and removing the listener)
-  }, [open]);
 
   return (
-    <nav className="bg-white  border-b font-mont" ref={navRef}>
+    <nav className="bg-white  border-b font-mont">
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full  flex justify-between">
           <Link href="/">
