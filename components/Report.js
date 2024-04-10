@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 const ReportAbuse = () => {
   return (
-    <div className="bg-gray-100  py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+    <div className="bg-gray-100 font-mont  py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
       <div className="max-w-4xl w-full bg-white rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row">
         {/* Image */}
         <div className="md:w-1/3">
