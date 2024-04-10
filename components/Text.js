@@ -7,7 +7,7 @@ function Text() {
       <Typewriter
         options={{
           strings: [
-            "Championing Interventions that Improve Livelihoods",
+            "Championing interventions that improve livelihoods",
             "Be empowered...",
           ],
           autoStart: true,
