@@ -48,7 +48,7 @@ const footerContent = {
         },
         {
           href: "/contact",
-          label: "Support",
+          label: "Report Abuse",
         },
         {
           href: "/experience",

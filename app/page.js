@@ -9,6 +9,7 @@ import RecentBlog from "@/components/RecentBlog";
 import WhoWeAre from "@/components/WhoWeAre";
 import Stats2 from "@/components/Stat3";
 import Accordion from "@/components/Accordion";
+import Report from "@/components/Report";
 
 function page() {
   return (
@@ -27,6 +28,7 @@ function page() {
       <Solutions />
       <Testimonials />
       <RecentBlog />
+      <Report />
       <Accordion />
     </div>
   );

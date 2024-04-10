@@ -1,4 +1,4 @@
-import ExperienceComponent from "../../components/Experience";
+import ExperienceComponent from "../../components/Projects";
 
 const ExperiencePage = () => {
   return (

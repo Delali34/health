@@ -12,23 +12,23 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const navItems = [
   {
+    label: "Home",
+    link: "/",
+  },
+  {
     label: "Our Experience",
     link: "#",
     children: [
       {
-        label: "Todo list",
+        label: "Projects",
+        link: "/experience",
+      },
+      {
+        label: "Achievements",
         link: "#",
       },
       {
-        label: "Calendar",
-        link: "#",
-      },
-      {
-        label: "Reminders",
-        link: "#",
-      },
-      {
-        label: "Planning",
+        label: "Testimonies",
         link: "#",
       },
     ],
@@ -38,12 +38,12 @@ const navItems = [
     link: "#",
     children: [
       {
-        label: "History",
-        link: "/contact",
+        label: "What we do",
+        link: "/AboutUs",
       },
       {
         label: "Our Team",
-        link: "#",
+        link: "/team",
       },
       {
         label: "Contact Us",
@@ -51,12 +51,9 @@ const navItems = [
       },
     ],
   },
+
   {
-    label: "Careers",
-    link: "/Partner",
-  },
-  {
-    label: "About",
+    label: "Our blog",
     link: "/blog",
   },
 ];
@@ -99,7 +96,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="mx-auto  flex w-full max-w-7xl justify-between px-4 py-5 text-sm">
+    <div className="mx-auto font-mont  flex w-full max-w-7xl justify-between px-4 py-5 text-sm">
       {/* left side */}
       <section ref={animationParent} className="flex items-center gap-10">
         {/* logo */}
@@ -125,7 +122,7 @@ export default function Navbar() {
               }`}
             >
               <p className="flex cursor-pointer items-center gap-2 text-black-400  rounded-[5px] group-hover:text-black/80">
-                <span>{d.label}</span>
+                <span className="lg:text-sm text-[12px]">{d.label}</span>
                 {d.children && (
                   <IoIosArrowDown
                     className={`rotate-180 transition-all group-hover:rotate-0 ${
@@ -138,7 +135,7 @@ export default function Navbar() {
 
             {/* dropdown */}
             {activeButton === i && d.children && (
-              <div className="absolute right-0 top-10 w-auto flex-col gap-1 rounded-lg bg-white py-3 shadow-md transition-all">
+              <div className="absolute right-0 left-0 top-10 w-[200px] flex-col gap-1 rounded-lg bg-white py-3 shadow-md transition-all">
                 {d.children.map((ch, index) => (
                   <Link
                     key={index}
@@ -159,15 +156,15 @@ export default function Navbar() {
       <section className="hidden md:flex items-center gap-8">
         <Link href="/Partner">
           {" "}
-          <button className="h-fit text-neutral-400 transition-all hover:text-black/90">
+          <button className="h-fit lg:text-[14px] text-[12px] text-neutral-400 transition-all hover:text-black/90">
             Partner Us
           </button>
         </Link>
 
         <Link href="https://wa.me/233246622156" target="_blank">
-          <button className="bg-green-400  hover:bg-green-700 duration-200 text-white flex items-center gap-2 px-3 py-1  lg:px-6 lg:py-2 rounded-full">
+          <button className="bg-green-400  hover:bg-green-700 duration-200 text-white flex items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
             <FaWhatsapp className="text-sm" />{" "}
-            <p className="lg:text-sm text-[10px]">WhatsApp Us</p>
+            <p className="lg:text-[12px] text-[10px]">WhatsApp Us</p>
           </button>
         </Link>
       </section>
@@ -182,7 +179,7 @@ export default function Navbar() {
 
 function MobileNav({ closeSideMenu }) {
   return (
-    <div className="fixed z-[999] left-0 top-0 flex h-full min-h-screen w-full justify-end bg-black/60 md:hidden">
+    <div className="fixed font-mont z-[999] left-0 top-0 flex h-full min-h-screen w-full justify-end bg-black/60 md:hidden">
       <div className="h-full w-[65%] bg-white px-4 py-4">
         <section className="flex justify-end">
           <AiOutlineClose
@@ -203,13 +200,19 @@ function MobileNav({ closeSideMenu }) {
         </div>
 
         <section className="flex flex-col gap-8 mt-4 items-center">
-          <button className="h-fit text-neutral-400 transition-all hover:text-black/90">
-            Login
-          </button>
+          <Link href="/Partner">
+            {" "}
+            <button className="h-fit text-neutral-400 transition-all hover:text-black/90">
+              Partner Us
+            </button>
+          </Link>
 
-          <button className="w-full max-w-[200px] rounded-xl border-2 border-neutral-400 px-4 py-2 text-neutral-400 transition-all hover:border-black hover:text-black/90">
-            Register
-          </button>
+          <Link href="https://wa.me/233246622156" target="_blank">
+            <button className="bg-green-400  hover:bg-green-700 duration-200 text-white flex items-center gap-2 px-3 py-1  lg:px-6 lg:py-2 rounded-full">
+              <FaWhatsapp className="text-lg" />{" "}
+              <p className="lg:text-sm text-[10px]">WhatsApp Us</p>
+            </button>
+          </Link>
         </section>
       </div>
     </div>
