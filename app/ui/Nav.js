@@ -156,7 +156,7 @@ export default function Navbar() {
       <section className="hidden md:flex items-center gap-8">
         <Link href="/Partner">
           {" "}
-          <button className="h-fit lg:text-[14px] text-[12px] text-neutral-400 transition-all hover:text-black/90">
+          <button className="h-fit lg:text-[14px] text-[12px] text-black  transition-all hover:text-neutral-400">
             Partner Us
           </button>
         </Link>
