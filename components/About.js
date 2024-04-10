@@ -34,7 +34,7 @@ const About = () => {
           </h1>
         </div>
       </div>
-      <section className="max-w-[1280px] mx-auto px-10 py-10">
+      <section className="max-w-[1280px] mx-auto lg:px-10 px-5 py-10">
         <h1 className="text-blue-500 font-bold text-4xl">Who We Are</h1>
         <div>
           <section className="flex flex-col lg:flex-row items-center w-full gap-10 justify-between">
@@ -56,7 +56,7 @@ const About = () => {
         </div>
       </section>
       <div className="bg-gray-200">
-        <section className="flex max-w-[1280px] mx-auto px-10  flex-col py-20 lg:flex-row items-center w-full gap-10 justify-between">
+        <section className="flex max-w-[1280px] mx-auto lg:px-10 px-5  flex-col py-20 lg:flex-row items-center w-full gap-10 justify-between">
           <div className="flex-1 w-full">
             <Image
               className="object-cover w-full md:h-[400px] h-[300px] rounded-3xl"
