@@ -7,9 +7,7 @@ function Text() {
       <Typewriter
         options={{
           strings: [
-            "Leading Health Sector Agenda",
-
-            "Championing Interventions that Improve Lives",
+            "Championing Interventions that Improve Livelihoods",
             "Be empowered...",
           ],
           autoStart: true,
