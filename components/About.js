@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Solutions2 from "./Solutions2";
+import Solutions2 from "./Team";
 
 const AboutUs = {
   heading: {

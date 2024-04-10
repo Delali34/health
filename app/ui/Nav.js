@@ -38,7 +38,7 @@ const navItems = [
     link: "#",
     children: [
       {
-        label: "What we do",
+        label: "Who We Are",
         link: "/AboutUs",
       },
       {
