@@ -9,7 +9,7 @@ const StatContent = {
     {
       img: "/information.jpg",
       number: "100%",
-      label: "Nationwide coverage ",
+      label: "Nationwide Coverage ",
     },
     {
       img: "/screening.jpg",
