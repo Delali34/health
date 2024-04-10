@@ -7,7 +7,7 @@ import "aos/dist/aos.css";
 const About = [
   {
     name: "Vision",
-    item: "We envisage an empowered society where all persons irrespective of race, gender, age or state of their disability, are well informed, and have the needed capacity to positively influence their health determinants.",
+    item: "We envisage an empowered society where all persons irrespective of their race, gender, age or state of disability, are well informed, and have the needed capacity to positively influence their health determinants.",
   },
   {
     name1: "Mission",
