@@ -9,12 +9,12 @@ const StatContent = {
     {
       img: "/information.jpg",
       number: "100%",
-      label: "Nationwide coverage ",
+      label: "Nationwide Coverage ",
     },
     {
       img: "/screening.jpg",
-      number: "6.9 million",
-      label: "Million Direct Beneficiaries",
+      number: "6.9 Million",
+      label: "Direct Beneficiaries",
     },
     {
       img: "/lives.jpg",
