@@ -43,7 +43,7 @@ const Hero2 = () => {
           <div className="">
             <h2 className="text-white text-xl md:text-2xl font-semibold">
               Welcome to; <br />
-              <span className="font-bold text-blue-400">
+              <span className="font-bold lg:text-[28px] text-[20px] text-[#0490CF]">
                 Africa Health Promotion Organization
               </span>
             </h2>
