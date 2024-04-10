@@ -199,10 +199,10 @@ function MobileNav({ closeSideMenu }) {
           ))}
         </div>
 
-        <section className="flex flex-col gap-8 mt-4 items-center">
+        <section className="flex flex-col gap-8 mt-4 ml-2">
           <Link href="/Partner">
             {" "}
-            <button className="h-fit text-neutral-400 transition-all hover:text-black/90">
+            <button className="h-fit text-[16px] transition-all hover:text-neutral-400 text-black">
               Partner Us
             </button>
           </Link>
@@ -234,7 +234,7 @@ function SingleNavItem({ label, iconImage, link, children }) {
       href={link ?? "#"}
       className="relative px-2 py-3 transition-all"
     >
-      <p className="flex cursor-pointer items-center gap-2 text-neutral-400 group-hover:text-black">
+      <p className="flex cursor-pointer items-center gap-2 text-black group-hover:text-black">
         <span>{label}</span>
         {children && (
           <IoIosArrowDown
@@ -257,7 +257,9 @@ function SingleNavItem({ label, iconImage, link, children }) {
               {/* image */}
               {ch.iconImage && <Image src={ch.iconImage} alt="item-icon" />}
               {/* item */}
-              <span className="whitespace-nowrap pl-3">{ch.label}</span>
+              <span className="whitespace-nowrap pl-3 text-black">
+                {ch.label}
+              </span>
             </Link>
           ))}
         </div>
