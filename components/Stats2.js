@@ -14,7 +14,7 @@ const StatContent = {
     {
       img: "/screening.jpg",
       number: "6.9 million",
-      label: "Million Direct Beneficiaries",
+      label: " Direct Beneficiaries",
     },
     {
       img: "/lives.jpg",
@@ -65,7 +65,7 @@ const Stats2 = () => {
                   <h1 className="text-center pt-3 lg:text-3xl text-2xl font-bold">
                     {stat.number}
                   </h1>
-                  <p className="text-center lg:text-[16px] text-sm pt-3 font-medium">
+                  <p className="text-center uppercase lg:text-[16px] text-sm pt-3 font-medium">
                     {stat.label}
                   </p>
                 </div>
