@@ -56,10 +56,10 @@ const coreValues = [
     imageUrl: "/tran.jpg", // Example image path
   },
   {
-    title: "Excellence",
+    title: "Integrity",
     description:
       "We strive for excellence in everything we do. By setting high standards and continuously improving our processes, we aim to exceed expectations and achieve outstanding results. Our pursuit of excellence drives innovation and fosters success.",
-    imageUrl: "/exe.jpg", // Example image path
+    imageUrl: "/inte.jpg", // Example image path
   },
   {
     title: "Excellence",
