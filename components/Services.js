@@ -72,7 +72,7 @@ const Services = () => {
           {serviceContent.heading.headingTitle}
         </h1>
         <div className=" max-w-[450px] mx-auto pt-2">
-          <p className=" text-[17px]">{serviceContent.heading.description}</p>
+          <p className=" text-[13px]">{serviceContent.heading.description}</p>
         </div>
 
         <div className="grid  gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
