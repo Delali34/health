@@ -78,7 +78,7 @@ const WhoWeAre = () => {
                     <h1 className="text-center md:text-4xl text-3xl font-bold">
                       {about.name1}
                     </h1>
-                    <p className="pt-5 md:text-xl text-[15px] ">
+                    <p className="pt-5 md:text-xl  text-[15px] ">
                       {about.item2}
                     </p>
                   </div>
