@@ -25,7 +25,7 @@ function page() {
       {/* <Infographics /> */}
       <WhoWeAre />
       <Services />
-      <Solutions />
+      {/* <Solutions /> */}
       <Testimonials />
       <RecentBlog />
       <Report />
