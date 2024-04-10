@@ -2,7 +2,7 @@ import Typewriter from "typewriter-effect";
 
 function Text() {
   return (
-    <div className="text-[22px] font-bold font-mont text-white md:text-3xl">
+    <div className="text-[18px] font-bold font-mont text-blue-400 md:text-[25px]">
       {" "}
       <Typewriter
         options={{
