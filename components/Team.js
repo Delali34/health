@@ -59,7 +59,7 @@ const coreValues = [
     title: "Integrity",
     description:
       "Integrity is the foundation of our organization. We adhere to moral and ethical principles, acting with honesty and fairness in all situations. Our integrity guides us to do what is right, even when no one is watching.",
-    imageUrl: "/inte.jpg", // Example image path
+    imageUrl: "/inter.jpg", // Example image path
   },
   {
     title: "Excellence",
