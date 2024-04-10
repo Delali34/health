@@ -56,10 +56,10 @@ const coreValues = [
     imageUrl: "/tran.jpg", // Example image path
   },
   {
-    title: "Integrity",
+    title: "Excellence",
     description:
-      "Integrity is the foundation of our organization. We adhere to moral and ethical principles, acting with honesty and fairness in all situations. Our integrity guides us to do what is right, even when no one is watching.",
-    imageUrl: "/inte.jpg", // Example image path
+      "We strive for excellence in everything we do. By setting high standards and continuously improving our processes, we aim to exceed expectations and achieve outstanding results. Our pursuit of excellence drives innovation and fosters success.",
+    imageUrl: "/exe.jpg", // Example image path
   },
   {
     title: "Excellence",
