@@ -15,7 +15,7 @@ const serviceContent = {
     headingSubTitle: "Our Awesome Services",
     headingTitle: "Our Services",
     description:
-      "We provide ourselves in attention to details with content development, audio-visual, graphical layout and designs, and production of topnotch promotional materials and digital solution herein;",
+      "Our services are not-for-profit. We drive community-health and development agenda even to the remotest parts. We spearhead programmes and projects in collaboration with philanthropies, government and private sector organizations, local and international development partners to reach out to communities via context specific strategies. Our strategies are aimed at promoting the health of children, women, young adults and the aged. ",
   },
   items: [
     {
