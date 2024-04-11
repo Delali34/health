@@ -231,7 +231,7 @@ function Page() {
               </div>
               <div>
                 <h3 className="lg:text-2xl text-[16px] font-bold mb-4 px-2">
-                  When do you want to start?
+                  When do you want to volunteer?
                 </h3>
                 <div className="flex p-4 flex-wrap justify-center gap-4">
                   <button
