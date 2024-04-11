@@ -104,9 +104,9 @@ export default function Navbar() {
           {" "}
           <Image
             src={logo}
-            width={700}
+            width={760}
             height={700}
-            className="w-[180px]"
+            className="w-[200px]"
             alt=" logo"
           />
         </Link>
