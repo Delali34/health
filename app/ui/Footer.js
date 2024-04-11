@@ -49,7 +49,7 @@ const footerContent = {
         },
         {
           href: "/contact",
-          label: "Report Abuse",
+          label: "Lodge Complain",
         },
         {
           href: "/experience",

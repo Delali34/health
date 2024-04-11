@@ -28,7 +28,7 @@ function page() {
       {/* <Solutions /> */}
       <Testimonials />
       <RecentBlog />
-      <Report />
+
       <Accordion />
     </div>
   );

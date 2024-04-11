@@ -13,10 +13,9 @@ import Typewriter from "typewriter-effect";
 
 const blogContent = {
   heading: {
-    headingSubTitle: "Our Write Ups",
+    headingSubTitle: "",
     headingTitle: "Our Latest Articles",
-    description:
-      "We are dedicated to staying at the forefront of our industry and keeping our valued community informed about the latest trends, insights, and innovations. ",
+    description: "Get more insights from our latest posts",
   },
   recentBlog: [
     {
