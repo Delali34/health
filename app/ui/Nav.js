@@ -96,89 +96,93 @@ export default function Navbar() {
   }
 
   return (
-    <div className="mx-auto font-mont  flex w-full max-w-7xl justify-between px-4 py-5 text-sm">
-      {/* left side */}
-      <section ref={animationParent} className="flex items-center gap-10">
-        {/* logo */}
-        <Link href="/">
-          {" "}
-          <Image
-            src={logo}
-            width={760}
-            height={700}
-            className="w-[200px]"
-            alt=" logo"
-          />
-        </Link>
-
-        {isSideMenuOpen && <MobileNav closeSideMenu={closeSideMenu} />}
-
-        {/* navitems */}
-      </section>
-      <div
-        className="hidden z-[999] md:flex items-center gap-4 transition-all"
-        ref={navRef}
-      >
-        {navItems.map((d, i) => (
-          <Link key={i} href={d.link ?? "#"} className="relative group">
-            <button
-              onClick={() => handleButtonClick(i)}
-              className={`p-1 px-2 rounded-md hover:bg-gray-100 transition-all ${
-                activeButton === i ? "bg-blue-500 text-[#092862]" : ""
-              }`}
-            >
-              <p className="flex cursor-pointer items-center gap-2 text-black-400  rounded-[5px] group-hover:text-black/80">
-                <span className="lg:text-sm text-[12px]">{d.label}</span>
-                {d.children && (
-                  <IoIosArrowDown
-                    className={`rotate-180 transition-all group-hover:rotate-0 ${
-                      activeButton === i ? "text-[#092862]" : "text-black/90"
-                    }`}
-                  />
-                )}
-              </p>
-            </button>
-
-            {/* dropdown */}
-            {activeButton === i && d.children && (
-              <div className="absolute right-0 left-0 top-10 w-[200px] flex-col gap-1 rounded-lg bg-white py-3 shadow-md transition-all">
-                {d.children.map((ch, index) => (
-                  <Link
-                    key={index}
-                    href={ch.link ?? "#"}
-                    className="flex cursor-pointer items-center py-1 pl-6 pr-8 text-[#092862] hover:bg-blue-400 hover:text-black"
-                    onClick={handleLinkClick}
-                  >
-                    <span>{ch.label}</span>
-                  </Link>
-                ))}
-              </div>
-            )}
+    <div>
+      <div className="mx-auto font-mont  flex w-full max-w-7xl justify-between px-4 py-5 text-sm">
+        {/* left side */}
+        <section ref={animationParent} className="flex items-center gap-10">
+          {/* logo */}
+          <Link href="/">
+            {" "}
+            <Image
+              src={logo}
+              width={760}
+              height={700}
+              className="w-[200px]"
+              alt=" logo"
+            />
           </Link>
-        ))}
+
+          {isSideMenuOpen && <MobileNav closeSideMenu={closeSideMenu} />}
+
+          {/* navitems */}
+        </section>
+
+        {/* right side data */}
+        <section className="hidden md:flex items-center gap-8">
+          <Link href="/Partner">
+            {" "}
+            <button className="h-fit lg:text-[14px] text-[12px] text-[#092862]  transition-all hover:text-neutral-400">
+              Partner Us
+            </button>
+          </Link>
+
+          <Link href="https://wa.me/233246622156" target="_blank">
+            <button className="bg-green-400  hover:bg-green-700 duration-200 text-white flex items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
+              <FaWhatsapp className="text-sm" />{" "}
+              <p className="lg:text-[12px] text-[10px]">WhatsApp Us</p>
+            </button>
+          </Link>
+        </section>
+
+        <FiMenu
+          onClick={openSideMenu}
+          className="cursor-pointer text-4xl md:hidden"
+        />
       </div>
+      <div className="flex font-mont items-center justify-center bg-blue-950 py-3">
+        <div
+          className="hidden z-[999] md:flex items-center gap-4 transition-all"
+          ref={navRef}
+        >
+          {navItems.map((d, i) => (
+            <Link key={i} href={d.link ?? "#"} className="relative group">
+              <button
+                onClick={() => handleButtonClick(i)}
+                className={`p-1 px-2 rounded-md text-white hover:bg-gray-100 transition-all ${
+                  activeButton === i ? "bg-blue-500 text-white" : ""
+                }`}
+              >
+                <p className="flex cursor-pointer items-center gap-2 text-black-400  rounded-[5px] group-hover:text-black">
+                  <span className="lg:text-sm text-[12px]">{d.label}</span>
+                  {d.children && (
+                    <IoIosArrowDown
+                      className={`rotate-180 transition-all group-hover:text-black group-hover:rotate-0 ${
+                        activeButton === i ? "text-white" : "text-white"
+                      }`}
+                    />
+                  )}
+                </p>
+              </button>
 
-      {/* right side data */}
-      <section className="hidden md:flex items-center gap-8">
-        <Link href="/Partner">
-          {" "}
-          <button className="h-fit lg:text-[14px] text-[12px] text-[#092862]  transition-all hover:text-neutral-400">
-            Partner Us
-          </button>
-        </Link>
-
-        <Link href="https://wa.me/233246622156" target="_blank">
-          <button className="bg-green-400  hover:bg-green-700 duration-200 text-white flex items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
-            <FaWhatsapp className="text-sm" />{" "}
-            <p className="lg:text-[12px] text-[10px]">WhatsApp Us</p>
-          </button>
-        </Link>
-      </section>
-
-      <FiMenu
-        onClick={openSideMenu}
-        className="cursor-pointer text-4xl md:hidden"
-      />
+              {/* dropdown */}
+              {activeButton === i && d.children && (
+                <div className="absolute right-0 left-0 top-10 w-[200px] flex-col gap-1 rounded-lg bg-white py-3 shadow-md transition-all">
+                  {d.children.map((ch, index) => (
+                    <Link
+                      key={index}
+                      href={ch.link ?? "#"}
+                      className="flex cursor-pointer items-center py-1 pl-6 pr-8 text-[#092862] hover:bg-blue-400 hover:text-black"
+                      onClick={handleLinkClick}
+                    >
+                      <span>{ch.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
