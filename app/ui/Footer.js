@@ -53,7 +53,7 @@ const footerContent = {
         },
         {
           href: "/blog",
-          label: "Blog",
+          label: "Our Blog",
         },
         {
           href: "/contact",
