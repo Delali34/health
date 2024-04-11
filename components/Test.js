@@ -42,12 +42,13 @@ export default function App() {
           spaceBetween={30}
           centeredSlides={true}
           autoplay={{
-            delay: 8000,
+            delay: 30000,
             disableOnInteraction: false,
           }}
           pagination={{
             clickable: true,
           }}
+          navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
           onAutoplayTimeLeft={onAutoplayTimeLeft}
           className="mySwiper "
