@@ -255,3 +255,7 @@ blockquote {
   padding: 1rem;
   color: var(--primary);
 }
+.bg5 {
+  background-image: url(/city.jpg);
+  height: 100%;
+}

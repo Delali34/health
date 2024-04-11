@@ -57,6 +57,10 @@ const navItems = [
     label: "Our blog",
     link: "/blog",
   },
+  {
+    label: "Volunteer",
+    link: "/volunteer",
+  },
 ];
 
 export default function Navbar() {
