@@ -241,18 +241,6 @@ function Page() {
                   >
                     Anytime
                   </button>
-                  {/* <button
-                    onClick={() => handleInterestClick("Poverty Eradication")}
-                    className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
-                  >
-                    Poverty Eradication
-                  </button>
-                  <button
-                    onClick={() => handleInterestClick("Education")}
-                    className="bg-white hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
-                  >
-                    Education
-                  </button> */}
                 </div>
               </div>
               <div className="mt-4 m-10">
@@ -299,64 +287,6 @@ function Page() {
                   ))}
                 </div>
               </div>
-              {/* <div>
-                <h3 className="lg:text-2xl text-[16px] font-bold mb-4">
-                  Days Available
-                </h3>
-                <div className="flex flex-wrap p-4 justify-center gap-4">
-                  <button
-                    className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
-                    onClick={() => handleDayClick("Monday")}
-                  >
-                    Monday
-                  </button>
-                  <button
-                    className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
-                    onClick={() => handleDayClick("Tuesday")}
-                  >
-                    Tuesday
-                  </button>
-                  <button
-                    className="bg-white hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
-                    onClick={() => handleDayClick("Wednesday")}
-                  >
-                    Wednesday
-                  </button>
-                  <button
-                    className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
-                    onClick={() => handleDayClick(" Thursday")}
-                  >
-                    Thursday
-                  </button>
-                  <button
-                    className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
-                    onClick={() => handleDayClick("Friday")}
-                  >
-                    Friday
-                  </button>
-                </div>
-              </div>
-              <div>
-                <h3 className="lg:text-2xl text-[16px] font-bold mb-4">
-                  Selected Days
-                </h3>
-                <div className="flex p-4 justify-center gap-4">
-                  {daysAvailable.map((day, index) => (
-                    <div
-                      key={index}
-                      className="lg:text-xl text-[12px] text-black bg-white p-2  rounded-lg flex items-center"
-                    >
-                      {day}
-                      <button
-                        className="ml-2 text-black"
-                        onClick={() => handleRemoveDay(day)}
-                      >
-                        <IoIosRemoveCircle />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div> */}
 
               <div className="flex justify-center">
                 <div className="bg-white text-black w-[130px] lg:text-xl text-[12px] font-semibold mt-5 rounded-xl hover:bg-black cursor-pointer hover:text-white p-3">
