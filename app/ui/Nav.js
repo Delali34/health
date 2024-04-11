@@ -24,18 +24,15 @@ const navItems = [
         label: "Projects",
         link: "/experience",
       },
+
       {
-        label: "Achievements",
-        link: "#",
-      },
-      {
-        label: "Testimonies",
+        label: "Success Stories",
         link: "#",
       },
     ],
   },
   {
-    label: "About us",
+    label: "About Us",
     link: "#",
     children: [
       {
@@ -54,7 +51,7 @@ const navItems = [
   },
 
   {
-    label: "Our blog",
+    label: "Our Blog",
     link: "/blog",
   },
   {

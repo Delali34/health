@@ -13,7 +13,7 @@ import "aos/dist/aos.css";
 const serviceContent = {
   heading: {
     headingSubTitle: "Our Awesome Services",
-    headingTitle: "Our Experience",
+    headingTitle: "Projects",
     description: " ",
   },
   items: [
@@ -90,7 +90,7 @@ const Services = () => {
                   <h1 className="text-xl text-[#092862] text-center font-medium">
                     {items.title}
                   </h1>
-                  <p className="text-sm text-[#092862] pt-2 text-center">
+                  <p className="text-sm text-[#092862] pt-2 text-left">
                     {items.description}
                   </p>
                 </div>

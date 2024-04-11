@@ -23,7 +23,7 @@ export default function App() {
     <div className="bg3 py-10 pb-10 px-5">
       <div className="h-[85vh] max-w-[1280px] mx-auto font-mont lg:mb-20 mb-10 ">
         <h1 className="md:text-5xl text-3xl text-center font-bold lg:py-5">
-          Testimonies
+          Success Stories
         </h1>
         <style jsx>{`
           .swiper-button-next,
@@ -55,7 +55,7 @@ export default function App() {
         >
           <SwiperSlide>
             <div className="flex items-center justify-center h-full ">
-              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
+              <div className="max-w-[700px] text-left flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
                     src="/noimage.png"
@@ -77,7 +77,7 @@ export default function App() {
           <SwiperSlide>
             {" "}
             <div className="flex items-center justify-center h-full">
-              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
+              <div className="max-w-[700px] text-left  flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
                     src="/noimage.png"
@@ -98,7 +98,7 @@ export default function App() {
           <SwiperSlide>
             {" "}
             <div className="flex items-center justify-center h-full">
-              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
+              <div className="max-w-[700px] text-left  flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
                     src="/noimage.png"
@@ -120,7 +120,7 @@ export default function App() {
           <SwiperSlide>
             {" "}
             <div className="flex items-center justify-center h-full">
-              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
+              <div className="max-w-[700px] text-left  flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
                     src="/noimage.png"
@@ -142,7 +142,7 @@ export default function App() {
           <SwiperSlide>
             {" "}
             <div className="flex items-center justify-center h-full">
-              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
+              <div className="max-w-[700px] text-left  flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
                     src="/noimage.png"
@@ -152,7 +152,7 @@ export default function App() {
                     alt=""
                   />
                 </div>
-                : I was not going to the hospital because my insurance was dead
+                I was not going to the hospital because my insurance was dead
                 some long time ago. But after GIZ and the NGO came and renewed
                 it, I started visiting the hospital. That was when I realized I
                 had a serious health problem but thank God I have been treated.
@@ -163,7 +163,7 @@ export default function App() {
           <SwiperSlide>
             {" "}
             <div className="flex items-center justify-center h-full">
-              <div className="max-w-[700px] flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
+              <div className="max-w-[700px] text-left  flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white  p-4 text-black border-4 border-blue-300 rounded-xl">
                 <div className="w-[200px] h-[200px] ">
                   <Image
                     src="/noimage.png"

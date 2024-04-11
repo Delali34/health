@@ -154,7 +154,7 @@ const NGOProjects = () => {
               {expandedProjects.includes(index) ? (
                 <div>
                   <h1 className="font-semibold underline text-lg mb-1">
-                    Testimony
+                    Success Stories
                   </h1>
                   <p className="mb-4">{project.testimony}</p>
                   <button
