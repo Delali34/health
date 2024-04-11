@@ -33,20 +33,24 @@ const footerContent = {
           href: "/AboutUs",
           label: "About",
         },
+        {
+          href: "/volunteer",
+          label: "Volunteer",
+        },
 
         {
           href: "/Partner",
           label: "Partner Us",
-        },
-        {
-          href: "/volunteer",
-          label: "Volunteer",
         },
       ],
     },
     {
       heading: "Resources",
       links: [
+        {
+          href: "/experience",
+          label: "Our Experience",
+        },
         {
           href: "/blog",
           label: "Blog",
@@ -55,9 +59,10 @@ const footerContent = {
           href: "/contact",
           label: "Lodge Complain",
         },
+
         {
-          href: "/experience",
-          label: "Our Experience",
+          href: "/contact",
+          label: "Donate",
         },
       ],
     },
