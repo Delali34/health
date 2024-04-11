@@ -63,14 +63,11 @@ function Page() {
 
     // Send the form data using EmailJS
     emailjs
-      .send(
-        "service_mcm6ab8",
-        "template_bmb7ma9",
-        templateParams,
-        "kiOr2GgDyZF2d1t-a"
-      )
+      .sendForm("service_mo1be1b", "template_9u8lcyi", form.current, {
+        publicKey: "9e-dDk8AcnnCTTCUv",
+      })
       .then((response) => {
-        console.log("Email sent successfully!", response);
+        alert("Email sent successfully!", response);
         // Display success message
         const message = `Email sent successfully! We will get back to you soon 😍`;
         setSuccessMessage(message);
@@ -116,13 +113,14 @@ function Page() {
                 <input
                   type="text"
                   required
+                  name="firstname"
                   id="firstname"
                   className="w-full bg-white text-primary border-2 border-gold rounded-lg p-3 lg:text-xl text-[12px] focus:outline-none focus:border-opacity-50"
                   placeholder="Full Name"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
-                <span className="text-xs text-red-500">
+                <span className="text-lg text-red-600">
                   {firstName ? null : "* Required"}
                 </span>
               </div>
@@ -131,25 +129,27 @@ function Page() {
                   type="tel"
                   required
                   id="phone"
+                  name="phone"
                   className="w-full bg-white text-primary border-2 border-gold rounded-lg p-3 lg:text-xl text-[12px] focus:outline-none focus:border-opacity-50"
                   placeholder="Phone Number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
+                <span className="text-lg text-red-600">
+                  {phone ? null : "* Required"}
+                </span>
               </div>
               <div className="mt-4 m-10">
                 <input
                   type="email"
                   required
                   id="email"
+                  name="email"
                   className="w-full bg-white text-black border-2 border-gold rounded-lg p-3 lg:text-xl text-[12px] focus:outline-none focus:border-opacity-50"
                   placeholder="Your Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <span className="text-xs text-red-500">
-                  {email ? null : "* Required"}
-                </span>
               </div>
               <div>
                 <h3 className="md:text-2xl text-[16px] font-bold mb-4">
@@ -180,7 +180,7 @@ function Page() {
                     onClick={() => handleDonationClick("Capacity Building")}
                     className="bg-white  hover:bg-opacity-50 py-3 px-6 rounded-lg text-md lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
-                    Capacity Building
+                    Capacity building
                   </button>
                 </div>
               </div>
@@ -194,6 +194,7 @@ function Page() {
                 <input
                   type="text"
                   id="custom-amount"
+                  name="reason"
                   className="w-full bg-white  text-black border-2 border-gold rounded-lg p-3 lg:text-xl text-[12px] focus:outline-none focus:border-opacity-50"
                   placeholder="Enter reason"
                   value={customSkill}
@@ -257,6 +258,7 @@ function Page() {
                 <input
                   type="text"
                   id="custom-amount"
+                  name="time"
                   className="w-full bg-white  text-black border-2 border-gold rounded-lg p-3 text-lg focus:outline-none focus:border-opacity-50"
                   placeholder="Enter preffered time"
                   value={customInterest}
@@ -294,7 +296,9 @@ function Page() {
 
               <div className="flex justify-center">
                 <div className="bg-white text-black w-[130px] lg:text-xl text-[12px] font-semibold mt-5 rounded-xl hover:bg-black cursor-pointer hover:text-white p-3">
-                  <button onClick={handleSuccess}>Submit</button>
+                  <button onClick={handleSuccess} type="button">
+                    Submit
+                  </button>
                 </div>
               </div>
             </div>
