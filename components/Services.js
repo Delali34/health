@@ -13,46 +13,45 @@ import "aos/dist/aos.css";
 const serviceContent = {
   heading: {
     headingSubTitle: "Our Awesome Services",
-    headingTitle: "Our Services",
-    description:
-      "Our services are not-for-profit. We drive community-health and development agenda even to the remotest parts. We spearhead programmes and projects in collaboration with philanthropies, government and private sector organizations, local and international development partners to reach out to communities via context specific strategies. Our strategies are aimed at promoting the health of children, women, young adults and the aged. ",
+    headingTitle: "Our Experience",
+    description: " ",
   },
   items: [
     {
       icon: "/prevent.jpg",
-      title: "Disease Prevention Campaigns",
+      title: "Community Nutrition Project",
       description:
-        "These would involve spreading awareness about common diseases in the region, such as malaria, HIV/AIDS, and tuberculosis. The organization could conduct workshops, distribute informational pamphlets, and use local media to educate the public on prevention methods, signs, and symptoms, and the importance of early treatment.",
+        "Our food and nutrition projects were community based. We taught mothers how to cook nutritious foods. And we learnt what different community cultures mean by “food”.",
     },
     {
       icon: "/vaccine.jpg",
-      title: "Vaccination Drives",
+      title: "COVID-19 Frontline Support",
       description:
-        "Organizing and implementing vaccination campaigns for preventable diseases, especially for children and vulnerable populations. This might include coordination with local health clinics to provide vaccines for diseases like measles, polio, and human papillomavirus (HPV).",
+        "We played frontline roles in the fight against COVID-19 outbreak. This was one of our groundbreaking experiences. We thought we did little but beneficiaries were overwhelmed… We worked with our communities, shared accurate information with them and they took the necessary precautions to protect themselves.",
     },
     {
       icon: "/education.jpg",
-      title: "Nutrition and Hygiene Education",
+      title: "Star Readers Initiative",
       description:
-        " Providing education on proper nutrition, hygiene practices, and clean water usage to prevent malnutrition and waterborne diseases. This could involve teaching about the importance of a balanced diet, safe cooking practices, and the need for regular handwashing.",
+        " We developed one of the most exciting reading programmes for basic school children in 5 regions of Ghana. Our young stars are now doing well in digesting complex sentences, making coherent arguments and developing their own storylines…",
     },
     {
       icon: "/maternal.jpg",
-      title: "Maternal and Child Health Services",
+      title: "Livelihood Capacity Building",
       description:
-        " Offering services focused on the health of mothers and children, including prenatal care, safe childbirth practices, breastfeeding support, and child immunizations. Programs might also provide nutritional supplements for pregnant and nursing mothers and young children.",
+        " Small scale business enterprises are at our heart. This project focused on building capacity of petty traders on managing their businesses in the current era of advanced technology. We helped business owners to learn new ways of managing their finances ….",
     },
     {
       icon: "/mental.jpg",
-      title: "Mental Health Support",
+      title: "Family Planning Intervention",
       description:
-        " Establishing support systems for mental health, including counseling services, support groups, and awareness campaigns to destigmatize mental health issues. This could also involve training community members in basic psychological first aid and mental health awareness.",
+        "We helped families to determine when to have their children with the most convenient intervals. Our family planning interventions targeted the youth and new couples. Our beneficiaries gave heartwarming testimonies…..",
     },
     {
       icon: "/develop.jpg",
-      title: "Health Infrastructure Development",
+      title: "Water is Life Project",
       description:
-        " Working to improve health infrastructure by supporting the construction or enhancement of local clinics and hospitals, providing medical equipment, and training healthcare workers and community health volunteers to provide better health services.",
+        " Our water and sanitation projects targeted the rural areas in Upper East, Oti, Volta and Bono regions. The “Water is Life” project was a lifesaving intervention that cannot be forgotten in our records……",
     },
   ],
 };
@@ -68,7 +67,7 @@ const Services = () => {
   return (
     <section className="py-20 bg2 font-mont">
       <div className="container px-4 mx-auto">
-        <h1 className="text-3xl text-center font-bold">
+        <h1 className="text-3xl text-[#092862] text-center font-bold">
           {serviceContent.heading.headingTitle}
         </h1>
         <div className=" max-w-[450px] mx-auto pt-2">
@@ -88,10 +87,10 @@ const Services = () => {
                   <Image src={items.icon} width={500} height={500} alt="" />
                 </div>
                 <div className="pt-3">
-                  <h1 className="text-xl text-center font-medium">
+                  <h1 className="text-xl text-[#092862] text-center font-medium">
                     {items.title}
                   </h1>
-                  <p className="text-sm pt-2 text-center">
+                  <p className="text-sm text-[#092862] pt-2 text-center">
                     {items.description}
                   </p>
                 </div>

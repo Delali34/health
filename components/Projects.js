@@ -24,7 +24,7 @@ const NGOProjects = () => {
       imageUrl: "/health3.png", // Example image path
     },
     {
-      title: "Healthy Eating Project",
+      title: "Community Nutrition Project",
       description:
         "Our food and nutrition projects were community based. We taught mothers how to cook nutritious foods. And we learnt what different community cultures mean by “food”. ",
       testimony:
@@ -32,7 +32,7 @@ const NGOProjects = () => {
       imageUrl: "/small.jpg", // Example image path
     },
     {
-      title: "Business Capacity Building",
+      title: "Business Capacity Livelihoods",
       description:
         "Small scale business enterprises are at our heart. This project focused on building capacity of petty traders on managing their businesses in the current era of advanced technology. We helped business owners to learn new ways of managing their finances ….",
       testimony:
@@ -40,7 +40,7 @@ const NGOProjects = () => {
       imageUrl: "/health3.png", // Example image path
     },
     {
-      title: "Family Planning Education",
+      title: "Family Planning Intervention",
       description:
         "We helped families to determine when to have their children with the most convenient intervals. Our family planning interventions targeted the youth and new couples. Our beneficiaries gave heartwarming testimonies….. ",
       testimony:
@@ -56,7 +56,7 @@ const NGOProjects = () => {
       imageUrl: "/city.jpg", // Example image path
     },
     {
-      title: "Health Insurance Registration",
+      title: "Health Insurance Enrollment",
       description:
         "We led a nationwide free registration of children in basic schools and underprivileged communities onto the National Health Insurance Scheme (NHIS). We are grateful to GIZ and partners for funding this activity that reached over 470,000 beneficiaries.  ",
       testimony:
@@ -64,7 +64,7 @@ const NGOProjects = () => {
       imageUrl: "/image5.jpg", // Example image path
     },
     {
-      title: "Universal Health Coverage",
+      title: "Mass Health Screening",
       description:
         "This initiative is a projection of the Universal Health Coverage Agenda…. Bringing healthcare to the doorstep of communities. Through this project, we provided free health screening to over 1.6 million Ghanaians. We did not leave out those affected by the Akosombo Dam spillage disaster in the Volta region. ",
       testimony:
@@ -95,7 +95,7 @@ const NGOProjects = () => {
       imageUrl: "/image1.jpg", // Example image path
     },
     {
-      title: "Urban Health Campaign",
+      title: "Urban Health Promotion Campaign",
       description:
         "Our urban health initiatives focus on air pollution in cities. Our campaign targeted areas with activities that lead to the emission of environmental pollutants. We are working to mitigate the preventable deaths of 8.3 million people annually from air pollution.",
       testimony: "",

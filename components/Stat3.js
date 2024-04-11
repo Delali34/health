@@ -62,10 +62,10 @@ const Stats2 = () => {
                       alt=""
                     />
                   </div>
-                  <h1 className="text-center pt-3 lg:text-3xl text-2xl font-bold">
+                  <h1 className="text-center text-[#092862] pt-3 lg:text-3xl text-2xl font-bold">
                     {stat.number}
                   </h1>
-                  <p className="text-center lg:text-2xl text-xl pt-3 font-medium">
+                  <p className="text-center text-[#092862] lg:text-2xl text-xl pt-3 font-medium">
                     {stat.label}
                   </p>
                 </div>

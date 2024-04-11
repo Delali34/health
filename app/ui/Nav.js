@@ -118,7 +118,7 @@ export default function Navbar() {
             <button
               onClick={() => handleButtonClick(i)}
               className={`p-1 px-2 rounded-md transition-all ${
-                activeButton === i ? "bg-blue-500 text-black" : ""
+                activeButton === i ? "bg-blue-500 text-[#092862]" : ""
               }`}
             >
               <p className="flex cursor-pointer items-center gap-2 text-black-400  rounded-[5px] group-hover:text-black/80">
@@ -126,7 +126,7 @@ export default function Navbar() {
                 {d.children && (
                   <IoIosArrowDown
                     className={`rotate-180 transition-all group-hover:rotate-0 ${
-                      activeButton === i ? "text-black" : "text-neutral-400"
+                      activeButton === i ? "text-[#092862]" : "text-neutral-400"
                     }`}
                   />
                 )}
@@ -140,7 +140,7 @@ export default function Navbar() {
                   <Link
                     key={index}
                     href={ch.link ?? "#"}
-                    className="flex cursor-pointer items-center py-1 pl-6 pr-8 text-neutral-400 hover:bg-blue-400 hover:text-black"
+                    className="flex cursor-pointer items-center py-1 pl-6 pr-8 text-[#092862] hover:bg-blue-400 hover:text-black"
                     onClick={handleLinkClick}
                   >
                     <span>{ch.label}</span>
@@ -156,7 +156,7 @@ export default function Navbar() {
       <section className="hidden md:flex items-center gap-8">
         <Link href="/Partner">
           {" "}
-          <button className="h-fit lg:text-[14px] text-[12px] text-black  transition-all hover:text-neutral-400">
+          <button className="h-fit lg:text-[14px] text-[12px] text-[#092862]  transition-all hover:text-neutral-400">
             Partner Us
           </button>
         </Link>
@@ -178,9 +178,23 @@ export default function Navbar() {
 }
 
 function MobileNav({ closeSideMenu }) {
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        closeSideMenu();
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <div className="fixed font-mont z-[999] left-0 top-0 flex h-full min-h-screen w-full justify-end bg-black/60 md:hidden">
-      <div className="h-full w-[65%] bg-white px-4 py-4">
+      <div className="h-full w-[65%] bg-white px-4 py-4" ref={navRef}>
         <section className="flex justify-end">
           <AiOutlineClose
             onClick={closeSideMenu}
@@ -202,7 +216,7 @@ function MobileNav({ closeSideMenu }) {
         <section className="flex flex-col gap-8 mt-4 ml-2">
           <Link href="/Partner">
             {" "}
-            <button className="h-fit text-[16px] transition-all hover:text-neutral-400 text-black">
+            <button className="h-fit text-[16px] transition-all hover:text-neutral-400 text-[#092862]">
               Partner Us
             </button>
           </Link>
@@ -234,7 +248,7 @@ function SingleNavItem({ label, iconImage, link, children }) {
       href={link ?? "#"}
       className="relative px-2 py-3 transition-all"
     >
-      <p className="flex cursor-pointer items-center gap-2 text-black group-hover:text-black">
+      <p className="flex cursor-pointer items-center gap-2 text-[#092862] group-hover:text-black">
         <span>{label}</span>
         {children && (
           <IoIosArrowDown
@@ -257,7 +271,7 @@ function SingleNavItem({ label, iconImage, link, children }) {
               {/* image */}
               {ch.iconImage && <Image src={ch.iconImage} alt="item-icon" />}
               {/* item */}
-              <span className="whitespace-nowrap pl-3 text-black">
+              <span className="whitespace-nowrap pl-3 text-[#092862]">
                 {ch.label}
               </span>
             </Link>
