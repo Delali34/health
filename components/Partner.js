@@ -6,7 +6,7 @@ const PartnerWithUs = () => {
     <section className="bg-gray-100 py-12 px-4 md:px-0">
       <div className="max-w-4xl mx-auto text-center">
         <p className="lg:text-lg text-left text-sm text-gray-700 mb-8">
-          We collaborate and help you Achieve Your Project Objectives in a
+          We collaborate and help you achieve your project objectives in a
           cost-effective way. We deploy the best of our professionals, systems,
           and tools to execute tasks. We make your work easier, stress-free and
           in line with your organizational policies. Every encounter with us is
