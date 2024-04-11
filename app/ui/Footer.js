@@ -4,6 +4,7 @@ import Image from "next/image";
 import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 import { HiPhone, HiMiniGlobeAmericas, HiMiniHeart } from "react-icons/hi2";
+import { HiOutlineMail } from "react-icons/hi";
 import { FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
@@ -149,6 +150,10 @@ const Footer = () => {
               <li className="flex items-start space-x-3 mb-5">
                 <HiMiniGlobeAmericas className="text-xl text-white" />
                 <span>{footerContent.contact.address.website}</span>
+              </li>
+              <li className="flex items-start space-x-3 mb-5">
+                <HiOutlineMail className="text-xl text-white" />
+                <span>info@africahealthpromotion.org</span>
               </li>
             </ul>
           </div>
