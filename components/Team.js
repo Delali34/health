@@ -19,6 +19,12 @@ const Team = () => {
         </section>
 
         {/* Core Values */}
+        <h2
+          id="team"
+          className="lg:text-3xl text-center text-2xl font-bold mb-4"
+        >
+          Our Core Values
+        </h2>
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {coreValues.map((value, index) => (
             <div key={index} className="bg-white rounded-lg shadow-md p-6">
