@@ -8,6 +8,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
+import { FaDonate } from "react-icons/fa";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const navItems = [
@@ -123,6 +124,12 @@ export default function Navbar() {
             {" "}
             <button className="h-fit lg:text-[14px] text-[12px] text-[#092862]  transition-all hover:text-neutral-400">
               Partner Us
+            </button>
+          </Link>
+          <Link href="/contact">
+            <button className="bg-red-400  hover:bg-red-700 duration-200 text-white flex items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
+              <FaDonate className="text-sm" />{" "}
+              <p className="lg:text-[12px] text-[10px]">Donate</p>
             </button>
           </Link>
 
