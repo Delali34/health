@@ -14,11 +14,10 @@ import { FaWhatsappSquare } from "react-icons/fa";
 const footerContent = {
   about: {
     logo: "/ahpo-Logo-768x183.png",
-    description:
-      "Africa Health Promotion Organization is an NGO dedicated to promoting public health using research-driven and evidence-based approaches.promoting public health.",
+    description: "",
     cta: {
       href: "#",
-      label: "Learn more",
+      label: "",
     },
   },
   footerLinks: [
@@ -98,9 +97,9 @@ const Footer = () => {
                 className="flex space-x-2 outline-none items-center font-semibold text-white group"
               >
                 <span>{footerContent.about.cta.label}</span>
-                <span className="w-6 h-6 rounded-full bg-primary group-hover:bg-secondary duration-300 transition-all ease-in-out text-white inline-flex items-center justify-center">
+                {/* <span className="w-6 h-6 rounded-full bg-primary group-hover:bg-secondary duration-300 transition-all ease-in-out text-white inline-flex items-center justify-center">
                   <BiChevronRight className="text-lg " />
-                </span>
+                </span> */}
               </Link>
             </p>
           </div>
