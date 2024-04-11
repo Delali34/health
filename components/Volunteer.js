@@ -108,7 +108,7 @@ function Page() {
             Join us and other volunteers to impact society.
           </h1>
           <p className="text-white text-center lg:text-2xl lg:mb-10 mb-5 text-[16px] font-mont mt-10">
-            Your time and skills are invaluable
+            Your time and skills are needed wherever you are.
           </p>
         </div>
         <div className="bg2 lg:w-[80%]">
