@@ -184,6 +184,27 @@ function Page() {
                   </button>
                 </div>
               </div>
+              <div>
+                <h3 className="lg:text-2xl text-[16px] font-bold mb-1">
+                  Selected reason
+                </h3>
+                <div className="flex p-4 flex-wrap justify-center gap-4">
+                  {skills.map((skill, index) => (
+                    <div
+                      key={index}
+                      className=" text-red-600 font-semibold bg-white p-2  rounded-lg flex items-center"
+                    >
+                      {skill}
+                      <button
+                        className="ml-2 text-black"
+                        onClick={() => handleRemoveSkill(index)}
+                      >
+                        <IoIosRemoveCircle className="text-[27px]" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
               <div className="mt-4 m-10">
                 <label
                   htmlFor="custom-amount"
@@ -208,27 +229,7 @@ function Page() {
                   </div>
                 </div>
               </div>
-              <div>
-                <h3 className="lg:text-2xl text-[16px] font-bold mb-1">
-                  Selected reason
-                </h3>
-                <div className="flex p-4 flex-wrap justify-center gap-4">
-                  {skills.map((skill, index) => (
-                    <div
-                      key={index}
-                      className=" text-black bg-white p-2  rounded-lg flex items-center"
-                    >
-                      {skill}
-                      <button
-                        className="ml-2 text-black"
-                        onClick={() => handleRemoveSkill(index)}
-                      >
-                        <IoIosRemoveCircle />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
+
               <div>
                 <h3 className="lg:text-2xl text-[16px] font-bold mb-4 px-2">
                   When do you want to volunteer?
@@ -246,6 +247,27 @@ function Page() {
                   >
                     Depends on schedule
                   </button>
+                </div>
+              </div>
+              <div>
+                <h3 className="lg:text-2xl text-[16px] font-bold mb-1">
+                  Selected time
+                </h3>
+                <div className="flex p-4 flex-wrap justify-center gap-4">
+                  {interests.map((interest, index) => (
+                    <div
+                      key={index}
+                      className=" text-red-600 font-semibold bg-white p-2 lg:text-xl text-[12px]  rounded-lg flex items-center"
+                    >
+                      {interest}
+                      <button
+                        className="ml-2 text-black"
+                        onClick={() => handleRemoveInterest(index)}
+                      >
+                        <IoIosRemoveCircle className="text-[27px]" />
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="mt-4 m-10">
@@ -270,27 +292,6 @@ function Page() {
                       Add time
                     </button>
                   </div>
-                </div>
-              </div>
-              <div>
-                <h3 className="lg:text-2xl text-[16px] font-bold mb-1">
-                  Selected time
-                </h3>
-                <div className="flex p-4 flex-wrap justify-center gap-4">
-                  {interests.map((interest, index) => (
-                    <div
-                      key={index}
-                      className=" text-black bg-white p-2 lg:text-xl text-[12px]  rounded-lg flex items-center"
-                    >
-                      {interest}
-                      <button
-                        className="ml-2 text-black"
-                        onClick={() => handleRemoveInterest(index)}
-                      >
-                        <IoIosRemoveCircle />
-                      </button>
-                    </div>
-                  ))}
                 </div>
               </div>
 
