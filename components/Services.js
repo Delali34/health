@@ -143,7 +143,7 @@ const serviceContent = {
       icon: "/vaccine.jpg",
       title: "Disease Outbreak Response",
       description:
-        "We played frontline roles in the fight against COVID-19, meningitis, rabbies and other diesease outbreaks.We conducted risk communication and community engagement, dissemenated livesaving infomation and facilitated case referrals to health facilities. We partnered with donors to strengthen health systems and community stuctures among other things. This was one of our groundbreaking experiences. We thought we did little but beneficiaries were overwhelmed… We worked with our communities, shared accurate information with them and they took the necessary precautions to protect themselves.",
+        "We played frontline roles in the fight against COVID-19, meningitis, rabbies and other diesease outbreaks. We conducted risk communication and community engagement, dissemenated livesaving infomation and facilitated case referrals to health facilities. We partnered with donors to strengthen health systems and community stuctures among other things. ",
     },
     {
       icon: "/education.jpg",
