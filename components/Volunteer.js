@@ -58,7 +58,7 @@ function Page() {
       phone: phone,
       skills: skills.join(", "), // Convert array to comma-separated string
       interests: interests.join(", "), // Convert array to comma-separated string
-      daysAvailable: daysAvailable.join(", "), // Convert array to comma-separated string
+      //   daysAvailable: daysAvailable.join(", "), // Convert array to comma-separated string
     };
 
     // Send the form data using EmailJS
@@ -90,7 +90,7 @@ function Page() {
         setCustomSkill("");
         setInterests([]);
         setCustomInterest("");
-        setDaysAvailable([]);
+        // setDaysAvailable([]);
 
         // Hide success message after 5 seconds
         setTimeout(() => {
@@ -104,8 +104,8 @@ function Page() {
     <div className="bg5">
       <section className="flex flex-col gap-10 justify-between items-center px-5 font-mont container mx-auto lg:px-10 py-5">
         <div className="lg:w-[80%]">
-          <h1 className="text-white text-center text-4xl lg:text-6xl font-bold font-mont mt-5 text-shadow-black">
-            Volunteer to support our vision
+          <h1 className="text-white text-center text-3xl lg:text-5xl font-bold font-mont mt-5 text-shadow-black">
+            Join us and other volunteers to impact society.
           </h1>
           <p className="text-white text-center lg:text-2xl lg:mb-10 mb-5 text-[16px] font-mont mt-10">
             Your time and skills are invaluable
@@ -149,32 +149,32 @@ function Page() {
               </div>
               <div>
                 <h3 className="md:text-2xl text-[16px] font-bold mb-4">
-                  What skill(s) do you currently have?
+                  Reason for volunteering?
                 </h3>
                 <div className="flex p-4 flex-wrap justify-center gap-4">
                   <button
                     onClick={() => handleDonationClick("Public Speaking")}
                     className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
-                    Public Speaking
+                    Offer professional skills
                   </button>
                   <button
                     onClick={() => handleDonationClick("Social Media")}
                     className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg text-md lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
-                    Social Media
+                    Internship
                   </button>
                   <button
                     onClick={() => handleDonationClick("Writing")}
                     className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg text-md lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
-                    Writing
+                    Give back to society
                   </button>
                   <button
                     onClick={() => handleDonationClick("Graphic Design")}
                     className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg text-md lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
-                    Graphic Design
+                    Capacity Building
                   </button>
                 </div>
               </div>
@@ -224,22 +224,22 @@ function Page() {
               </div>
               <div>
                 <h3 className="lg:text-2xl text-[16px] font-bold mb-4 px-2">
-                  What Interest do you have?
+                  When do you want to start?
                 </h3>
                 <div className="flex p-4 flex-wrap justify-center gap-4">
                   <button
                     onClick={() => handleInterestClick(" Women Empowerment")}
                     className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
-                    Women Empowerment
+                    When I’m available
                   </button>
                   <button
                     onClick={() => handleInterestClick(" Gender Equality")}
                     className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
-                    Gender Equality
+                    Anytime
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => handleInterestClick("Poverty Eradication")}
                     className="bg-white  hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
@@ -250,7 +250,7 @@ function Page() {
                     className="bg-white hover:bg-opacity-80 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
                     Education
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <div className="mt-4 m-10">
@@ -258,13 +258,13 @@ function Page() {
                   htmlFor="custom-amount"
                   className="block mb-5 font-semibold"
                 >
-                  You can add your own Interest
+                  Other (specify)
                 </label>
                 <input
                   type="text"
                   id="custom-amount"
                   className="w-full bg-white  text-black border-2 border-gold rounded-lg p-3 text-lg focus:outline-none focus:border-opacity-50"
-                  placeholder="Enter custom skill"
+                  placeholder="Enter preffered time"
                   value={customInterest}
                   onChange={(e) => setCustomInterest(e.target.value)}
                 />
@@ -297,7 +297,7 @@ function Page() {
                   ))}
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <h3 className="lg:text-2xl text-[16px] font-bold mb-4">
                   Days Available
                 </h3>
@@ -354,7 +354,7 @@ function Page() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               <div className="flex justify-center">
                 <div className="bg-white text-black w-[130px] lg:text-xl text-[12px] font-semibold mt-5 rounded-xl hover:bg-black cursor-pointer hover:text-white p-3">
