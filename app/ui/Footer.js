@@ -77,7 +77,7 @@ const Footer = () => {
       role="contentinfo"
       className="py-20 bg-primary text-white font-mont"
     >
-      <div className="container px-4 lg:px-36 mx-auto ">
+      <div className="max-w-4xl px-4 mx-auto ">
         <div className="block lg:flex justify-center  gap-14 mb-10 pb-10">
           <div className="w-full  mb-10 lg-mb-0">
             <div className="grid grid-cols-2 gap-10">
