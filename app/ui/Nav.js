@@ -123,7 +123,7 @@ export default function Navbar() {
           <Link key={i} href={d.link ?? "#"} className="relative group">
             <button
               onClick={() => handleButtonClick(i)}
-              className={`p-1 px-2 rounded-md transition-all ${
+              className={`p-1 px-2 rounded-md hover:bg-gray-100 transition-all ${
                 activeButton === i ? "bg-blue-500 text-[#092862]" : ""
               }`}
             >
@@ -132,7 +132,7 @@ export default function Navbar() {
                 {d.children && (
                   <IoIosArrowDown
                     className={`rotate-180 transition-all group-hover:rotate-0 ${
-                      activeButton === i ? "text-[#092862]" : "text-neutral-400"
+                      activeButton === i ? "text-[#092862]" : "text-black/90"
                     }`}
                   />
                 )}
