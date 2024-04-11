@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-
 import { IoIosRemoveCircle } from "react-icons/io";
 import emailjs from "@emailjs/browser";
 
@@ -18,8 +17,10 @@ function Page() {
   const [daysAvailable, setDaysAvailable] = useState([]);
 
   const handleDonationClick = (skill) => {
-    setSkills([...skills, skill]);
-    setCustomSkill(""); // Clear the custom skill input after adding it to the list
+    if (!skills.includes(skill)) {
+      setSkills([...skills, skill]);
+    }
+    setCustomSkill("");
   };
 
   const handleRemoveSkill = (index) => {
@@ -29,8 +30,10 @@ function Page() {
   };
 
   const handleInterestClick = (interest) => {
-    setInterests([...interests, interest]);
-    setCustomInterest(""); // Clear the custom interest input after adding it to the list
+    if (!interests.includes(interest)) {
+      setInterests([...interests, interest]);
+    }
+    setCustomInterest("");
   };
 
   const handleRemoveInterest = (index) => {
@@ -49,16 +52,13 @@ function Page() {
   };
 
   const handleSuccess = () => {
-    // Handle success logic
-
     // Construct the template parameters with form data
     const templateParams = {
       firstName: firstName,
       email: email,
       phone: phone,
-      skills: skills.join(", "), // Convert array to comma-separated string
-      interests: interests.join(", "), // Convert array to comma-separated string
-      //   daysAvailable: daysAvailable.join(", "), // Convert array to comma-separated string
+      skills: skills.join(", "),
+      interests: interests.join(", "),
     };
 
     // Send the form data using EmailJS
@@ -75,12 +75,7 @@ function Page() {
         const message = `Email sent successfully! We will get back to you soon 😍`;
         setSuccessMessage(message);
         setShowSuccessMessage(true);
-      })
-      .catch((error) => {
-        console.error("Email could not be sent:", error);
-        // Handle error logic here if needed
-      })
-      .finally(() => {
+
         // Reset form fields and skills after successful submission
         setFirstName("");
         setEmail("");
@@ -90,13 +85,16 @@ function Page() {
         setCustomSkill("");
         setInterests([]);
         setCustomInterest("");
-        // setDaysAvailable([]);
 
         // Hide success message after 5 seconds
         setTimeout(() => {
           setShowSuccessMessage(false);
           setSuccessMessage("");
         }, 5000);
+      })
+      .catch((error) => {
+        console.error("Email could not be sent:", error);
+        // Handle error logic here if needed
       });
   };
 
@@ -124,6 +122,9 @@ function Page() {
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
+                <span className="text-xs text-red-500">
+                  {firstName ? null : "* Required"}
+                </span>
               </div>
               <div className="mt-4 m-10">
                 <input
@@ -146,6 +147,9 @@ function Page() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                <span className="text-xs text-red-500">
+                  {email ? null : "* Required"}
+                </span>
               </div>
               <div>
                 <h3 className="md:text-2xl text-[16px] font-bold mb-4">
@@ -230,16 +234,16 @@ function Page() {
                 </h3>
                 <div className="flex p-4 flex-wrap justify-center gap-4">
                   <button
-                    onClick={() => handleInterestClick("When I’m available")}
+                    onClick={() => handleInterestClick("Available now")}
                     className="bg-white  hover:bg-opacity-50 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
-                    When I’m available
+                    Available now
                   </button>
                   <button
-                    onClick={() => handleInterestClick(" Anytime")}
+                    onClick={() => handleInterestClick("Depend on schedule")}
                     className="bg-white  hover:bg-opacity-50 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
-                    Anytime
+                    Depend on schedule
                   </button>
                 </div>
               </div>
@@ -298,7 +302,9 @@ function Page() {
         </div>
       </section>
       {showSuccessMessage && (
-        <div className="slide-in-bottom-right">{successMessage}</div>
+        <div className="fixed bottom-0 right-0 m-4 bg-green-500 text-white py-2 px-4 rounded-xl">
+          {successMessage}
+        </div>
       )}
     </div>
   );
