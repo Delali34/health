@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Team = () => {
   return (
@@ -16,6 +17,11 @@ const Team = () => {
             HPO team has a high passion for improving the lives of the less
             privileged. We are what we believe in; we are our core values.
           </p>
+          <Link href="/contact">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">
+              Contact our team lead...
+            </button>
+          </Link>
         </section>
 
         {/* Core Values */}
