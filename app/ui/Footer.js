@@ -59,9 +59,8 @@ const footerContent = {
     },
   ],
   contact: {
-    heading: "Contact",
-    description:
-      "Please feel free to reach out to us with any inquiries, questions, or assistance you may need.",
+    heading: "Contact Us",
+    description: "",
     address: {
       street: "92 Dr. Hutton Mills Street, Accra Ghana",
       phone: "+233-50 850 9911",
