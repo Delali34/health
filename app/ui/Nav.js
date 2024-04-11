@@ -58,6 +58,10 @@ const navItems = [
     label: "Volunteer",
     link: "/volunteer",
   },
+  {
+    label: "Lodge Complain",
+    link: "/report",
+  },
 ];
 
 export default function Navbar() {
