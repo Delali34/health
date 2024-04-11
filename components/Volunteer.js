@@ -149,7 +149,7 @@ function Page() {
               </div>
               <div>
                 <h3 className="md:text-2xl text-[16px] font-bold mb-4">
-                  Select reason for volunteering?
+                  Select reason for volunteering
                 </h3>
                 <div className="flex p-4 flex-wrap justify-center gap-4">
                   <button
@@ -185,7 +185,7 @@ function Page() {
                   htmlFor="custom-amount"
                   className="block mb-5 font-semibold"
                 >
-                  You can add your own reason
+                  Other reason for volunteering
                 </label>
                 <input
                   type="text"
@@ -205,7 +205,7 @@ function Page() {
               </div>
               <div>
                 <h3 className="lg:text-2xl text-[16px] font-bold mb-1">
-                  Selected Skills
+                  Selected reason
                 </h3>
                 <div className="flex p-4 flex-wrap justify-center gap-4">
                   {skills.map((skill, index) => (
@@ -273,14 +273,14 @@ function Page() {
                 <div className="flex justify-center">
                   <div className="bg-white text-black w-[130px] mt-2 font-semibold rounded-xl lg:text-[16px] text-[12px] hover:bg-black cursor-pointer hover:text-white p-3">
                     <button onClick={() => handleInterestClick(customInterest)}>
-                      Add Reason
+                      Add time
                     </button>
                   </div>
                 </div>
               </div>
               <div>
                 <h3 className="lg:text-2xl text-[16px] font-bold mb-1">
-                  Selected Reasons
+                  Selected time
                 </h3>
                 <div className="flex p-4 flex-wrap justify-center gap-4">
                   {interests.map((interest, index) => (
