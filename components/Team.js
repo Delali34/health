@@ -7,7 +7,9 @@ const Team = () => {
       <div className="max-w-7xl mx-auto">
         {/* Team Introduction */}
         <section className="text-center mb-12">
-          <h2 className="lg:text-3xl text-2xl font-bold mb-4">Our Team</h2>
+          <h2 id="team" className="lg:text-3xl text-2xl font-bold mb-4">
+            Our Team
+          </h2>
           <p className="lg:text-lg text-sm mb-8">
             Meet our team of dedicated project managers, IT specialists,
             organizational system managers, volunteers, and interns. The Africa

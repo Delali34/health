@@ -102,7 +102,13 @@ export default function Navbar() {
         {/* logo */}
         <Link href="/">
           {" "}
-          <Image src={logo} className="w-[100px]" alt=" logo" />
+          <Image
+            src={logo}
+            width={700}
+            height={700}
+            className="w-[180px]"
+            alt=" logo"
+          />
         </Link>
 
         {isSideMenuOpen && <MobileNav closeSideMenu={closeSideMenu} />}
