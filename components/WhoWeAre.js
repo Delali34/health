@@ -60,11 +60,11 @@ const WhoWeAre = () => {
               <div className="bg-black/60 inset-0 top-0 right-0 left-0 rounded-t-3xl md:h-[400px] h-[320px] md:max-w-[80vw] max-w-[90vw] bottom-0 absolute"></div>
               <div className="pl-5 pr-1 absolute top-0 flex items-center text-white right-0 bottom-0 left-0">
                 <div>
-                  <h1 className="text-center md:text-4xl text-3xl font-bold">
+                  <h1 className="text-center md:text-4xl text-2xl font-bold">
                     {about.name}
                   </h1>
                   <p
-                    className="pt-5 md:text-xl  text-[15px] "
+                    className="pt-5 md:text-xl  text-[12px] "
                     style={index === 2 && !isOpen ? paragraphStyle : null}
                   >
                     {about.item}
