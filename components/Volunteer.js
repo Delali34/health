@@ -241,7 +241,7 @@ function Page() {
                     Available now
                   </button>
                   <button
-                    onClick={() => handleInterestClick("Depend on schedule")}
+                    onClick={() => handleInterestClick("Depends on schedule")}
                     className="bg-white  hover:bg-opacity-50 py-3 px-6 rounded-lg lg:text-xl text-[12px] text-black font-semibold transition duration-300"
                   >
                     Depends on schedule
