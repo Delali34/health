@@ -77,33 +77,9 @@ const Footer = () => {
       role="contentinfo"
       className="py-20 bg-primary text-white font-mont"
     >
-      <div className="container px-4 mx-auto ">
-        <div className="block lg:flex gap-20 mb-10 pb-10">
-          <div className="w-full mb-10 lg:mb-0 lg:w-4/12">
-            <Link href={""} className="mb-4 bg-white p-2 inline-block">
-              <Image
-                src={footerContent.about.logo}
-                width={157}
-                height={30}
-                alt="africahealthpromotion"
-              />
-            </Link>
-            <p className="leading-relaxed mb-7">
-              {footerContent.about.description}
-            </p>
-            <p>
-              <Link
-                href={footerContent.about.cta.href}
-                className="flex space-x-2 outline-none items-center font-semibold text-white group"
-              >
-                <span>{footerContent.about.cta.label}</span>
-                {/* <span className="w-6 h-6 rounded-full bg-primary group-hover:bg-secondary duration-300 transition-all ease-in-out text-white inline-flex items-center justify-center">
-                  <BiChevronRight className="text-lg " />
-                </span> */}
-              </Link>
-            </p>
-          </div>
-          <div className="w-full lg:w-4/12 mb-10 lg-mb-0">
+      <div className="container px-4 lg:px-24 mx-auto ">
+        <div className="block lg:flex justify-center  gap-20 mb-10 pb-10">
+          <div className="w-full  mb-10 lg-mb-0">
             <div className="grid grid-cols-2 gap-10">
               {footerContent.footerLinks.map((footerLink, index) => (
                 <div key={index}>
