@@ -10,7 +10,7 @@ const Team = () => {
           <h2 id="team" className="lg:text-3xl text-2xl font-bold mb-4">
             Our Team
           </h2>
-          <p className="lg:text-lg text-sm mb-8">
+          <p className="lg:text-lg text-sm text-left mb-8">
             Meet our team of dedicated project managers, IT specialists,
             organizational system managers, volunteers, and interns. The Africa
             HPO team has a high passion for improving the lives of the less
@@ -34,7 +34,7 @@ const Team = () => {
               <h3 className="text-xl text-center font-bold mb-4">
                 {value.title}
               </h3>
-              <p className="text-sm text-center">{value.description}</p>
+              <p className="text-sm text-left">{value.description}</p>
             </div>
           ))}
         </section>

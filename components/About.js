@@ -55,24 +55,7 @@ const About = () => {
           </section>
         </div>
       </section>
-      <div className="bg-gray-200">
-        <section className="flex max-w-[1280px] mx-auto lg:px-10 px-5  flex-col py-20 lg:flex-row items-center w-full gap-10 justify-between">
-          <div className="flex-1 w-full">
-            <Image
-              className="object-cover w-full md:h-[400px] h-[300px] rounded-3xl"
-              src={AboutUs.heading2.image}
-              width={500}
-              height={500}
-              alt=""
-            />
-          </div>
-          <div className="flex-1">
-            <p className="md:text-[16px] text-[14px] pt-4">
-              {AboutUs.heading2.description}
-            </p>
-          </div>
-        </section>
-      </div>
+
       <Solutions2 />
     </div>
   );
