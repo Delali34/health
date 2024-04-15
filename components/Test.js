@@ -12,12 +12,26 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
+const paragraphStyle = {
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: "vertical",
+  overflow: "hidden",
+  display: "-webkit-box",
+};
+
 export default function App() {
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
   const onAutoplayTimeLeft = (s, time, progress) => {
     progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDescription = (index) => {
+    const newIsOpen = [...isOpen];
+    newIsOpen[index] = !newIsOpen[index];
+    setIsOpen(newIsOpen);
   };
   return (
     <div className="bg3 py-10 pb-10 px-5">
@@ -65,11 +79,21 @@ export default function App() {
                     alt=""
                   />
                 </div>
-                At first, reading was my biggest problem in school. My friends
-                used to mock at me and I felt like dropping out. So when I heard
-                that we are going to have a reading programme, I was the first
-                person to show up. Now I can read like any other student….
-                Thanks to the people who brought this programme to our school.
+                <p style={isOpen ? null : paragraphStyle}>
+                  At first, reading was my biggest problem in school. My friends
+                  used to mock at me and I felt like dropping out. So when I
+                  heard that we are going to have a reading programme, I was the
+                  first person to show up. Now I can read like any other
+                  student…. Thanks to the people who brought this programme to
+                  our school.
+                </p>
+                <p
+                  className="text-blue-400 underline cursor-pointer"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  {isOpen ? "read less" : "read more"}
+                </p>
+
                 <div className="mt-2"></div>
               </div>
             </div>
@@ -87,10 +111,19 @@ export default function App() {
                     alt=""
                   />
                 </div>
-                This nutrition programme taught me a life lesson. I thought I
-                needed lots of money to prepare good food for my family. This
-                programme taught me how to combine our local foods to make my
-                children grow healthy and strong.
+                <p style={isOpen ? null : paragraphStyle}>
+                  This nutrition programme taught me a life lesson. I thought I
+                  needed lots of money to prepare good food for my family. This
+                  programme taught me how to combine our local foods to make my
+                  children grow healthy and strong.
+                </p>
+                <p
+                  className="text-blue-400 underline cursor-pointer"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  {isOpen ? "read less" : "read more"}
+                </p>
+
                 <div className="mt-2"></div>
               </div>
             </div>
@@ -108,11 +141,21 @@ export default function App() {
                     alt=""
                   />
                 </div>
-                How I wish this training programme came earlier to our
-                community. Those times we used get a lot of money from our
-                businesses but we didn’t manage it well. It’s not like now that
-                things are difficult. But with this knowledge I am sure I can
-                save some money and expand my business
+                <p style={isOpen ? null : paragraphStyle}>
+                  {" "}
+                  How I wish this training programme came earlier to our
+                  community. Those times we used get a lot of money from our
+                  businesses but we didn’t manage it well. It’s not like now
+                  that things are difficult. But with this knowledge I am sure I
+                  can save some money and expand my business
+                </p>
+
+                <p
+                  className="text-blue-400 underline cursor-pointer"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  {isOpen ? "read less" : "read more"}
+                </p>
                 <div className="mt-2"></div>
               </div>
             </div>
@@ -130,11 +173,20 @@ export default function App() {
                     alt=""
                   />
                 </div>
-                I never did family planning because the way people talk about
-                family planning was frightening. I now understand that family
-                planning is not only by injection. I didn’t know you have to
-                make your own choice. Now I can have my next child when I am
-                ready. I thank Africa HPO.
+                <p style={isOpen ? null : paragraphStyle}>
+                  I never did family planning because the way people talk about
+                  family planning was frightening. I now understand that family
+                  planning is not only by injection. I didn’t know you have to
+                  make your own choice. Now I can have my next child when I am
+                  ready. I thank Africa HPO.
+                </p>
+
+                <p
+                  className="text-blue-400 underline cursor-pointer"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  {isOpen ? "read less" : "read more"}
+                </p>
                 <div className="mt-2"></div>
               </div>
             </div>
@@ -152,10 +204,20 @@ export default function App() {
                     alt=""
                   />
                 </div>
-                I was not going to the hospital because my insurance was dead
-                some long time ago. But after GIZ and the NGO came and renewed
-                it, I started visiting the hospital. That was when I realized I
-                had a serious health problem but thank God I have been treated.
+                <p style={isOpen ? null : paragraphStyle}>
+                  I was not going to the hospital because my insurance was dead
+                  some long time ago. But after GIZ and the NGO came and renewed
+                  it, I started visiting the hospital. That was when I realized
+                  I had a serious health problem but thank God I have been
+                  treated.
+                </p>
+
+                <p
+                  className="text-blue-400 underline cursor-pointer"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  {isOpen ? "read less" : "read more"}
+                </p>
                 <div className="mt-2"></div>
               </div>
             </div>
@@ -173,11 +235,20 @@ export default function App() {
                     alt=""
                   />
                 </div>
-                How I wish this training programme came earlier to our
-                community. Those times we used get a lot of money from our
-                businesses but we didn’t manage it well. It’s not like now that
-                things are difficult. But with this knowledge I am sure I can
-                save some money and expand my business
+                <p style={isOpen ? null : paragraphStyle}>
+                  How I wish this training programme came earlier to our
+                  community. Those times we used get a lot of money from our
+                  businesses but we didn’t manage it well. It’s not like now
+                  that things are difficult. But with this knowledge I am sure I
+                  can save some money and expand my business
+                </p>
+
+                <p
+                  className="text-blue-400 underline cursor-pointer"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  {isOpen ? "read less" : "read more"}
+                </p>
                 <div className="mt-2"></div>
               </div>
             </div>
