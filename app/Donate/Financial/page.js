@@ -52,7 +52,7 @@ function Page() {
             goals.
           </p>
         </div>
-        <div className="bg2 lg:mt-10 mt-5 lg:w-[50%]">
+        <div className="bg2 lg:mt-10 my-5 lg:w-[50%]">
           {/* Donation Options */}
           <div className="bg-[#172554]  text-black py-8">
             <div className="container mx-auto text-center">
