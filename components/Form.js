@@ -79,7 +79,7 @@ const VolunteerForm = () => {
       className="bg-cover bg-center px-5 py-20"
       style={{ backgroundImage: "url('/health1.jpg')" }}
     >
-      <div className="max-w-5xl mx-auto font-mont p-8 bg-primary bg-opacity-90 shadow-md rounded">
+      <div className="max-w-5xl mx-auto font-mont p-8 bg-[#172554] bg-opacity-90 shadow-md rounded">
         <h1 className="text-white text-center text-3xl lg:text-5xl font-bold font-mont mt-5 text-shadow-black">
           Join us and other volunteers to impact society.
         </h1>
