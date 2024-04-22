@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 
 // Regions in Ghana
@@ -28,6 +27,7 @@ const VolunteerForm = () => {
     region: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,6 +39,8 @@ const VolunteerForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading state to true
+
     const form = e.target;
     const formData = new FormData(form);
 
@@ -63,10 +65,12 @@ const VolunteerForm = () => {
           otherAvailability: "",
           region: "",
         });
+        setLoading(false); // Set loading state back to false
       }, 5000);
     } catch (error) {
       console.error("Error submitting form:", error);
       // Handle error here
+      setLoading(false); // Set loading state back to false
     }
   };
 
@@ -241,8 +245,9 @@ const VolunteerForm = () => {
             <button
               type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              disabled={loading} // Disable button while loading
             >
-              Submit
+              {loading ? "Submitting..." : "Submit"}
             </button>
           </div>
         </form>
