@@ -104,7 +104,7 @@ const Stats2 = () => {
               {counts[0]}
               <span className="txet-3xl">%</span>
             </h1>
-            <p className="text-center text-[#092862] lg:text-2xl text-xl pt-3 font-medium">
+            <p className="text-center text-[#092862] lg:text-2xl text-xl  font-medium">
               Nationwide Coverage
             </p>
           </div>
@@ -122,7 +122,7 @@ const Stats2 = () => {
               {counts[1]}
               <span className="txet-3xl"> Million</span>
             </h1>
-            <p className="text-center text-[#092862] lg:text-2xl text-xl pt-3 font-medium">
+            <p className="text-center text-[#092862] lg:text-2xl text-xl  font-medium">
               Direct Beneficiaries
             </p>
           </div>
@@ -140,7 +140,7 @@ const Stats2 = () => {
               {counts[2]}
               <span className="txet-3xl"></span>
             </h1>
-            <p className="text-center text-[#092862] lg:text-2xl text-xl pt-3 font-medium">
+            <p className="text-center text-[#092862] lg:text-2xl text-xl  font-medium">
               Community Projects Implemented
             </p>
           </div>
