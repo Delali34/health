@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useInView } from "react-intersection-observer";
 
 const StatContent = {
   stats: [
@@ -35,6 +36,44 @@ const StatContent = {
 };
 
 const Stats2 = () => {
+  const [counts, setCounts] = useState([0, 0, 0]);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  const targets = [100, 6.9, 106];
+  const increments = [1, 1, 1];
+  const durations = [25, 120, 40];
+
+  const [ref, inView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
+  useEffect(() => {
+    if (inView && !hasAnimated) {
+      const intervals = [];
+
+      targets.forEach((target, index) => {
+        intervals[index] = setInterval(() => {
+          setCounts((prevCounts) => {
+            const newCount = Math.min(
+              prevCounts[index] + increments[index],
+              target
+            );
+            if (newCount === target) clearInterval(intervals[index]);
+            return [
+              ...prevCounts.slice(0, index),
+              newCount,
+              ...prevCounts.slice(index + 1),
+            ];
+          });
+        }, durations[index]);
+      });
+
+      setHasAnimated(true);
+
+      return () => intervals.forEach((interval) => clearInterval(interval));
+    }
+  }, [inView]);
   useEffect(() => {
     AOS.init({
       duration: 700,
@@ -47,30 +86,63 @@ const Stats2 = () => {
       {/* statistic component */}
       <div className="container px-4 mx-auto">
         {/* cards */}
-        <div>
-          <div className="grid place-items-center grid-cols-1 gap-6 md:grid-cols-3">
-            {StatContent.stats.map((stat, index) => {
-              index *= 100;
-              return (
-                <div key={index} data-aos="fade-right" data-aos-delay={index}>
-                  <div>
-                    <Image
-                      src={stat.img}
-                      width={1500}
-                      height={1500}
-                      className="lg:w-[400px] md:w-[300px] md:h-[200px] lg:h-[300px] object-cover"
-                      alt=""
-                    />
-                  </div>
-                  <h1 className="text-center text-[#092862] pt-3 lg:text-3xl text-2xl font-bold">
-                    {stat.number}
-                  </h1>
-                  <p className="text-center text-[#092862] lg:text-[16px] text-sm pt-3 font-medium">
-                    {stat.label}
-                  </p>
-                </div>
-              );
-            })}
+        <div
+          ref={ref}
+          className="grid place-items-center grid-cols-1 gap-6 md:grid-cols-3"
+        >
+          <div data-aos="fade-down">
+            <div>
+              <Image
+                src="/information.jpg"
+                width={1500}
+                height={1500}
+                className="lg:w-[400px] md:w-[300px] md:h-[200px] lg:h-[300px] object-cover"
+                alt=""
+              />
+            </div>
+            <h1 className="text-center text-[#092862] pt-3 lg:text-3xl text-2xl font-bold">
+              {counts[0]}
+              <span className="txet-3xl">%</span>
+            </h1>
+            <p className="text-center text-[#092862] lg:text-2xl text-xl pt-3 font-medium">
+              Nationwide Coverage
+            </p>
+          </div>
+          <div data-aos="fade-down">
+            <div>
+              <Image
+                src="/screening.jpg"
+                width={1500}
+                height={1500}
+                className="lg:w-[400px] md:w-[300px] md:h-[200px] lg:h-[300px] object-cover"
+                alt=""
+              />
+            </div>
+            <h1 className="text-center text-[#092862] pt-3 lg:text-3xl text-2xl font-bold">
+              {counts[1]}
+              <span className="txet-3xl"> Million</span>
+            </h1>
+            <p className="text-center text-[#092862] lg:text-2xl text-xl pt-3 font-medium">
+              Direct Beneficiaries
+            </p>
+          </div>
+          <div data-aos="fade-down">
+            <div>
+              <Image
+                src="/lives.jpg"
+                width={1500}
+                height={1500}
+                className="lg:w-[400px] md:w-[300px] md:h-[200px] lg:h-[300px] object-cover"
+                alt=""
+              />
+            </div>
+            <h1 className="text-center text-[#092862] pt-3 lg:text-3xl text-2xl font-bold">
+              {counts[2]}
+              <span className="txet-3xl"></span>
+            </h1>
+            <p className="text-center text-[#092862] lg:text-2xl text-xl pt-3 font-medium">
+              Community Projects Implemented
+            </p>
           </div>
         </div>
       </div>
