@@ -242,7 +242,7 @@ function MobileNav({ closeSideMenu }) {
               Partner Us
             </button>
           </Link>
-          <Link href="/contact" className="">
+          <Link href="/Donate" className="">
             <button className="bg-red-400 w-[118px]  hover:bg-red-700 duration-200 text-white flex justify-center items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
               <FaDonate className="text-sm" />{" "}
               <p className="lg:text-[12px] text-[10px]">Donate</p>
