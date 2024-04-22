@@ -131,7 +131,7 @@ export default function Navbar() {
               Partner Us
             </button>
           </Link>
-          <Link href="/contact">
+          <Link href="/Donate">
             <button className="bg-red-400  hover:bg-red-700 duration-200 text-white flex items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
               <FaDonate className="text-sm" />{" "}
               <p className="lg:text-[12px] text-[10px]">Donate</p>

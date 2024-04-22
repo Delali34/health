@@ -259,3 +259,14 @@ blockquote {
   background-image: url(/city.jpg);
   height: 100%;
 }
+.slide-in-bottom-right {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  animation: slide-in 0.5s ease-out forwards;
+}
