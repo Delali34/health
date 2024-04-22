@@ -29,7 +29,7 @@ function page() {
       <Testimonials />
       <RecentBlog />
 
-      <Accordion />
+      {/* <Accordion /> */}
     </div>
   );
 }
