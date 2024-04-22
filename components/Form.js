@@ -37,22 +37,37 @@ const VolunteerForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can add code to submit the form data to your backend or handle it as needed
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    // Reset form data
-    setFormData({
-      fullName: "",
-      phoneNumber: "",
-      email: "",
-      reason: "",
-      otherReason: "",
-      availability: "",
-      otherAvailability: "",
-      region: "",
-    });
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // Handle form submission using Getform
+    try {
+      await fetch("https://getform.io/f/wbrkxrra", {
+        method: "POST",
+        body: formData,
+      });
+      // Set submitted state to true and reset form after successful submission
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        form.reset(); // Reset the form after submission
+        setFormData({
+          fullName: "",
+          phoneNumber: "",
+          email: "",
+          reason: "",
+          otherReason: "",
+          availability: "",
+          otherAvailability: "",
+          region: "",
+        });
+      }, 5000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error here
+    }
   };
 
   return (
@@ -67,7 +82,8 @@ const VolunteerForm = () => {
         <p className="text-white text-center lg:text-2xl lg:mb-10 mb-5 text-[16px] font-mont mt-10">
           Your time and skills are needed wherever you are.
         </p>
-        <form action="https://getform.io/f/wbrkxrra" method="POST">
+        <form onSubmit={handleSubmit}>
+          {/* Form inputs go here */}
           <div className="mb-6">
             <label
               htmlFor="fullName"
