@@ -216,7 +216,7 @@ function MobileNav({ closeSideMenu }) {
   }, []);
   return (
     <div className="fixed font-mont z-[999] left-0 top-0 flex h-full min-h-screen w-full justify-end bg-black/60 md:hidden">
-      <div className="h-full w-[65%] bg-white px-4 py-4" ref={navRef}>
+      <div className="h-full w-[50%] bg-white px-4 py-4" ref={navRef}>
         <section className="flex justify-end">
           <AiOutlineClose
             onClick={closeSideMenu}
