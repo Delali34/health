@@ -13,6 +13,12 @@ const regionsInGhana = [
   "Upper West",
   "Volta",
   "Western",
+  "Savannah",
+  "Bono East",
+  "Oti",
+  "Ahafo",
+  "Western North",
+  "North East",
 ];
 
 const VolunteerForm = () => {
@@ -93,7 +99,7 @@ const VolunteerForm = () => {
               htmlFor="fullName"
               className="block text-white text-sm font-bold mb-2"
             >
-              Full Name
+              Preffered Name
             </label>
             <input
               type="text"
@@ -102,7 +108,7 @@ const VolunteerForm = () => {
               value={formData.fullName}
               onChange={handleChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Full Name"
+              placeholder="Preffered Name"
               required
             />
           </div>

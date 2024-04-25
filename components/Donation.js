@@ -15,7 +15,8 @@ const DonationCards = () => {
               </h2>
             </div>
             <p className="text-gray-700 mb-4">
-              Receive monetary contributions to support our cause.
+              Your cheerful donation means a lot to someone in need. We will
+              connect with you on the impact of your gift
             </p>
             <p className="text-gray-700">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do

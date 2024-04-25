@@ -21,7 +21,8 @@ const DonationCards = () => {
               </div>
 
               <p className="text-gray-700 mb-4">
-                Receive monetary contributions to support our cause.
+                Your cheerful donation means a lot to someone in need. We will
+                connect with you on the impact of your gift
               </p>
               <Link href="/Donate/Financial">
                 <h1 className="bg-blue-500 p-2 rounded-xl hover:bg-blue-800 duration-100 text-white text-center w-[100px]">
@@ -38,8 +39,8 @@ const DonationCards = () => {
                 </h2>
               </div>
               <p className="text-gray-700 mb-4">
-                Accept donations in kind such as clothes, food, or other
-                essentials.
+                We receive and distribute clothes, food, and other valuables to
+                those who need them the most
               </p>
               <Link href="/Donate/Other">
                 <h1 className="bg-blue-500 p-2 rounded-xl hover:bg-blue-800 duration-100 text-white text-center w-[100px]">

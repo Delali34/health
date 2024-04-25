@@ -4,7 +4,10 @@ import Link from "next/link";
 
 const Team = () => {
   return (
-    <div className="bg-gray-100 font-mont min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div
+      id="team"
+      className="bg-gray-100 font-mont min-h-screen py-12 px-4 sm:px-6 lg:px-8"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Team Introduction */}
         <section className="text-center mb-12">

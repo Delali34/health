@@ -27,7 +27,7 @@ const navItems = [
 
       {
         label: "Success Stories",
-        link: "#",
+        link: "/#success",
       },
     ],
   },
@@ -41,7 +41,7 @@ const navItems = [
       },
       {
         label: "Our Team",
-        link: "/team",
+        link: "/AboutUs#team",
       },
       {
         label: "Contact Us",
@@ -132,7 +132,7 @@ export default function Navbar() {
             </button>
           </Link>
           <Link href="/Donate">
-            <button className="bg-red-400  hover:bg-red-700 duration-200 text-white flex items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
+            <button className="bg-red-600  hover:bg-red-400 duration-200 text-white flex items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
               <FaDonate className="text-sm" />{" "}
               <p className="lg:text-[12px] text-[10px]">Donate</p>
             </button>
@@ -148,7 +148,7 @@ export default function Navbar() {
 
         <FiMenu
           onClick={openSideMenu}
-          className="cursor-pointer text-4xl md:hidden"
+          className="cursor-pointer text-3xl md:hidden"
         />
       </div>
       <div className="flex font-mont items-center justify-center bg-blue-950 py-3">
@@ -237,13 +237,12 @@ function MobileNav({ closeSideMenu }) {
 
         <section className="flex flex-col gap-8 mt-4 ml-2">
           <Link href="/Partner">
-            {" "}
             <button className="h-fit text-[16px] transition-all hover:text-neutral-400 text-[#092862]">
               Partner Us
             </button>
           </Link>
           <Link href="/Donate" className="">
-            <button className="bg-red-400 w-[118px]  hover:bg-red-700 duration-200 text-white flex justify-center items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
+            <button className="bg-red-700 w-[118px]  hover:bg-red-400 duration-200 text-white flex justify-center items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
               <FaDonate className="text-sm" />{" "}
               <p className="lg:text-[12px] text-[10px]">Donate</p>
             </button>
