@@ -34,7 +34,7 @@ const footerContent = {
           label: "About",
         },
         {
-          href: "/volunteer",
+          href: "/form",
           label: "Volunteer",
         },
 
@@ -56,12 +56,12 @@ const footerContent = {
           label: "Our Blog",
         },
         {
-          href: "/contact",
+          href: "/report",
           label: "Lodge Complain",
         },
 
         {
-          href: "/contact",
+          href: "/Donate",
           label: "Donate",
         },
       ],
@@ -120,22 +120,32 @@ const Footer = () => {
               {footerContent.contact.description}
             </p>
             <ul>
-              <li className="flex items-start space-x-3 mb-5">
-                <FaLocationDot className="text-xl text-white" />
-                <span>{footerContent.contact.address.street}</span>
-              </li>
-              <li className="flex items-start space-x-3 mb-5">
-                <HiPhone className="text-xl text-white" />
-                <span>{footerContent.contact.address.phone}</span>
-              </li>
+              <Link
+                href="https://www.google.com/maps/place/Dr+Hutton+Mills+St,+Accra/@5.5468524,-0.2332245,17z/data=!3m1!4b1!4m6!3m5!1s0xfdf974ec453fa7b:0xbedbe58a052171ea!8m2!3d5.5468524!4d-0.2306496!16s%2Fg%2F1tfg4g7t?entry=ttu"
+                target="_blank"
+              >
+                <li className="flex items-start space-x-3 mb-5">
+                  <FaLocationDot className="text-xl text-white" />
+                  <span>{footerContent.contact.address.street}</span>
+                </li>
+              </Link>
+              <Link href="tel:+233508509911" target="_blank">
+                <li className="flex items-start space-x-3 mb-5">
+                  <HiPhone className="text-xl text-white" />
+                  <span>{footerContent.contact.address.phone}</span>
+                </li>
+              </Link>
+
               <li className="flex items-start space-x-3 mb-5">
                 <HiMiniGlobeAmericas className="text-xl text-white" />
                 <span>{footerContent.contact.address.website}</span>
               </li>
-              <li className="flex items-start space-x-3 mb-5">
-                <HiOutlineMail className="text-xl text-white" />
-                <span>info@africahealthpromotion.org</span>
-              </li>
+              <Link href="mailto:NGO@africahealthpromotion.org" target="_blank">
+                <li className="flex items-start space-x-3 mb-5">
+                  <HiOutlineMail className="text-xl text-white" />
+                  <span>NGO@africahealthpromotion.org</span>
+                </li>
+              </Link>
             </ul>
           </div>
         </div>
