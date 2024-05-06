@@ -52,7 +52,7 @@ const PartnerWithUs = () => {
           Do you want a social issue addressed? We will not show your identity.
         </h2>
         <p className="lg:text-lg text-left text-sm text-gray-700 mb-8">
-          Report fraud, social vices, abuse, misconduct, or anything of
+          Report social vices, abuse, misconduct, fraud or anything of
           importance to society.
         </p>
         <form onSubmit={handleSubmit}>
