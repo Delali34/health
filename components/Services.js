@@ -134,7 +134,7 @@ const serviceContent = {
   },
   items: [
     {
-      icon: "/prevent.jpg",
+      icon: "/nutrition.jpg",
       title: "Community Nutrition Project",
       description:
         "Our food and nutrition projects were community based. We taught parents how to cook nutritious foods. We also learnt what “food” means to different cultures.",
@@ -152,19 +152,19 @@ const serviceContent = {
         " We developed one of the most exciting reading programmes for basic school children in 5 regions of Ghana. Our young stars are now doing well in digesting complex sentences, making coherent arguments and developing their own storylines. Some of our beneficiaries have won national essay writing competitions.",
     },
     {
-      icon: "/maternal.jpg",
+      icon: "/capacity.jpg",
       title: "Livelihood Capacity Building",
       description:
         " Small scale business enterprises are at the core of our mandate. This project focused on building capacity of traders, livestock and crop farmers on financial literacy and how to increase yield. We expect to expand this project as a nationawide intervention.",
     },
     {
-      icon: "/mental.jpg",
+      icon: "/plan.jpg",
       title: "Family Planning Intervention",
       description:
         "We helped families to determine when to have their children with the most convenient intervals. Our family planning interventions targeted the youth and new couples. Through this project, family planning acceptor rate has increased mainly due to how we addressed the myths in various communities. Our beneficiaries gave heartwarming testimonies.",
     },
     {
-      icon: "/develop.jpg",
+      icon: "/water.jpg",
       title: "Water is Life Project",
       description:
         " Our water and sanitation projects targeted communities which practiced open defecation and competed for drinking water with animals from shallow open sources. In all, we provided 49 mechanized boreholes and 88 improved tiolet facilities in Upper East, Oti, Volta and Bono regions. This helped reduce water-borne diseases and other communicable diseases.",
