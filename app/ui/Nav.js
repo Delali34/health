@@ -244,19 +244,28 @@ function MobileNav({ closeSideMenu, handleLinkClick }) {
 
         <section className="flex flex-col gap-8 mt-4 ml-2">
           <Link href="/Partner">
-            <button className="h-fit text-[16px] transition-all hover:text-neutral-400 text-[#092862]">
+            <button
+              onClick={handleLinkClick}
+              className="h-fit text-[16px] transition-all hover:text-neutral-400 text-[#092862]"
+            >
               Partner Us
             </button>
           </Link>
           <Link href="/Donate" className="">
-            <button className="bg-red-700 w-[118px]  hover:bg-red-400 duration-200 text-white flex justify-center items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
+            <button
+              onClick={handleLinkClick}
+              className="bg-red-700 w-[118px]  hover:bg-red-400 duration-200 text-white flex justify-center items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full"
+            >
               <FaDonate className="text-sm" />{" "}
               <p className="lg:text-[12px] text-[10px]">Donate</p>
             </button>
           </Link>
 
           <Link href="https://wa.me/233246622156" target="_blank">
-            <button className="bg-green-400  hover:bg-green-700 duration-200 text-white flex items-center gap-2 px-3 py-1  lg:px-6 lg:py-2 rounded-full">
+            <button
+              onClick={handleLinkClick}
+              className="bg-green-400  hover:bg-green-700 duration-200 text-white flex items-center gap-2 px-3 py-1  lg:px-6 lg:py-2 rounded-full"
+            >
               <FaWhatsapp className="text-lg" />{" "}
               <p className="lg:text-sm text-[10px]">WhatsApp Us</p>
             </button>
@@ -276,33 +285,35 @@ function SingleNavItem({ label, iconImage, link, children, handleLinkClick }) {
   }
 
   // Add event handler to stop propagation
-  function handleDropdownClick(event) {
-    event.stopPropagation(); // Stop propagation to prevent closing the dropdown
-    toggleItem(); // Toggle the dropdown
+  function handleItemClick() {
+    if (!children) {
+      // If it's a button (no children), close the menu
+      handleLinkClick();
+    } else {
+      // If it's a dropdown item, toggle the dropdown
+      toggleItem();
+    }
   }
 
   return (
-    <Link
-      ref={animationParent}
-      href={link ?? "#"}
-      className="relative px-2 py-3 transition-all"
-    >
-      <div onClick={handleDropdownClick}>
-        {" "}
-        {/* Wrap button in a div and handle click */}
-        <p className="flex cursor-pointer items-center gap-2 text-[#092862] group-hover:text-black">
-          <span>{label}</span>
-          {children && (
-            <IoIosArrowDown
-              className={`text-xs transition-all ${
-                isItemOpen ? "rotate-180" : ""
-              }`}
-            />
-          )}
-        </p>
-      </div>
+    <div className="relative px-2 py-3 transition-all">
+      <Link
+        ref={animationParent}
+        href={link ?? "#"}
+        className="flex cursor-pointer items-center gap-2 text-[#092862] group-hover:text-black"
+        onClick={handleItemClick}
+      >
+        <span>{label}</span>
+        {children && (
+          <IoIosArrowDown
+            className={`text-xs transition-all ${
+              isItemOpen ? "rotate-180" : ""
+            }`}
+          />
+        )}
+      </Link>
 
-      {/* dropdown */}
+      {/* Dropdown */}
       {isItemOpen && children && (
         <div className="w-auto flex-col gap-1 rounded-lg bg-white py-3 transition-all flex">
           {children.map((ch, i) => (
@@ -322,6 +333,6 @@ function SingleNavItem({ label, iconImage, link, children, handleLinkClick }) {
           ))}
         </div>
       )}
-    </Link>
+    </div>
   );
 }
