@@ -61,7 +61,7 @@ const NGOProjects = () => {
         "We led a nationwide free registration of children in basic schools and underprivileged communities onto the National Health Insurance Scheme (NHIS). We are grateful to GIZ and our partners for funding this activity that reached over 470,000 beneficiaries.",
       testimony:
         "I was not going to the hospital because my insurance was dead some long time ago. But after the NGO came and renewed it, I started visiting the hospital. That was when I realized I had a serious health problem but thank God I have been treated.",
-      imageUrl: "/image5.jpg", // Example image path
+      imageUrl: "/nh.jpg", // Example image path
     },
     {
       title: "Mass Health Screening",
@@ -69,7 +69,7 @@ const NGOProjects = () => {
         "We are experts in Health screening for early detection and treatment of diseases. Our latest health screening was in partnership with GIZ where we reached over 1.6 million persons living in Ghana in 2023. We also provided free health screening to those affected by the Akosombo Dam spillage disaster in Ghana.",
       testimony:
         "Through this project, we provided free health screening to over 1.6 million Ghanaians. We did not leave out those affected by the Akosombo Dam spillage disaster in the Volta region.",
-      imageUrl: "/nh.jpg", // Example image path
+      imageUrl: "/image5.jpg", // Example image path
     },
     {
       title: "Inform for Health (i-4-H) Project",
@@ -85,7 +85,7 @@ const NGOProjects = () => {
         "Non-communicable diseases are cutting short the lives of our adult population. This is not just an issue in Ghana but a global public health menace. Our effort in raising public awareness about NCDs prevention was as vigorous as the effort needed for treatment. We engaged our communities with priority to those aged 40 years and above.",
       testimony:
         "I looked very healthy so I never thought I could be having NCD. When the NGO came here and encouraged us to go for regular checkup, I was reluctant but my wife insisted. After the checkup, they said my blood pressure was above normal. I thank God, they showed me what to do to remain healthy.",
-      imageUrl: "/vaccine.jpg", // Example image path
+      imageUrl: "/non-communicable.jpeg", // Example image path
     },
     {
       title: "Climate Change Initiative",
@@ -99,7 +99,7 @@ const NGOProjects = () => {
       description:
         "The urban health initiatives focus on air pollution in cities. Our campaign targeted areas with activities that result in the emission of indoor and outdoor pollutants. We are working to mitigate the preventable deaths of 8.3 million people annually from air pollution.",
       testimony: "",
-      imageUrl: "/image5.jpg", // Example image path
+      imageUrl: "/traffic.jpg", // Example image path
     },
   ];
 
