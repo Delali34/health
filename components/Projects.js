@@ -29,7 +29,7 @@ const NGOProjects = () => {
         "Our food and nutrition projects were community based. We taught parents how to cook nutritious foods. We also learnt what “food” means to different cultures.",
       testimony:
         "This nutrition programme taught me a life lesson. I thought I needed lots of money to prepare good food for my family. This programme taught me how to combine our local foods to make my children grow healthy and strong.",
-      imageUrl: "/small.jpg", // Example image path
+      imageUrl: "/Nutrition.jpg", // Example image path
     },
     {
       title: "Livelihood Capacity Building",
@@ -37,7 +37,7 @@ const NGOProjects = () => {
         "Small scale business enterprises are at our heart. This project focused on building capacity of traders, livestock and crop farmers on increasing yield and financial literacy. We expect to expand this project as a nationawide intervention.",
       testimony:
         "How I wish this training programme came earlier to our community. Those times we used to get a lot of money from our businesses but we didn’t manage it well. But with this knowledge I am sure I can save some money and expand my business.",
-      imageUrl: "/health3.png", // Example image path
+      imageUrl: "/capacity.jpg", // Example image path
     },
     {
       title: "Family Planning Intervention",
@@ -45,7 +45,7 @@ const NGOProjects = () => {
         "We helped families to determine when to have their children with the most convenient intervals. Our family planning interventions targeted the youth and new couples. Through this project, family planning accepter rate has increased mainly due to how we addressed the myths in various communities. Our beneficiaries gave heartwarming testimonies.",
       testimony:
         "I never did family planning because the way people talk about family planning was frightening. I now understand that family planning is not only by injection. I didn’t know you have to make your own choice. Now I can have my next child when I am ready.",
-      imageUrl: "/health1.jpg", // Example image path
+      imageUrl: "/plan.jpg", // Example image path
     },
     {
       title: "Water is Life Project",
@@ -53,7 +53,7 @@ const NGOProjects = () => {
         "Our water and sanitation projects targeted communities which practiced open defecation and competed for drinking water with animals from shallow open sources. In all, we provided 49 mechanized boreholes and 88 improved tiolet facilities in Upper East, Oti, Volta and Bono regions. This helped reduce water-borne diseases and other communicable diseases.",
       testimony:
         "The “Water is Life” project was a lifesaving intervention that cannot be forgotten in our records.",
-      imageUrl: "/city.jpg", // Example image path
+      imageUrl: "/water.jpg", // Example image path
     },
     {
       title: "Health Insurance Enrollment",
@@ -92,7 +92,7 @@ const NGOProjects = () => {
       description:
         "Africa HPO is committed to promoting the Paris agreement on climate change. Our engagement with communities focusses on responsible farming practices, preservation of water bodies and investment in greening. As of November 2023, our initiative led to the growing of 1,502 trees. Our target is to grow 5,000 trees by the end of 2024.",
       testimony: "",
-      imageUrl: "/image1.jpg", // Example image path
+      imageUrl: "/climate.jpg", // Example image path
     },
     {
       title: "Urban Health Promotion Campaign",
