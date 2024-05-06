@@ -34,9 +34,9 @@ export default function App() {
     setIsOpen(newIsOpen);
   };
   return (
-    <div id="success" className="bg3 py-10 pb-10 px-5">
-      <div className="h-[85vh] max-w-[1280px] mx-auto font-mont lg:mb-20 mb-10 ">
-        <h1 className="md:text-5xl text-3xl text-center font-bold lg:py-5">
+    <div id="success" className="bg3 py-10 pb-20 px-5">
+      <div className="h-[70vh] max-w-[1280px] mx-auto font-mont lg:mb-20 mb-10 ">
+        <h1 className="md:text-4xl text-2xl max-w-[400px] lg:text-center mx-auto font-bold lg:py-5">
           Success Stories
         </h1>
         <p className="text-sm max-w-[400px] mx-auto pt-1">
