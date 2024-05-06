@@ -69,7 +69,7 @@ const NGOProjects = () => {
         "We are experts in Health screening for early detection and treatment of diseases. Our latest health screening was in partnership with GIZ where we reached over 1.6 million persons living in Ghana in 2023. We also provided free health screening to those affected by the Akosombo Dam spillage disaster in Ghana.",
       testimony:
         "Through this project, we provided free health screening to over 1.6 million Ghanaians. We did not leave out those affected by the Akosombo Dam spillage disaster in the Volta region.",
-      imageUrl: "/image2.jpg", // Example image path
+      imageUrl: "/nh.jpg", // Example image path
     },
     {
       title: "Inform for Health (i-4-H) Project",
@@ -115,10 +115,10 @@ const NGOProjects = () => {
     <div className="bg-gray-100 font-mont min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="relative  mb-10">
         <Image
-          src="/solution.jpg"
+          src="/group.jpeg"
           className=" w-full h-[50vh] object-cover"
-          width={1000}
-          height={1000}
+          width={2000}
+          height={2000}
           alt=""
         />
         <div className="bg-black/60 inset-0 top-0 right-0 left-0  h-[50vh] bottom-0 absolute"></div>
