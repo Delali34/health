@@ -54,6 +54,9 @@ function Page() {
           <div className="bg-[#172554] text-black py-8">
             <div className="container mx-auto text-center">
               <div className="mt-4 m-10">
+                <h1 className=" text-2xl mb-10 text-white font-bold">
+                  Financial Donation
+                </h1>
                 <label
                   htmlFor="firstname"
                   className="block text-md text-white font-semibold"
@@ -110,15 +113,15 @@ function Page() {
               <div className="lg:text-lg text-sm mt-4 m-10">
                 <label
                   htmlFor="custom-amount"
-                  className="block text-md text-white font-semibold text-white"
+                  className="block text-md text-white font-semibold "
                 >
                   Enter an amount here:
                 </label>
                 <input
-                  type="number"
+                  type=""
                   id="custom-amount"
                   className="w-full bg-white text-black border-2 border-gold rounded-lg p-3 lg:text-lg text-sm mt-2 focus:outline-none focus:border-opacity-50"
-                  placeholder="Enter custom amount"
+                  placeholder="GH₵"
                   value={donationAmount}
                   onChange={(e) => setDonationAmount(e.target.value)}
                 />
