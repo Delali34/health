@@ -71,7 +71,7 @@ const footerContent = {
     heading: "Contact Us",
     description: "",
     address: {
-      street: "92 Dr. Hutton Mills Street, Accra Ghana",
+      street: "Ring Road West, Accra Digital Center",
       phone: "+233-50 850 9911",
       website: "https://africahealthpromotion.org",
     },
@@ -121,7 +121,7 @@ const Footer = () => {
             </p>
             <ul>
               <Link
-                href="https://www.google.com/maps/place/Dr+Hutton+Mills+St,+Accra/@5.5468524,-0.2332245,17z/data=!3m1!4b1!4m6!3m5!1s0xfdf974ec453fa7b:0xbedbe58a052171ea!8m2!3d5.5468524!4d-0.2306496!16s%2Fg%2F1tfg4g7t?entry=ttu"
+                href="https://www.google.com/maps/place/Accra+Digital+Centre/@5.5661469,-0.2256028,17z/data=!3m1!4b1!4m6!3m5!1s0xfdf9a01cf93ff85:0x3b6fd9b89c7ad508!8m2!3d5.5661469!4d-0.2230279!16s%2Fg%2F11c2qnqjtf?entry=ttu"
                 target="_blank"
               >
                 <li className="flex hover:underline items-start space-x-3 mb-5">
