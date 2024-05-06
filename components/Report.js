@@ -68,6 +68,7 @@ const PartnerWithUs = () => {
               <option value="Fraud">Fraud</option>
               <option value="Abuse">Abuse</option>
               <option value="Misconduct">Misconduct</option>
+              <option value="Other">Other</option>
               {/* Add more options as needed */}
             </select>
             {selectedVice && (
