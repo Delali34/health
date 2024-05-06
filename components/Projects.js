@@ -77,7 +77,7 @@ const NGOProjects = () => {
         "Africa Health Promotion Organization rolled out the inform for health (i-4-H) project. We conducted interactive radio and TV programs featuring experienced public health professionals and physicians with phone-in sessions. We addressed long standing myths and reached out to 10million Ghanaians through theses media platforms",
       testimony:
         "The feedback on the importance of this radio-driven health education programme was unimaginably heartwarming.",
-      imageUrl: "/image4.jpg", // Example image path
+      imageUrl: "/radio.jpeg", // Example image path
     },
     {
       title: "Non-Communicable Diseases Awareness",
