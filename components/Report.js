@@ -25,7 +25,7 @@ const PartnerWithUs = () => {
 
     // Handle form submission using Getform
     try {
-      await fetch("https://getform.io/f/wbrkxrra", {
+      await fetch("https://getform.io/f/lajkqqrb", {
         method: "POST",
         body: formData,
       });
@@ -62,6 +62,7 @@ const PartnerWithUs = () => {
               value={selectedVice}
               onChange={handleViceChange}
               required
+              name="Social vice"
             >
               <option value="">Select Social Vice</option>
               <option value="Fraud">Fraud</option>
@@ -77,6 +78,7 @@ const PartnerWithUs = () => {
                 value={complaint}
                 onChange={handleComplaintChange}
                 required
+                name="complaint"
               />
             )}
           </div>
