@@ -152,7 +152,7 @@ const serviceContent = {
         " We developed one of the most exciting reading programmes for basic school children in 5 regions of Ghana. Our young stars are now doing well in digesting complex sentences, making coherent arguments and developing their own storylines. Some of our beneficiaries have won national essay writing competitions.",
     },
     {
-      icon: "/capacity.jpg",
+      icon: "/selling.jpg",
       title: "Livelihood Capacity Building",
       description:
         " Small scale business enterprises are at the core of our mandate. This project focused on building capacity of traders, livestock and crop farmers on financial literacy and how to increase yield. We expect to expand this project as a nationawide intervention.",
