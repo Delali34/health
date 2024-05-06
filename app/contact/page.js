@@ -95,9 +95,7 @@ const Contact = () => {
             <div className="bg-white rounded-full p-2 shadow mr-4">
               <MdMarkEmailRead className="text-2xl" />
             </div>
-            <span className="text-gray-700">
-              info@africahealthpromotion.org
-            </span>
+            <span className="text-gray-700">NGO@africahealthpromotion.org</span>
           </div>
           <div className="flex items-center">
             <div className="bg-white rounded-full p-2 shadow mr-4">
