@@ -99,6 +99,7 @@ export default function Navbar() {
   }
   function handleLinkClick() {
     setActiveButton(null);
+    closeSideMenu();
   }
 
   return (
@@ -118,7 +119,12 @@ export default function Navbar() {
             />
           </Link>
 
-          {isSideMenuOpen && <MobileNav closeSideMenu={closeSideMenu} />}
+          {isSideMenuOpen && (
+            <MobileNav
+              closeSideMenu={closeSideMenu}
+              handleLinkClick={handleLinkClick}
+            />
+          )}
 
           {/* navitems */}
         </section>
@@ -199,7 +205,7 @@ export default function Navbar() {
   );
 }
 
-function MobileNav({ closeSideMenu }) {
+function MobileNav({ closeSideMenu, handleLinkClick }) {
   const navRef = useRef(null);
 
   useEffect(() => {
@@ -231,6 +237,7 @@ function MobileNav({ closeSideMenu }) {
               iconImage={d.iconImage}
               link={d.link}
               children={d.children}
+              handleLinkClick={handleLinkClick}
             />
           ))}
         </div>
@@ -260,7 +267,7 @@ function MobileNav({ closeSideMenu }) {
   );
 }
 
-function SingleNavItem({ label, iconImage, link, children }) {
+function SingleNavItem({ label, iconImage, link, children, handleLinkClick }) {
   const [animationParent] = useAutoAnimate();
   const [isItemOpen, setItem] = useState(false);
 
@@ -268,23 +275,32 @@ function SingleNavItem({ label, iconImage, link, children }) {
     return setItem(!isItemOpen);
   }
 
+  // Add event handler to stop propagation
+  function handleDropdownClick(event) {
+    event.stopPropagation(); // Stop propagation to prevent closing the dropdown
+    toggleItem(); // Toggle the dropdown
+  }
+
   return (
     <Link
       ref={animationParent}
-      onClick={toggleItem}
       href={link ?? "#"}
       className="relative px-2 py-3 transition-all"
     >
-      <p className="flex cursor-pointer items-center gap-2 text-[#092862] group-hover:text-black">
-        <span>{label}</span>
-        {children && (
-          <IoIosArrowDown
-            className={`text-xs transition-all ${
-              isItemOpen ? "rotate-180" : ""
-            }`}
-          />
-        )}
-      </p>
+      <div onClick={handleDropdownClick}>
+        {" "}
+        {/* Wrap button in a div and handle click */}
+        <p className="flex cursor-pointer items-center gap-2 text-[#092862] group-hover:text-black">
+          <span>{label}</span>
+          {children && (
+            <IoIosArrowDown
+              className={`text-xs transition-all ${
+                isItemOpen ? "rotate-180" : ""
+              }`}
+            />
+          )}
+        </p>
+      </div>
 
       {/* dropdown */}
       {isItemOpen && children && (
@@ -294,6 +310,7 @@ function SingleNavItem({ label, iconImage, link, children }) {
               key={i}
               href={ch.link ?? "#"}
               className="flex cursor-pointer items-center py-1 pl-6 pr-8 text-neutral-400 hover:text-black"
+              onClick={handleLinkClick} // Call handleLinkClick when a link is clicked
             >
               {/* image */}
               {ch.iconImage && <Image src={ch.iconImage} alt="item-icon" />}
