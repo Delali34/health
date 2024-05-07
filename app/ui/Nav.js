@@ -137,12 +137,12 @@ export default function Navbar() {
               Partner Us
             </button>
           </Link>
-          <Link href="/Donate">
+          {/* <Link href="/Donate">
             <button className="bg-red-600  hover:bg-red-400 duration-200 text-white flex items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
               <FaDonate className="text-sm" />{" "}
               <p className="lg:text-[12px] text-[10px]">Donate</p>
             </button>
-          </Link>
+          </Link> */}
 
           <Link href="https://wa.me/233246622156" target="_blank">
             <button className="bg-green-400  hover:bg-green-700 duration-200 text-white flex items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full">
@@ -251,7 +251,7 @@ function MobileNav({ closeSideMenu, handleLinkClick }) {
               Partner Us
             </button>
           </Link>
-          <Link href="/Donate" className="">
+          {/* <Link href="/Donate" className="">
             <button
               onClick={handleLinkClick}
               className="bg-red-700 w-[118px]  hover:bg-red-400 duration-200 text-white flex justify-center items-center gap-2 px-2 py-1  lg:px-6 lg:py-2 rounded-full"
@@ -259,7 +259,7 @@ function MobileNav({ closeSideMenu, handleLinkClick }) {
               <FaDonate className="text-sm" />{" "}
               <p className="lg:text-[12px] text-[10px]">Donate</p>
             </button>
-          </Link>
+          </Link> */}
 
           <Link href="https://wa.me/233246622156" target="_blank">
             <button
