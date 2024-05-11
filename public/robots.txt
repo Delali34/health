@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.africahealthpromotion.org/
+
+# Sitemaps
+Sitemap: https://www.africahealthpromotion.org/sitemap.xml
