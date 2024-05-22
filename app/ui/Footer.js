@@ -72,7 +72,7 @@ const footerContent = {
     description: "",
     address: {
       street: "Ring Road West, Accra Digital Center",
-      phone: "+233-50 850 9911",
+      phone: "+233-53 661 8187",
       website: "https://africahealthpromotion.org",
     },
   },
