@@ -154,15 +154,21 @@ const Footer = () => {
             {" "}
             <FaWhatsappSquare className="hover:animate-bounce" />
           </Link>
-          <Link href="#">
+          <Link
+            href="https://www.linkedin.com/in/africa-health-promotion-organization-ba767730a/"
+            target="_blank"
+          >
             {" "}
             <FaLinkedin className="hover:animate-bounce" />
           </Link>
-          <Link href="#">
+          <Link
+            href="https://web.facebook.com/profile.php?id=61560485392034"
+            target="_blank"
+          >
             {" "}
             <FaFacebookSquare className="hover:animate-bounce" />
           </Link>
-          <Link href="#">
+          <Link href="https://x.com/AfricaHPO" target="_blank">
             {" "}
             <FaSquareXTwitter className="hover:animate-bounce" />
           </Link>
