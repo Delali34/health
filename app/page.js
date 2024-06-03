@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 
 import Hero from "@/components/Hero2";
 import Stats from "@/components/Stats2";
@@ -12,8 +13,11 @@ import WhoWeAre from "@/components/WhoWeAre";
 import Stats2 from "@/components/Stat3";
 import Accordion from "@/components/Accordion";
 import Report from "@/components/Report";
-import Organogram from "@/components/Organogram";
+
 import { GrLinkTop } from "react-icons/gr";
+const Organogram = dynamic(() => import("@/components/Organogram"), {
+  ssr: false,
+});
 
 function page() {
   const [showScrollTop, setShowScrollTop] = useState(false);
