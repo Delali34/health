@@ -64,7 +64,7 @@ function Page() {
     // Send the form data using EmailJS
     emailjs
       .sendForm("service_mo1be1b", "template_9u8lcyi", form.current, {
-        publicKey: "9e-dDk8AcnnCTTCUv",
+        publicKey: "sk_test_8245da115ece7428429d018e4ccb68182378401d",
       })
       .then((response) => {
         alert("Email sent successfully!", response);

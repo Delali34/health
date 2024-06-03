@@ -12,6 +12,7 @@ import WhoWeAre from "@/components/WhoWeAre";
 import Stats2 from "@/components/Stat3";
 import Accordion from "@/components/Accordion";
 import Report from "@/components/Report";
+import Organogram from "@/components/Organogram";
 import { GrLinkTop } from "react-icons/gr";
 
 function page() {
@@ -44,7 +45,9 @@ function page() {
 
       {/* <Infographics /> */}
       <WhoWeAre />
+      <Organogram />
       <Services />
+
       {/* <Solutions /> */}
       <Testimonials />
       <RecentBlog />
