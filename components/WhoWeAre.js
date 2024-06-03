@@ -47,7 +47,7 @@ const WhoWeAre = () => {
           <div className="flex justify-center items-center">
             <div
               className=" relative mx-auto bg-light   mt-20 flex justify-center items-center"
-              data-aos="zoom-out-up"
+              data-aos="fade-up"
               data-aos-duration="1000"
             >
               <Image
