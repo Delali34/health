@@ -49,7 +49,7 @@ function page() {
 
       {/* <Infographics /> */}
       <WhoWeAre />
-      <Organogram />
+      {/* <Organogram /> */}
       <Services />
 
       {/* <Solutions /> */}
