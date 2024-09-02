@@ -155,7 +155,7 @@ const Footer = () => {
             <FaWhatsappSquare className="hover:animate-bounce" />
           </Link>
           <Link
-            href="https://www.linkedin.com/in/africa-health-promotion-organization-ba767730a/"
+            href="https://www.linkedin.com/company/africahpo/?viewAsMember=true"
             target="_blank"
           >
             {" "}
