@@ -15,17 +15,35 @@ export default function CareersPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Careers</h1>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <header className="bg-gradient-to-r from-purple-600 to-blue-500 text-white text-center py-16">
+        <h1 className="text-5xl font-extrabold">Careers at Our Company</h1>
+        <p className="text-lg mt-4">
+          Explore opportunities and make a difference with us.
+        </p>
+      </header>
 
+      {/* Content Section */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {!selectedJob ? (
-          <JobList jobs={jobs} onSelect={setSelectedJob} />
+          <div>
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              Open Positions
+            </h2>
+            <p className="text-gray-600 mb-8">
+              Find the role that suits you and start your journey with us.
+            </p>
+            <JobList
+              jobs={jobs}
+              onSelect={(job) => {
+                setSelectedJob(job);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            />
+          </div>
         ) : (
-          <ApplicationForm
-            job={selectedJob}
-            onBack={() => setSelectedJob(null)}
-          />
+          <ApplicationForm job={selectedJob} />
         )}
       </div>
     </div>

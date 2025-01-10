@@ -74,15 +74,33 @@ export default function AdminCareersPage() {
   const handleAddJob = async (e) => {
     e.preventDefault();
     try {
-      await fetch("/api/jobs", {
+      const response = await fetch("/api/jobs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newJob),
+        body: JSON.stringify({
+          ...newJob,
+          requirements: newJob.requirements.filter((req) => req.trim() !== ""), // Filter out empty requirements
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setJobs([...jobs, data]); // Update local state with the new job
       setIsAddingJob(false);
-      fetchJobs();
+      setNewJob({
+        title: "",
+        description: "",
+        department: "",
+        requirements: [],
+        isActive: true,
+      });
+      await fetchJobs(); // Refresh the jobs list
     } catch (error) {
       console.error("Error adding job:", error);
+      alert("Failed to add job. Please try again.");
     }
   };
 
