@@ -1,0 +1,60 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model JobPosting {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  department  String
+  requirements String[]
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  applications JobApplication[]
+}
+
+model JobApplication {
+  id          String   @id @default(cuid())
+  jobPosting  JobPosting @relation(fields: [jobPostingId], references: [id])
+  jobPostingId String
+  
+  // Personal Details
+  firstName   String
+  middleName  String?
+  surname     String
+  address     String
+  region      String
+  district    String
+  email       String
+  telephone   String
+  
+  // Education
+  certificate String
+  yearCompleted Int
+  institution String
+  classGraduated String
+  
+  // Employment History
+  workHistory Json[]  // Array of work history objects
+  
+  // Volunteer History
+  volunteerHistory Json[]  // Array of volunteer history objects
+  
+  // Competencies
+  competencies Json  // Object containing all competency ratings
+  
+  // Role Selection
+  selectedRoles String[]  // Array of selected roles (M&E, Project Manager)
+  
+  education    String  // Bachelor or Masters
+  createdAt   DateTime @default(now())
+  status      String   @default("pending")  // pending, reviewed, accepted, rejected
+}

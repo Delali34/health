@@ -51,5 +51,5 @@ module.exports = {
     darkMode: "class",
     plugins: [nextui()],
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
