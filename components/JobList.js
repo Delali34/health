@@ -1,7 +1,9 @@
 // components/JobList.js
-export default function JobList({ jobs, onSelect }) {
-  // Filter only active jobs
-  const activeJobs = jobs.filter((job) => job.isActive);
+export default function JobList({ jobs = [], onSelect }) {
+  // Ensure jobs is an array and then filter
+  const activeJobs = Array.isArray(jobs)
+    ? jobs.filter((job) => job.isActive)
+    : [];
 
   if (activeJobs.length === 0) {
     return (
