@@ -62,12 +62,12 @@ export default function ApplicationForm({ job, onBack }) {
   ];
 
   const educationLevels = [
+    "Certificate",
+    "Diploma",
+    "HND",
     "Bachelor's Degree",
     "Master's Degree",
     "PhD",
-    "HND",
-    "Diploma",
-    "Certificate",
   ];
 
   const handleFormChange = (newFormData) => {
