@@ -160,6 +160,22 @@ export default function AdminCareersPage() {
     setIsAuthenticated(false);
   };
 
+  const groupApplicationsByJob = () => {
+    const grouped = {};
+    applications.forEach((app) => {
+      const jobId = app.jobPosting.id;
+      if (!grouped[jobId]) {
+        grouped[jobId] = {
+          jobTitle: app.jobPosting.title,
+          applications: [],
+        };
+      }
+      grouped[jobId].applications.push(app);
+    });
+    return grouped;
+  };
+  const groupedApplications = groupApplicationsByJob();
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -292,93 +308,100 @@ export default function AdminCareersPage() {
             ))}
           </div>
         </div>
-
         {/* Applications List */}
         <div className="bg-white shadow-md rounded-lg p-6">
           <h2 className="text-2xl font-bold mb-4">Applications</h2>
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Position
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Education
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Status
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {applications.map((application) => (
-                  <tr key={application.id}>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {`${application.firstName} ${application.surname}`}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {application.selectedRoles.join(", ")}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {application.education}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span
-                        className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                          application.status === "pending"
-                            ? "bg-yellow-100 text-yellow-800"
-                            : application.status === "accepted"
-                            ? "bg-green-100 text-green-800"
-                            : "bg-red-100 text-red-800"
-                        }`}
-                      >
-                        {application.status}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        onClick={() => handleViewDetails(application)}
-                        className="text-blue-600 hover:text-blue-900 mr-4"
-                      >
-                        View Details
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleUpdateApplicationStatus(
-                            application.id,
-                            "accepted"
-                          )
-                        }
-                        className="text-green-600 hover:text-green-900 mr-4"
-                        disabled={application.status === "accepted"}
-                      >
-                        Accept
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleUpdateApplicationStatus(
-                            application.id,
-                            "rejected"
-                          )
-                        }
-                        className="text-red-600 hover:text-red-900"
-                        disabled={application.status === "rejected"}
-                      >
-                        Reject
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {Object.entries(groupedApplications).map(
+            ([jobId, { jobTitle, applications }]) => (
+              <div key={jobId} className="mb-8">
+                <h3 className="text-xl font-semibold mb-4 text-blue-600">
+                  {jobTitle}
+                </h3>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Name
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Education
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Status
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {applications.map((application) => (
+                        <tr key={application.id}>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {`${application.firstName} ${application.surname}`}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {Array.isArray(application.educationHistory) &&
+                            application.educationHistory.length > 0
+                              ? application.educationHistory[
+                                  application.educationHistory.length - 1
+                                ].level
+                              : "N/A"}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span
+                              className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                                application.status === "pending"
+                                  ? "bg-yellow-100 text-yellow-800"
+                                  : application.status === "accepted"
+                                  ? "bg-green-100 text-green-800"
+                                  : "bg-red-100 text-red-800"
+                              }`}
+                            >
+                              {application.status}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <button
+                              onClick={() => handleViewDetails(application)}
+                              className="text-blue-600 hover:text-blue-900 mr-4"
+                            >
+                              View Details
+                            </button>
+                            <button
+                              onClick={() =>
+                                handleUpdateApplicationStatus(
+                                  application.id,
+                                  "accepted"
+                                )
+                              }
+                              className="text-green-600 hover:text-green-900 mr-4"
+                              disabled={application.status === "accepted"}
+                            >
+                              Accept
+                            </button>
+                            <button
+                              onClick={() =>
+                                handleUpdateApplicationStatus(
+                                  application.id,
+                                  "rejected"
+                                )
+                              }
+                              className="text-red-600 hover:text-red-900"
+                              disabled={application.status === "rejected"}
+                            >
+                              Reject
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )
+          )}
         </div>
 
         {/* Application Details Modal */}

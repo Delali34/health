@@ -8,6 +8,10 @@ export default function CareersPage() {
   const [jobs, setJobs] = useState([]);
   const [selectedJob, setSelectedJob] = useState(null);
 
+  const handleBack = () => {
+    setSelectedJob(null);
+  };
+
   useEffect(() => {
     fetch("/api/jobs")
       .then((res) => res.json())
@@ -18,7 +22,7 @@ export default function CareersPage() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <header className="bg-gradient-to-r from-purple-600 to-blue-500 text-white text-center py-16">
-        <h1 className="text-5xl font-extrabold">Careers at Our Company</h1>
+        <h1 className="text-5xl font-extrabold">Careers at Our Organization</h1>
         <p className="text-lg mt-4">
           Explore opportunities and make a difference with us.
         </p>
@@ -43,7 +47,7 @@ export default function CareersPage() {
             />
           </div>
         ) : (
-          <ApplicationForm job={selectedJob} />
+          <ApplicationForm job={selectedJob} onBack={handleBack} />
         )}
       </div>
     </div>

@@ -1,22 +1,27 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 export default function ApplicationForm({ job, onBack }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [hasNoWorkHistory, setHasNoWorkHistory] = useState(false);
   const [hasNoVolunteerHistory, setHasNoVolunteerHistory] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     middleName: "",
     surname: "",
-    address: "",
     region: "",
     district: "",
     email: "",
     telephone: "",
-    certificate: "",
-    yearCompleted: "",
-    institution: "",
-    classGraduated: "",
+    educationHistory: [
+      {
+        level: "",
+        program: "",
+        yearCompleted: "",
+        institution: "",
+      },
+    ],
     workHistory: [
       { position: "", yearStarted: "", yearEnded: "", achievements: "" },
     ],
@@ -32,37 +37,98 @@ export default function ApplicationForm({ job, onBack }) {
       typingSpeed: 0,
       reportWriting: 0,
       proposalWriting: 0,
-      monitoring: 0,
-      leadership: 0,
-      teamPlaying: 0,
-      timeManagement: 0,
       initiativeTaking: 0,
-      budgeting: 0,
-      socialization: 0,
       networking: 0,
     },
-    selectedRoles: [],
-    education: "bachelor",
   });
+
+  const ghanaRegions = [
+    "Ahafo",
+    "Ashanti",
+    "Bono",
+    "Bono East",
+    "Central",
+    "Eastern",
+    "Greater Accra",
+    "North East",
+    "Northern",
+    "Oti",
+    "Savannah",
+    "Upper East",
+    "Upper West",
+    "Volta",
+    "Western",
+    "Western North",
+  ];
+
+  const educationLevels = [
+    "Bachelor's Degree",
+    "Master's Degree",
+    "PhD",
+    "HND",
+    "Diploma",
+    "Certificate",
+  ];
+
+  const handleFormChange = (newFormData) => {
+    setFormData(newFormData);
+    setHasUnsavedChanges(true);
+  };
+
+  // Handle back navigation
+  const handleBack = useCallback(() => {
+    try {
+      if (hasUnsavedChanges) {
+        setShowConfirmDialog(true);
+      } else {
+        onBack();
+      }
+    } catch (error) {
+      console.error("Navigation error:", error);
+      // Fallback behavior if onBack fails
+      window.history.back();
+    }
+  }, [hasUnsavedChanges, onBack]);
+
+  // Confirmation dialog component
+  const ConfirmationDialog = () => (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full mx-4">
+        <h3 className="text-lg font-semibold mb-4">Unsaved Changes</h3>
+        <p className="mb-6">
+          You have unsaved changes. Are you sure you want to leave?
+        </p>
+        <div className="flex justify-end space-x-4">
+          <button
+            onClick={() => setShowConfirmDialog(false)}
+            className="px-4 py-2 text-gray-600 hover:text-gray-800"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={() => {
+              setShowConfirmDialog(false);
+              onBack();
+            }}
+            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+          >
+            Leave
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Show loading state
       setIsSubmitting(true);
 
-      // Validate the year is a number
-      const yearCompletedNumber = parseInt(formData.yearCompleted);
-      if (isNaN(yearCompletedNumber)) {
-        throw new Error("Year completed must be a valid number");
+      if (formData.educationHistory.length > 3) {
+        throw new Error("Maximum of 3 education entries allowed");
       }
 
-      // Validate required arrays are not empty
-      if (formData.selectedRoles.length === 0) {
-        throw new Error("Please select at least one role");
-      }
-      // Prepare work and volunteer history based on checkbox states
       const finalWorkHistory = hasNoWorkHistory ? [] : formData.workHistory;
       const finalVolunteerHistory = hasNoVolunteerHistory
         ? []
@@ -76,11 +142,8 @@ export default function ApplicationForm({ job, onBack }) {
         body: JSON.stringify({
           ...formData,
           jobPostingId: job.id,
-          yearCompleted: yearCompletedNumber, // Send as number
-          workHistory: formData.workHistory || [], // Ensure it's an array
-          volunteerHistory: formData.volunteerHistory || [], // Ensure it's an array
-          competencies: formData.competencies || {}, // Ensure it's an object
-          selectedRoles: formData.selectedRoles || [], // Ensure it's an array
+          workHistory: finalWorkHistory,
+          volunteerHistory: finalVolunteerHistory,
         }),
       });
 
@@ -90,7 +153,7 @@ export default function ApplicationForm({ job, onBack }) {
         throw new Error(data.error || "Failed to submit application");
       }
 
-      // Show success message
+      setHasUnsavedChanges(false);
       alert("Application submitted successfully!");
       onBack();
     } catch (error) {
@@ -103,9 +166,10 @@ export default function ApplicationForm({ job, onBack }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
+      {showConfirmDialog && <ConfirmationDialog />}
       <button
         type="button"
-        onClick={onBack}
+        onClick={handleBack}
         className="mb-4 text-blue-600 hover:text-blue-800"
       >
         ← Back to Jobs
@@ -116,7 +180,7 @@ export default function ApplicationForm({ job, onBack }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              First Name
+              First Name (e.g., John)
             </label>
             <input
               type="text"
@@ -124,26 +188,26 @@ export default function ApplicationForm({ job, onBack }) {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               value={formData.firstName}
               onChange={(e) =>
-                setFormData({ ...formData, firstName: e.target.value })
+                handleFormChange({ ...formData, firstName: e.target.value })
               }
             />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Middle Name
+              Middle Name (e.g., William) - Optional
             </label>
             <input
               type="text"
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               value={formData.middleName}
               onChange={(e) =>
-                setFormData({ ...formData, middleName: e.target.value })
+                handleFormChange({ ...formData, middleName: e.target.value })
               }
             />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Surname
+              Surname (e.g., Smith)
             </label>
             <input
               type="text"
@@ -151,21 +215,7 @@ export default function ApplicationForm({ job, onBack }) {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               value={formData.surname}
               onChange={(e) =>
-                setFormData({ ...formData, surname: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Address
-            </label>
-            <input
-              type="text"
-              required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              value={formData.address}
-              onChange={(e) =>
-                setFormData({ ...formData, address: e.target.value })
+                handleFormChange({ ...formData, surname: e.target.value })
               }
             />
           </div>
@@ -173,19 +223,25 @@ export default function ApplicationForm({ job, onBack }) {
             <label className="block text-sm font-medium text-gray-700">
               Region
             </label>
-            <input
-              type="text"
+            <select
               required
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               value={formData.region}
               onChange={(e) =>
-                setFormData({ ...formData, region: e.target.value })
+                handleFormChange({ ...formData, region: e.target.value })
               }
-            />
+            >
+              <option value="">Select a region</option>
+              {ghanaRegions.map((region) => (
+                <option key={region} value={region}>
+                  {region}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              District
+              District (e.g., Accra Metropolitan)
             </label>
             <input
               type="text"
@@ -193,13 +249,13 @@ export default function ApplicationForm({ job, onBack }) {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               value={formData.district}
               onChange={(e) =>
-                setFormData({ ...formData, district: e.target.value })
+                handleFormChange({ ...formData, district: e.target.value })
               }
             />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Email
+              Email (e.g., john.smith@email.com)
             </label>
             <input
               type="email"
@@ -207,13 +263,13 @@ export default function ApplicationForm({ job, onBack }) {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               value={formData.email}
               onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
+                handleFormChange({ ...formData, email: e.target.value })
               }
             />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Telephone
+              Telephone (e.g., 0244123456)
             </label>
             <input
               type="tel"
@@ -221,7 +277,7 @@ export default function ApplicationForm({ job, onBack }) {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               value={formData.telephone}
               onChange={(e) =>
-                setFormData({ ...formData, telephone: e.target.value })
+                handleFormChange({ ...formData, telephone: e.target.value })
               }
             />
           </div>
@@ -229,83 +285,140 @@ export default function ApplicationForm({ job, onBack }) {
       </div>
 
       <div className="bg-white shadow-md rounded-lg p-6 space-y-6">
-        <h2 className="text-2xl font-bold text-gray-900">Education</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Certificate
-            </label>
-            <input
-              type="text"
-              required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              value={formData.certificate}
-              onChange={(e) =>
-                setFormData({ ...formData, certificate: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Year Completed
-            </label>
-            <input
-              type="text"
-              required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              value={formData.yearCompleted}
-              onChange={(e) =>
-                setFormData({ ...formData, yearCompleted: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Institution
-            </label>
-            <input
-              type="text"
-              required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              value={formData.institution}
-              onChange={(e) =>
-                setFormData({ ...formData, institution: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Class Graduated
-            </label>
-            <input
-              type="text"
-              required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              value={formData.classGraduated}
-              onChange={(e) =>
-                setFormData({ ...formData, classGraduated: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Education Level
-            </label>
-            <select
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-              value={formData.education}
-              onChange={(e) =>
-                setFormData({ ...formData, education: e.target.value })
-              }
-            >
-              <option value="bachelor">Bachelor's Degree</option>
-              <option value="master">Master's Degree</option>
-              <option value="phd">PhD</option>
-              <option value="diploma">Diploma</option>
-              <option value="certificate">Certificate</option>
-            </select>
-          </div>
+        <div className="flex justify-between items-center">
+          <h2 className="text-2xl font-bold text-gray-900">
+            Education History
+          </h2>
+          <p className="text-sm text-gray-500">(Maximum 3 entries)</p>
         </div>
+
+        {formData.educationHistory.map((edu, index) => (
+          <div key={index} className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Education Level
+                </label>
+                <select
+                  required
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  value={edu.level}
+                  onChange={(e) => {
+                    const newEducationHistory = [...formData.educationHistory];
+                    newEducationHistory[index].level = e.target.value;
+                    handleFormChange({
+                      ...formData,
+                      educationHistory: newEducationHistory,
+                    });
+                  }}
+                >
+                  <option value="">Select level</option>
+                  {educationLevels.map((level) => (
+                    <option key={level} value={level}>
+                      {level}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Program (e.g., Computer Science)
+                </label>
+                <input
+                  type="text"
+                  required
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  value={edu.program}
+                  onChange={(e) => {
+                    const newEducationHistory = [...formData.educationHistory];
+                    newEducationHistory[index].program = e.target.value;
+                    handleFormChange({
+                      ...formData,
+                      educationHistory: newEducationHistory,
+                    });
+                  }}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Year Completed (e.g., 2022)
+                </label>
+                <input
+                  type="text"
+                  required
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  value={edu.yearCompleted}
+                  onChange={(e) => {
+                    const newEducationHistory = [...formData.educationHistory];
+                    newEducationHistory[index].yearCompleted = e.target.value;
+                    handleFormChange({
+                      ...formData,
+                      educationHistory: newEducationHistory,
+                    });
+                  }}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Institution (e.g., University of Ghana)
+                </label>
+                <input
+                  type="text"
+                  required
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  value={edu.institution}
+                  onChange={(e) => {
+                    const newEducationHistory = [...formData.educationHistory];
+                    newEducationHistory[index].institution = e.target.value;
+                    handleFormChange({
+                      ...formData,
+                      educationHistory: newEducationHistory,
+                    });
+                  }}
+                />
+              </div>
+            </div>
+            {index > 0 && (
+              <button
+                type="button"
+                onClick={() => {
+                  const newEducationHistory = formData.educationHistory.filter(
+                    (_, i) => i !== index
+                  );
+                  handleFormChange({
+                    ...formData,
+                    educationHistory: newEducationHistory,
+                  });
+                }}
+                className="text-red-600 hover:text-red-800"
+              >
+                Remove Entry
+              </button>
+            )}
+          </div>
+        ))}
+        {formData.educationHistory.length < 3 && (
+          <button
+            type="button"
+            onClick={() =>
+              handleFormChange({
+                ...formData,
+                educationHistory: [
+                  ...formData.educationHistory,
+                  {
+                    level: "",
+                    program: "",
+                    yearCompleted: "",
+                    institution: "",
+                  },
+                ],
+              })
+            }
+            className="mt-2 text-blue-600 hover:text-blue-800"
+          >
+            + Add Education History
+          </button>
+        )}
       </div>
 
       <div className="bg-white shadow-md rounded-lg p-6 space-y-6">
@@ -338,7 +451,7 @@ export default function ApplicationForm({ job, onBack }) {
                       onChange={(e) => {
                         const newWorkHistory = [...formData.workHistory];
                         newWorkHistory[index].position = e.target.value;
-                        setFormData({
+                        handleFormChange({
                           ...formData,
                           workHistory: newWorkHistory,
                         });
@@ -357,7 +470,7 @@ export default function ApplicationForm({ job, onBack }) {
                       onChange={(e) => {
                         const newWorkHistory = [...formData.workHistory];
                         newWorkHistory[index].yearStarted = e.target.value;
-                        setFormData({
+                        handleFormChange({
                           ...formData,
                           workHistory: newWorkHistory,
                         });
@@ -376,7 +489,7 @@ export default function ApplicationForm({ job, onBack }) {
                       onChange={(e) => {
                         const newWorkHistory = [...formData.workHistory];
                         newWorkHistory[index].yearEnded = e.target.value;
-                        setFormData({
+                        handleFormChange({
                           ...formData,
                           workHistory: newWorkHistory,
                         });
@@ -393,7 +506,7 @@ export default function ApplicationForm({ job, onBack }) {
                       onChange={(e) => {
                         const newWorkHistory = [...formData.workHistory];
                         newWorkHistory[index].achievements = e.target.value;
-                        setFormData({
+                        handleFormChange({
                           ...formData,
                           workHistory: newWorkHistory,
                         });
@@ -408,7 +521,10 @@ export default function ApplicationForm({ job, onBack }) {
                       const newWorkHistory = formData.workHistory.filter(
                         (_, i) => i !== index
                       );
-                      setFormData({ ...formData, workHistory: newWorkHistory });
+                      handleFormChange({
+                        ...formData,
+                        workHistory: newWorkHistory,
+                      });
                     }}
                     className="text-red-600 hover:text-red-800"
                   >
@@ -420,7 +536,7 @@ export default function ApplicationForm({ job, onBack }) {
             <button
               type="button"
               onClick={() =>
-                setFormData({
+                handleFormChange({
                   ...formData,
                   workHistory: [
                     ...formData.workHistory,
@@ -473,7 +589,7 @@ export default function ApplicationForm({ job, onBack }) {
                           ...formData.volunteerHistory,
                         ];
                         newVolunteerHistory[index].position = e.target.value;
-                        setFormData({
+                        handleFormChange({
                           ...formData,
                           volunteerHistory: newVolunteerHistory,
                         });
@@ -494,7 +610,7 @@ export default function ApplicationForm({ job, onBack }) {
                           ...formData.volunteerHistory,
                         ];
                         newVolunteerHistory[index].yearStarted = e.target.value;
-                        setFormData({
+                        handleFormChange({
                           ...formData,
                           volunteerHistory: newVolunteerHistory,
                         });
@@ -515,7 +631,7 @@ export default function ApplicationForm({ job, onBack }) {
                           ...formData.volunteerHistory,
                         ];
                         newVolunteerHistory[index].yearEnded = e.target.value;
-                        setFormData({
+                        handleFormChange({
                           ...formData,
                           volunteerHistory: newVolunteerHistory,
                         });
@@ -534,7 +650,7 @@ export default function ApplicationForm({ job, onBack }) {
                           ...formData.volunteerHistory,
                         ];
                         newVolunteerHistory[index].achievement = e.target.value;
-                        setFormData({
+                        handleFormChange({
                           ...formData,
                           volunteerHistory: newVolunteerHistory,
                         });
@@ -548,7 +664,7 @@ export default function ApplicationForm({ job, onBack }) {
                     onClick={() => {
                       const newVolunteerHistory =
                         formData.volunteerHistory.filter((_, i) => i !== index);
-                      setFormData({
+                      handleFormChange({
                         ...formData,
                         volunteerHistory: newVolunteerHistory,
                       });
@@ -563,7 +679,7 @@ export default function ApplicationForm({ job, onBack }) {
             <button
               type="button"
               onClick={() =>
-                setFormData({
+                handleFormChange({
                   ...formData,
                   volunteerHistory: [
                     ...formData.volunteerHistory,
@@ -602,7 +718,7 @@ export default function ApplicationForm({ job, onBack }) {
                   className="mt-1 block w-full"
                   value={value}
                   onChange={(e) =>
-                    setFormData({
+                    handleFormChange({
                       ...formData,
                       competencies: {
                         ...formData.competencies,
@@ -615,60 +731,6 @@ export default function ApplicationForm({ job, onBack }) {
               </div>
             </div>
           ))}
-        </div>
-      </div>
-
-      <div className="bg-white shadow-md rounded-lg p-6 space-y-6">
-        <h2 className="text-2xl font-bold text-gray-900">Role Selection</h2>
-        <div className="space-y-2">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                checked={formData.selectedRoles.includes("M&E")}
-                onChange={(e) => {
-                  const newRoles = e.target.checked
-                    ? [...formData.selectedRoles, "M&E"]
-                    : formData.selectedRoles.filter((role) => role !== "M&E");
-                  setFormData({ ...formData, selectedRoles: newRoles });
-                }}
-              />
-              <span className="ml-2">M&E</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                checked={formData.selectedRoles.includes("Project Manager")}
-                onChange={(e) => {
-                  const newRoles = e.target.checked
-                    ? [...formData.selectedRoles, "Project Manager"]
-                    : formData.selectedRoles.filter(
-                        (role) => role !== "Project Manager"
-                      );
-                  setFormData({ ...formData, selectedRoles: newRoles });
-                }}
-              />
-              <span className="ml-2">Project Manager</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                checked={formData.selectedRoles.includes("Program Officer")}
-                onChange={(e) => {
-                  const newRoles = e.target.checked
-                    ? [...formData.selectedRoles, "Program Officer"]
-                    : formData.selectedRoles.filter(
-                        (role) => role !== "Program Officer"
-                      );
-                  setFormData({ ...formData, selectedRoles: newRoles });
-                }}
-              />
-              <span className="ml-2">Program Officer</span>
-            </label>
-          </div>
         </div>
       </div>
 

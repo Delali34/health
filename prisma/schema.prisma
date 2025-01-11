@@ -1,5 +1,4 @@
 // prisma/schema.prisma
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -30,17 +29,13 @@ model JobApplication {
   firstName   String
   middleName  String?
   surname     String
-  address     String
   region      String
   district    String
   email       String
   telephone   String
   
   // Education
-  certificate String
-  yearCompleted Int
-  institution String
-  classGraduated String
+  educationHistory Json[]  // Array of education history objects
   
   // Employment History
   workHistory Json[]  // Array of work history objects
@@ -51,10 +46,6 @@ model JobApplication {
   // Competencies
   competencies Json  // Object containing all competency ratings
   
-  // Role Selection
-  selectedRoles String[]  // Array of selected roles (M&E, Project Manager)
-  
-  education    String  // Bachelor or Masters
   createdAt   DateTime @default(now())
   status      String   @default("pending")  // pending, reviewed, accepted, rejected
 }

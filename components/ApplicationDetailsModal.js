@@ -18,10 +18,6 @@ const ApplicationDetailsModal = ({
     await onUpdateStatus(application.id, newStatus);
   };
 
-  const formatCompetency = (value) => {
-    return `${value}/10`;
-  };
-
   return (
     isOpen && (
       <div className="fixed inset-0 bg-black bg-opacity-25 flex items-center justify-center p-4">
@@ -65,24 +61,24 @@ const ApplicationDetailsModal = ({
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Education</h3>
-                  <div className="space-y-2">
-                    <p>
-                      <span className="font-medium">Certificate:</span>{" "}
-                      {application.certificate}
-                    </p>
-                    <p>
-                      <span className="font-medium">Institution:</span>{" "}
-                      {application.institution}
-                    </p>
-                    <p>
-                      <span className="font-medium">Year Completed:</span>{" "}
-                      {application.yearCompleted}
-                    </p>
-                    <p>
-                      <span className="font-medium">Class:</span>{" "}
-                      {application.classGraduated}
-                    </p>
+                  <h3 className="text-lg font-semibold mb-2">
+                    Education History
+                  </h3>
+                  <div className="space-y-4">
+                    {application.educationHistory.map((edu, index) => (
+                      <div
+                        key={index}
+                        className="border-l-2 border-gray-200 pl-4"
+                      >
+                        <p className="font-medium">{edu.program}</p>
+                        <p className="text-sm text-gray-600">
+                          {edu.level} - {edu.institution}
+                        </p>
+                        <p className="text-sm">
+                          Completed: {edu.yearCompleted}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -91,18 +87,22 @@ const ApplicationDetailsModal = ({
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Work History</h3>
                   <div className="space-y-4">
-                    {application.workHistory.map((work, index) => (
-                      <div
-                        key={index}
-                        className="border-l-2 border-gray-200 pl-4"
-                      >
-                        <p className="font-medium">{work.position}</p>
-                        <p className="text-sm text-gray-600">
-                          {work.yearStarted} - {work.yearEnded}
-                        </p>
-                        <p className="text-sm">{work.achievements}</p>
-                      </div>
-                    ))}
+                    {application.workHistory.length > 0 ? (
+                      application.workHistory.map((work, index) => (
+                        <div
+                          key={index}
+                          className="border-l-2 border-gray-200 pl-4"
+                        >
+                          <p className="font-medium">{work.position}</p>
+                          <p className="text-sm text-gray-600">
+                            {work.yearStarted} - {work.yearEnded}
+                          </p>
+                          <p className="text-sm">{work.achievements}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-gray-500 italic">No work history</p>
+                    )}
                   </div>
                 </div>
 
@@ -111,18 +111,24 @@ const ApplicationDetailsModal = ({
                     Volunteer History
                   </h3>
                   <div className="space-y-4">
-                    {application.volunteerHistory.map((volunteer, index) => (
-                      <div
-                        key={index}
-                        className="border-l-2 border-gray-200 pl-4"
-                      >
-                        <p className="font-medium">{volunteer.position}</p>
-                        <p className="text-sm text-gray-600">
-                          {volunteer.yearStarted} - {volunteer.yearEnded}
-                        </p>
-                        <p className="text-sm">{volunteer.achievement}</p>
-                      </div>
-                    ))}
+                    {application.volunteerHistory.length > 0 ? (
+                      application.volunteerHistory.map((volunteer, index) => (
+                        <div
+                          key={index}
+                          className="border-l-2 border-gray-200 pl-4"
+                        >
+                          <p className="font-medium">{volunteer.position}</p>
+                          <p className="text-sm text-gray-600">
+                            {volunteer.yearStarted} - {volunteer.yearEnded}
+                          </p>
+                          <p className="text-sm">{volunteer.achievement}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-gray-500 italic">
+                        No volunteer history
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -139,7 +145,7 @@ const ApplicationDetailsModal = ({
                           .replace(/([A-Z])/g, " $1")
                           .replace(/^./, (str) => str.toUpperCase())}
                       </p>
-                      <p className="text-lg">{formatCompetency(value)}</p>
+                      <p className="text-lg">{value}/10</p>
                     </div>
                   )
                 )}
@@ -147,17 +153,11 @@ const ApplicationDetailsModal = ({
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold mb-2">Selected Roles</h3>
-              <div className="flex flex-wrap gap-2">
-                {application.selectedRoles.map((role) => (
-                  <span
-                    key={role}
-                    className="bg-blue-100 text-blue-800 px-2 py-1 rounded"
-                  >
-                    {role}
-                  </span>
-                ))}
-              </div>
+              <h3 className="text-lg font-semibold mb-2">Selected Role</h3>
+              <p className="text-lg">
+                {application.jobPosting?.title ||
+                  "Role information unavailable"}
+              </p>
             </div>
 
             <div className="border-t pt-4 mt-6">
