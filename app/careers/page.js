@@ -91,7 +91,10 @@ export default function CareersPage() {
                     application today.
                   </p>
                   <button
-                    onClick={() => setShowApplication(true)}
+                    onClick={() => {
+                      setShowApplication(true);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                     className="w-full py-2 px-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-lg hover:opacity-90 transition-opacity font-semibold"
                   >
                     Apply Now
