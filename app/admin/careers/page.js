@@ -9,6 +9,8 @@ import AdminLogin from "@/components/AdminLogin";
 
 export default function AdminCareersPage() {
   // All hooks must be at the top level, before any conditional logic
+  const [isEditingJob, setIsEditingJob] = useState(false);
+  const [editingJob, setEditingJob] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [jobs, setJobs] = useState([]);
@@ -102,6 +104,42 @@ export default function AdminCareersPage() {
       console.error("Error adding job:", error);
       alert("Failed to add job. Please try again.");
     }
+  };
+  const handleEditJob = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`/api/jobs/${editingJob.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...editingJob,
+          requirements: editingJob.requirements.filter(
+            (req) => req.trim() !== ""
+          ),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const updatedJob = await response.json();
+      setJobs(jobs.map((job) => (job.id === updatedJob.id ? updatedJob : job)));
+      setIsEditingJob(false);
+      setEditingJob(null);
+      await fetchJobs(); // Refresh the jobs list
+    } catch (error) {
+      console.error("Error updating job:", error);
+      alert("Failed to update job. Please try again.");
+    }
+  };
+
+  const handleOpenEditModal = (job) => {
+    setEditingJob({
+      ...job,
+      requirements: Array.isArray(job.requirements) ? job.requirements : [],
+    });
+    setIsEditingJob(true);
   };
 
   const toggleJobStatus = async (jobId, currentStatus) => {
@@ -293,21 +331,123 @@ export default function AdminCareersPage() {
                     <h3 className="text-xl font-semibold">{job.title}</h3>
                     <p className="text-gray-600">{job.department}</p>
                   </div>
-                  <button
-                    onClick={() => toggleJobStatus(job.id, job.isActive)}
-                    className={`px-4 py-2 rounded-md ${
-                      job.isActive
-                        ? "bg-red-100 text-red-800 hover:bg-red-200"
-                        : "bg-green-100 text-green-800 hover:bg-green-200"
-                    }`}
-                  >
-                    {job.isActive ? "Disable" : "Enable"}
-                  </button>
+                  <div className="flex space-x-2">
+                    <button
+                      onClick={() => handleOpenEditModal(job)}
+                      className="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-md hover:bg-yellow-200"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => toggleJobStatus(job.id, job.isActive)}
+                      className={`px-4 py-2 rounded-md ${
+                        job.isActive
+                          ? "bg-red-100 text-red-800 hover:bg-red-200"
+                          : "bg-green-100 text-green-800 hover:bg-green-200"
+                      }`}
+                    >
+                      {job.isActive ? "Disable" : "Enable"}
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
+        {/* Edit Job Modal */}
+        {isEditingJob && editingJob && (
+          <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
+            <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
+              <h2 className="text-2xl font-bold mb-4">Edit Job</h2>
+              <form onSubmit={handleEditJob} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    value={editingJob.title}
+                    onChange={(e) =>
+                      setEditingJob({ ...editingJob, title: e.target.value })
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Description
+                  </label>
+                  <textarea
+                    required
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    rows={4}
+                    value={editingJob.description}
+                    onChange={(e) =>
+                      setEditingJob({
+                        ...editingJob,
+                        description: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Department
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    value={editingJob.department}
+                    onChange={(e) =>
+                      setEditingJob({
+                        ...editingJob,
+                        department: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Requirements
+                  </label>
+                  <textarea
+                    required
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    rows={4}
+                    value={editingJob.requirements.join("\n")}
+                    onChange={(e) =>
+                      setEditingJob({
+                        ...editingJob,
+                        requirements: e.target.value.split("\n"),
+                      })
+                    }
+                    placeholder="Enter each requirement on a new line"
+                  />
+                </div>
+                <div className="flex justify-end space-x-4">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsEditingJob(false);
+                      setEditingJob(null);
+                    }}
+                    className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
         {/* Applications List */}
         <div className="bg-white shadow-md rounded-lg p-6">
           <h2 className="text-2xl font-bold mb-4">Applications</h2>

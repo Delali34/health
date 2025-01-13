@@ -32,13 +32,14 @@ export default function ApplicationForm({ job, onBack }) {
       microsoftExcel: 0,
       microsoftWord: 0,
       microsoftPowerPoint: 0,
-      research: 0,
-      communication: 0,
       typingSpeed: 0,
       reportWriting: 0,
-      proposalWriting: 0,
       initiativeTaking: 0,
+      communication: 0,
       networking: 0,
+      research: 0,
+      proposalWriting: 0,
+      workingIndepently: 0,
     },
   });
 
@@ -180,7 +181,7 @@ export default function ApplicationForm({ job, onBack }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              First Name (e.g., John)
+              First Name (e.g., Michael)
             </label>
             <input
               type="text"
@@ -194,7 +195,7 @@ export default function ApplicationForm({ job, onBack }) {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Middle Name (e.g., William) - Optional
+              Middle Name (e.g., Selassie) - Optional
             </label>
             <input
               type="text"
@@ -207,7 +208,7 @@ export default function ApplicationForm({ job, onBack }) {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Surname (e.g., Smith)
+              Surname (e.g., Mensah)
             </label>
             <input
               type="text"
@@ -241,7 +242,7 @@ export default function ApplicationForm({ job, onBack }) {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              District (e.g., Accra Metropolitan)
+              District (e.g., Ga North, Tantra Hills)
             </label>
             <input
               type="text"
@@ -255,7 +256,7 @@ export default function ApplicationForm({ job, onBack }) {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Email (e.g., john.smith@email.com)
+              Email (e.g., michael@email.com)
             </label>
             <input
               type="email"
@@ -322,7 +323,7 @@ export default function ApplicationForm({ job, onBack }) {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Program (e.g., Computer Science)
+                  Program (e.g., Health promotion)
                 </label>
                 <input
                   type="text"
@@ -341,7 +342,7 @@ export default function ApplicationForm({ job, onBack }) {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Year Completed (e.g., 2022)
+                  Year Completed (e.g., 2014)
                 </label>
                 <input
                   type="text"
@@ -360,7 +361,7 @@ export default function ApplicationForm({ job, onBack }) {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Institution (e.g., University of Ghana)
+                  Institution (e.g., University of Cape Coast)
                 </label>
                 <input
                   type="text"
@@ -702,7 +703,7 @@ export default function ApplicationForm({ job, onBack }) {
 
       <div className="bg-white shadow-md rounded-lg p-6 space-y-6">
         <h2 className="text-2xl font-bold text-gray-900">Competencies</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid gap-4">
           {Object.entries(formData.competencies).map(([key, value]) => (
             <div key={key}>
               <label className="block text-sm font-medium text-gray-700">
