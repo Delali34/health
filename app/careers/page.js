@@ -24,7 +24,7 @@ export default function CareersPage() {
 
   const JobDetails = ({ job }) => {
     return (
-      <div className="animate-[fadeIn_0.3s_ease-in-out]">
+      <div className="animate-[fadeIn_0.3s_ease-in-out] font-mont">
         <button
           onClick={handleBack}
           className="flex items-center text-gray-600 hover:text-gray-900 mb-6"
@@ -106,7 +106,7 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-mont">
       {/* Hero Section */}
       <header className="bg-gradient-to-r from-purple-600 to-blue-500 text-white text-center py-16">
         <h1 className="lg:text-5xl md:text-4xl text-2xl font-extrabold">

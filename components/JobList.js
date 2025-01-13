@@ -22,12 +22,12 @@ export default function JobList({ jobs = [], onSelect }) {
     <div className="grid gap-6">
       {activeJobs.map((job) => (
         <div key={job.id} className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-semibold text-gray-900">{job.title}</h2>
-          <p className="mt-2 text-gray-600">{job.description}</p>
+          <h2 className="text-3xl font-semibold text-gray-900">{job.title}</h2>
+
           <div className="mt-4">
             <button
               onClick={() => onSelect(job)}
-              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+              className=" text-white px-4 py-2 rounded-md bg-gradient-to-r font-bold  from-purple-600 to-blue-500"
             >
               Apply Now
             </button>

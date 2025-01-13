@@ -9,7 +9,7 @@ export async function GET() {
         applications: true,
       },
       orderBy: {
-        createdAt: "desc",
+        createdAt: "asc",
       },
     });
     return NextResponse.json(jobs);
