@@ -63,6 +63,10 @@ const navItems = [
     label: "Lodge Complain",
     link: "/report",
   },
+  {
+    label: "Careers",
+    link: "/careers",
+  },
 ];
 
 export default function Navbar() {
