@@ -134,7 +134,7 @@ export default function CareersPage() {
                 <p className="text-yellow-800 font-medium">Important Notice:</p>
                 <p className="mt-1 text-yellow-700">
                   Job applications are completely FREE. Never pay anyone for job
-                  opportunities at our company.
+                  opportunities at our organization.
                 </p>
               </div>
             </div>
