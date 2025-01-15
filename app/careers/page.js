@@ -49,9 +49,9 @@ export default function CareersPage() {
           <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-8 text-white">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">{job.title}</h1>
             <div className="flex flex-wrap gap-4 text-sm mt-4">
-              <div className="flex items-center px-3 py-1 bg-white/10 rounded-full">
+              {/* <div className="flex items-center px-3 py-1 bg-white/10 rounded-full">
                 <span>{job.department}</span>
-              </div>
+              </div> */}
             </div>
           </div>
 

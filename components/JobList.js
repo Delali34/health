@@ -52,7 +52,7 @@ export default function JobList({ jobs = [], onSelect }) {
                 </div>
 
                 <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
-                  {job.department && (
+                  {/* {job.department && (
                     <div className="flex items-center">
                       <svg
                         className="mr-2 h-4 w-4"
@@ -69,7 +69,7 @@ export default function JobList({ jobs = [], onSelect }) {
                       </svg>
                       {job.department}
                     </div>
-                  )}
+                  )} */}
                   {job.location && (
                     <div className="flex items-center">
                       <svg
