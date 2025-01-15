@@ -133,6 +133,7 @@ export default function CareersPage() {
                   Applications to Africa Health Promotion Organization is free
                   of charge. Report anyone who makes demands including financial
                   payment from you through the email provided.
+                  (NGO@africahealthpromotion.org)
                 </p>
               </div>
             </div>
