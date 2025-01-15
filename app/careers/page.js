@@ -130,7 +130,7 @@ export default function CareersPage() {
               <div className="ml-3">
                 <p className="text-yellow-800 font-medium">Important Notice:</p>
                 <p className="mt-1 text-yellow-700">
-                  Applications to Africa Health Promotion Organization is free
+                  Applications to Africa Health Promotion Organization is FREE
                   of charge. Report anyone who makes demands including financial
                   payment from you through the email provided.
                   (NGO@africahealthpromotion.org)
