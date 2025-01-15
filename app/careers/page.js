@@ -110,9 +110,6 @@ export default function CareersPage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center">
             Apply for a Job
           </h1>
-          <p className="text-xl mt-6 text-center text-blue-100">
-            Join our team and make a difference globally
-          </p>
 
           {/* Warning Alert */}
           <div className="mt-8 max-w-2xl mx-auto bg-yellow-50 border border-yellow-200 rounded-lg p-4">
@@ -133,8 +130,9 @@ export default function CareersPage() {
               <div className="ml-3">
                 <p className="text-yellow-800 font-medium">Important Notice:</p>
                 <p className="mt-1 text-yellow-700">
-                  Job applications are completely FREE. Never pay anyone for job
-                  opportunities at our organization.
+                  Applications to Africa Health Promotion Organization is free
+                  of charge. Report anyone who makes demands including financial
+                  payment from you through the email provided.
                 </p>
               </div>
             </div>
