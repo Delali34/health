@@ -27,7 +27,7 @@ export default function CareersPage() {
       <div className="animate-[fadeIn_0.3s_ease-in-out] font-mont">
         <button
           onClick={handleBack}
-          className="flex items-center text-gray-600 hover:text-gray-900 mb-6"
+          className="flex items-center text-gray-600 hover:text-gray-900 mb-6 transition-colors"
         >
           <svg
             className="w-4 h-4 mr-2"
@@ -45,57 +45,51 @@ export default function CareersPage() {
           Back to Positions
         </button>
 
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-purple-600 to-blue-500 p-6 text-white">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">{job.title}</h1>
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-8 text-white">
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{job.title}</h1>
             <div className="flex flex-wrap gap-4 text-sm mt-4">
-              <div className="flex items-center">
+              <div className="flex items-center px-3 py-1 bg-white/10 rounded-full">
                 <span>{job.department}</span>
               </div>
             </div>
           </div>
 
-          <div className="p-6">
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="md:col-span-2 space-y-6">
+          <div className="p-8">
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="md:col-span-2 space-y-8">
                 <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-4">
-                    Description
+                  <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                    About the Role
                   </h2>
-                  <p className="text-gray-700 whitespace-pre-wrap">
+                  <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
                     {job.description}
                   </p>
                 </section>
 
                 <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                  <h2 className="text-2xl font-semibold text-gray-900 mb-4">
                     Requirements
                   </h2>
-                  <ul className="space-y-3 text-gray-700">
+                  <ul className="space-y-4 text-gray-700">
                     {job.requirements.map((requirement, index) => (
-                      <p key={index} className="ml-4">
-                        {requirement}
-                      </p>
+                      <div>
+                        <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full " />
+                        <span>{requirement}</span>
+                      </div>
                     ))}
                   </ul>
                 </section>
               </div>
 
               <div className="md:col-span-1">
-                <div className="sticky top-6 bg-gray-50 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                    Ready to Apply?
-                  </h3>
-                  <p className="text-gray-600 mb-6">
-                    Take the next step in your career journey. Submit your
-                    application today.
-                  </p>
+                <div className="sticky top-6 bg-gray-50 rounded-xl p-6 border border-gray-100">
                   <button
                     onClick={() => {
                       setShowApplication(true);
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="w-full py-2 px-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-lg hover:opacity-90 transition-opacity font-semibold"
+                    className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg hover:opacity-90 transition-all duration-200 font-semibold shadow-sm hover:shadow-md"
                   >
                     Apply Now
                   </button>
@@ -109,25 +103,53 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-mont">
+    <div className="min-h-screen bg-gray-50 font-mont">
       {/* Hero Section */}
-      <header className="bg-gradient-to-r from-purple-600 to-blue-500 text-white text-center py-16">
-        <h1 className="lg:text-5xl md:text-4xl text-2xl font-extrabold">
-          Apply for a job
-        </h1>
-        <p className="md:text-lg text-sm mt-4">
-          Explore opportunities and make a difference with us.
-        </p>
+      <header className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center">
+            Apply for a Job
+          </h1>
+          <p className="text-xl mt-6 text-center text-blue-100">
+            Join our team and make a difference globally
+          </p>
+
+          {/* Warning Alert */}
+          <div className="mt-8 max-w-2xl mx-auto bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            <div className="flex items-start">
+              <div className="flex-shrink-0">
+                <svg
+                  className="h-5 w-5 text-yellow-600"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8.485 2.495c.873-1.512 3.157-1.512 4.03 0l6.28 10.875c.873 1.512-.218 3.397-2.015 3.397H4.22c-1.797 0-2.888-1.885-2.015-3.397l6.28-10.875zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-yellow-800 font-medium">Important Notice:</p>
+                <p className="mt-1 text-yellow-700">
+                  Job applications are completely FREE. Never pay anyone for job
+                  opportunities at our company.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </header>
 
       {/* Content Section */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {!selectedJob ? (
           <div>
-            <h2 className="md:text-3xl text-xl font-bold text-gray-800 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               Available Positions
             </h2>
-            <p className="text-gray-600 mb-8">We are recruiting</p>
+
             <JobList
               jobs={jobs}
               onSelect={(job) => {
