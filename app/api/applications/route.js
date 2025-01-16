@@ -40,6 +40,7 @@ export async function POST(req) {
     const competencies =
       typeof data.competencies === "object" ? data.competencies : {};
 
+    // Create application with included jobPosting relation
     const application = await prisma.jobApplication.create({
       data: {
         jobPostingId: data.jobPostingId,
@@ -55,6 +56,9 @@ export async function POST(req) {
         volunteerHistory: volunteerHistory,
         competencies: competencies,
         status: "pending",
+      },
+      include: {
+        jobPosting: true, // Include the job posting data
       },
     });
 
@@ -73,11 +77,12 @@ export async function POST(req) {
     );
   }
 }
+
 export async function GET() {
   try {
     const applications = await prisma.jobApplication.findMany({
       include: {
-        jobPosting: true, // Include the related job posting details
+        jobPosting: true,
       },
       orderBy: {
         createdAt: "desc",
