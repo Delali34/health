@@ -1,13 +1,91 @@
-// app/api/applications/route.js
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import sendApplicationConfirmationEmail from "@/lib/email";
+import { writeFile, mkdir } from "fs/promises";
+import { join } from "path";
+import { existsSync } from "fs";
+
+// Helper function to ensure upload directory exists
+async function ensureUploadDirectory() {
+  const uploadDir = join(process.cwd(), "public", "uploads");
+  if (!existsSync(uploadDir)) {
+    await mkdir(uploadDir, { recursive: true });
+  }
+  return uploadDir;
+}
+
+// Helper function to handle file upload
+async function saveFile(file) {
+  try {
+    const uploadDir = await ensureUploadDirectory();
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+
+    // Create a unique file name
+    const uniqueName = `${Date.now()}-${file.name}`;
+    const path = join(uploadDir, uniqueName);
+
+    // Write the file
+    await writeFile(path, buffer);
+    return {
+      fileName: file.name,
+      filePath: `/uploads/${uniqueName}`,
+    };
+  } catch (error) {
+    console.error("Error saving file:", error);
+    throw new Error(`File upload failed: ${error.message}`);
+  }
+}
 
 export async function POST(req) {
   try {
-    const data = await req.json();
+    // Get form data
+    const formData = await req.formData();
 
-    // Validate and process education history
+    // Handle CV file upload
+    const cvFile = formData.get("cvFile");
+    let cvData = null;
+
+    if (cvFile) {
+      // Validate file size (3MB)
+      const fileSize = cvFile.size;
+      const maxSize = 3 * 1024 * 1024; // 3MB in bytes
+
+      if (fileSize > maxSize) {
+        return NextResponse.json(
+          { error: "File size must be less than 3MB" },
+          { status: 400 }
+        );
+      }
+
+      // Validate file type
+      const allowedTypes = [
+        "application/pdf",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      ];
+
+      if (!allowedTypes.includes(cvFile.type)) {
+        return NextResponse.json(
+          { error: "Only PDF and Word documents are allowed" },
+          { status: 400 }
+        );
+      }
+
+      try {
+        cvData = await saveFile(cvFile);
+      } catch (uploadError) {
+        return NextResponse.json(
+          { error: uploadError.message },
+          { status: 500 }
+        );
+      }
+    }
+
+    // Parse the JSON data
+    const data = JSON.parse(formData.get("data"));
+
+    // Rest of your existing application processing code...
     const educationHistory = Array.isArray(data.educationHistory)
       ? data.educationHistory.map((edu) => ({
           level: edu.level,
@@ -17,7 +95,6 @@ export async function POST(req) {
         }))
       : [];
 
-    // Process work and volunteer history
     const workHistory = Array.isArray(data.workHistory)
       ? data.workHistory.map((work) => ({
           position: work.position,
@@ -36,11 +113,10 @@ export async function POST(req) {
         }))
       : [];
 
-    // Ensure competencies is an object
     const competencies =
       typeof data.competencies === "object" ? data.competencies : {};
 
-    // Create application with included jobPosting relation
+    // Create application with included jobPosting relation and CV data
     const application = await prisma.jobApplication.create({
       data: {
         jobPostingId: data.jobPostingId,
@@ -56,9 +132,11 @@ export async function POST(req) {
         volunteerHistory: volunteerHistory,
         competencies: competencies,
         status: "pending",
+        cvFile: cvData?.filePath || null,
+        cvFileName: cvData?.fileName || null,
       },
       include: {
-        jobPosting: true, // Include the job posting data
+        jobPosting: true,
       },
     });
 

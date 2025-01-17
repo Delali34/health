@@ -34,6 +34,9 @@ model JobApplication {
   email       String
   telephone   String
   
+  cvFile      String?  // URL/path to stored CV file
+  cvFileName  String?  // Original file name
+
   // Education
   educationHistory Json[]  // Array of education history objects
   

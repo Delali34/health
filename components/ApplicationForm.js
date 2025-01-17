@@ -6,6 +6,8 @@ export default function ApplicationForm({ job, onBack }) {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [hasNoWorkHistory, setHasNoWorkHistory] = useState(false);
   const [hasNoVolunteerHistory, setHasNoVolunteerHistory] = useState(false);
+  const [cvFile, setCvFile] = useState(null);
+  const [cvError, setCvError] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     middleName: "",
@@ -14,6 +16,8 @@ export default function ApplicationForm({ job, onBack }) {
     district: "",
     email: "",
     telephone: "",
+    cvFile: null,
+    cvFileName: "",
     educationHistory: [
       {
         level: "",
@@ -76,6 +80,36 @@ export default function ApplicationForm({ job, onBack }) {
     setHasUnsavedChanges(true);
   };
 
+  const handleCVUpload = (e) => {
+    const file = e.target.files[0];
+    setCvError("");
+
+    if (!file) return;
+
+    // Check file type
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
+    if (!allowedTypes.includes(file.type)) {
+      setCvError("Please upload a PDF or Word document");
+      return;
+    }
+
+    // Check file size (3MB = 3 * 1024 * 1024 bytes)
+    if (file.size > 3 * 1024 * 1024) {
+      setCvError("File size must be less than 3MB");
+      return;
+    }
+
+    setCvFile(file);
+    handleFormChange({
+      ...formData,
+      cvFileName: file.name,
+    });
+  };
+
   // Handle back navigation
   const handleBack = useCallback(() => {
     try {
@@ -135,17 +169,28 @@ export default function ApplicationForm({ job, onBack }) {
         ? []
         : formData.volunteerHistory;
 
-      const response = await fetch("/api/applications", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      // Create FormData for multipart/form-data submission
+      const formDataToSubmit = new FormData();
+
+      // Append CV file if exists
+      if (cvFile) {
+        formDataToSubmit.append("cvFile", cvFile);
+      }
+
+      // Append other data as JSON
+      formDataToSubmit.append(
+        "data",
+        JSON.stringify({
           ...formData,
           jobPostingId: job.id,
           workHistory: finalWorkHistory,
           volunteerHistory: finalVolunteerHistory,
-        }),
+        })
+      );
+
+      const response = await fetch("/api/applications", {
+        method: "POST",
+        body: formDataToSubmit, // FormData will set the correct content-type
       });
 
       const data = await response.json();
@@ -732,6 +777,33 @@ export default function ApplicationForm({ job, onBack }) {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+      <div className="bg-white shadow-md rounded-lg p-6 space-y-6">
+        <h2 className="text-2xl font-bold text-gray-900">CV Upload</h2>
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Upload your CV (PDF or Word, max 3MB)
+            </label>
+            <input
+              type="file"
+              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              onChange={handleCVUpload}
+              className="mt-1 block w-full text-sm text-gray-500
+                file:mr-4 file:py-2 file:px-4
+                file:rounded-full file:border-0
+                file:text-sm file:font-semibold
+                file:bg-blue-50 file:text-blue-700
+                hover:file:bg-blue-100"
+            />
+            {cvError && <p className="mt-2 text-sm text-red-600">{cvError}</p>}
+            {cvFile && !cvError && (
+              <p className="mt-2 text-sm text-green-600">
+                Selected file: {cvFile.name}
+              </p>
+            )}
+          </div>
         </div>
       </div>
 

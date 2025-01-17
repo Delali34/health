@@ -18,6 +18,13 @@ const ApplicationDetailsModal = ({
     await onUpdateStatus(application.id, newStatus);
   };
 
+  const handleViewCV = () => {
+    // Assuming the cvFile field contains a URL to the stored file
+    if (application.cvFile) {
+      window.open(application.cvFile, "_blank");
+    }
+  };
+
   return (
     isOpen && (
       <div className="fixed inset-0 bg-black bg-opacity-25 flex items-center justify-center p-4">
@@ -159,6 +166,23 @@ const ApplicationDetailsModal = ({
                   "Role information unavailable"}
               </p>
             </div>
+            {/* Add CV section */}
+            {application.cvFile && (
+              <div>
+                <h3 className="text-lg font-semibold mb-2">CV Document</h3>
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm text-gray-600">
+                    {application.cvFileName || "CV Document"}
+                  </span>
+                  <button
+                    onClick={handleViewCV}
+                    className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+                  >
+                    View CV
+                  </button>
+                </div>
+              </div>
+            )}
 
             <div className="border-t pt-4 mt-6">
               <div className="flex justify-between items-center">
