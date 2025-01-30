@@ -34,6 +34,7 @@ const VolunteerForm = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,22 +46,23 @@ const VolunteerForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading state to true
+    setLoading(true);
+    setError("");
 
-    const form = e.target;
-    const formData = new FormData(form);
-
-    // Handle form submission using Getform
     try {
-      await fetch("https://getform.io/f/lajkqqrb", {
+      const response = await fetch("/api/volunteer", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-      // Set submitted state to true and reset form after successful submission
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        form.reset(); // Reset the form after submission
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        // Reset form
         setFormData({
           fullName: "",
           phoneNumber: "",
@@ -71,15 +73,21 @@ const VolunteerForm = () => {
           otherAvailability: "",
           region: "",
         });
-        setLoading(false); // Set loading state back to false
-      }, 5000);
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
+      } else {
+        throw new Error(data.error || "Failed to submit form");
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
-      // Handle error here
-      setLoading(false); // Set loading state back to false
+      setError("Failed to submit form. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
-
   return (
     <div
       className="bg-cover bg-center px-5 py-20"
@@ -245,13 +253,18 @@ const VolunteerForm = () => {
               ))}
             </select>
           </div>
+          {error && (
+            <div className="bg-red-500 text-white text-center py-2 px-4 mb-4">
+              {error}
+            </div>
+          )}
 
-          {/* Submit Button */}
+          {/* Update submit button to show loading state */}
           <div className="flex justify-center">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              disabled={loading} // Disable button while loading
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:bg-blue-300"
+              disabled={loading}
             >
               {loading ? "Submitting..." : "Submit"}
             </button>

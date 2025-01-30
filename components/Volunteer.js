@@ -15,6 +15,7 @@ function Page() {
   const [interests, setInterests] = useState([]);
   const [customInterest, setCustomInterest] = useState("");
   const [daysAvailable, setDaysAvailable] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleDonationClick = (skill) => {
     if (!skills.includes(skill)) {
@@ -51,48 +52,62 @@ function Page() {
     setDaysAvailable(updatedDays);
   };
 
-  const handleSuccess = () => {
-    // Construct the template parameters with form data
-    const templateParams = {
-      firstName: firstName,
-      email: email,
-      phone: phone,
-      skills: skills.join(", "),
-      interests: interests.join(", "),
-    };
+  const handleSubmit = async () => {
+    if (!firstName || !email || !phone) {
+      alert("Please fill in all required fields");
+      return;
+    }
 
-    // Send the form data using EmailJS
-    emailjs
-      .sendForm("service_mo1be1b", "template_9u8lcyi", form.current, {
-        publicKey: "sk_test_8245da115ece7428429d018e4ccb68182378401d",
-      })
-      .then((response) => {
-        alert("Email sent successfully!", response);
-        // Display success message
-        const message = `Email sent successfully! We will get back to you soon 😍`;
-        setSuccessMessage(message);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/volunteer", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName,
+          email,
+          phone,
+          skills,
+          interests,
+          daysAvailable,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSuccessMessage(
+          "Thank you for volunteering! We'll contact you soon 😍"
+        );
         setShowSuccessMessage(true);
 
-        // Reset form fields and skills after successful submission
+        // Reset form
         setFirstName("");
         setEmail("");
-        setDonationAmount("");
         setPhone("");
         setSkills([]);
         setCustomSkill("");
         setInterests([]);
         setCustomInterest("");
+        setDaysAvailable([]);
 
         // Hide success message after 5 seconds
         setTimeout(() => {
           setShowSuccessMessage(false);
           setSuccessMessage("");
         }, 5000);
-      })
-      .catch((error) => {
-        console.error("Email could not be sent:", error);
-        // Handle error logic here if needed
-      });
+      } else {
+        throw new Error(data.error || "Failed to submit form");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to submit form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -297,8 +312,12 @@ function Page() {
 
               <div className="flex justify-center">
                 <div className="bg-white text-black w-[130px] lg:text-xl text-[12px] font-semibold mt-5 rounded-xl hover:bg-black cursor-pointer hover:text-white p-3">
-                  <button onClick={handleSuccess} type="button">
-                    Submit
+                  <button
+                    onClick={handleSubmit}
+                    type="button"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Submit"}
                   </button>
                 </div>
               </div>
