@@ -64,7 +64,7 @@ const Hero2 = () => {
                 <span className="text-blue-400 text-xl font-medium tracking-wider">
                   Welcome to
                 </span>
-                <h1 className="mt-4 text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight">
+                <h1 className="mt-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight">
                   Africa Health{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
                     Promotion
