@@ -119,14 +119,6 @@ const Services = () => {
         />
       </div>
 
-      {/* Connecting dot patterns */}
-      <div className="hidden lg:block">
-        <DotPattern className="top-1/4 left-10" />
-        <DotPattern className="top-1/3 right-10" />
-        <DotPattern className="bottom-1/4 left-1/4" />
-        <DotPattern className="bottom-1/3 right-1/4" />
-      </div>
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -158,7 +150,6 @@ const Services = () => {
               variants={itemVariants}
               className="h-full relative group"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg opacity-0 group-hover:opacity-100 blur transform scale-105 transition-all duration-300" />
               <div className="relative h-full bg-white dark:bg-gray-900 rounded-lg shadow-xl overflow-hidden border border-indigo-100 dark:border-indigo-900 transition-all duration-300 group-hover:translate-y-[-5px]">
                 <div className="relative h-48 overflow-hidden">
                   <motion.img
