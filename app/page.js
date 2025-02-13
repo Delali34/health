@@ -10,8 +10,7 @@ import Solutions from "@/components/Solutions2";
 import Testimonials from "@/components/Test";
 import RecentBlog from "@/components/RecentBlog";
 import WhoWeAre from "@/components/WhoWeAre";
-import Stats2 from "@/components/Stat3";
-import Accordion from "@/components/Accordion";
+
 import Report from "@/components/Report";
 
 import { GrLinkTop } from "react-icons/gr";
@@ -40,12 +39,8 @@ function page() {
   return (
     <div>
       <Hero />
-      <div className="hidden md:block">
-        <Stats />
-      </div>
-      <div className="md:hidden block">
-        <Stats2 />
-      </div>
+
+      <Stats />
 
       {/* <Infographics /> */}
       <WhoWeAre />
