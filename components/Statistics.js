@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 const stats = [
@@ -27,15 +27,56 @@ const stats = [
 ];
 
 const Stats2 = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [visibleSections, setVisibleSections] = useState({
+    header: false,
+    stats: false,
+  });
+
+  const headerRef = useRef(null);
+  const statsRef = useRef(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    };
+
+    const headerObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setVisibleSections((prev) => ({ ...prev, header: true }));
+          headerObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setVisibleSections((prev) => ({ ...prev, stats: true }));
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    if (headerRef.current) {
+      headerObserver.observe(headerRef.current);
+    }
+    if (statsRef.current) {
+      statsObserver.observe(statsRef.current);
+    }
+
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % stats.length);
     }, 5000);
-    return () => clearInterval(interval);
+
+    return () => {
+      headerObserver.disconnect();
+      statsObserver.disconnect();
+      clearInterval(interval);
+    };
   }, []);
 
   return (
@@ -53,7 +94,14 @@ const Stats2 = () => {
         {/* Main Content */}
         <div className="relative z-10">
           {/* Header */}
-          <div className="text-center mb-20 opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
+          <div
+            ref={headerRef}
+            className={`text-center mb-20 opacity-0 ${
+              visibleSections.header
+                ? "animate-[fadeIn_1s_ease-out_forwards]"
+                : ""
+            }`}
+          >
             <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-transparent">
               Impact Metrics
             </h2>
@@ -61,12 +109,15 @@ const Stats2 = () => {
           </div>
 
           {/* Stats Display */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
+          <div
+            ref={statsRef}
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative"
+          >
             {stats.map((stat, index) => (
               <div
                 key={index}
                 className={`transform transition-all duration-700 ${
-                  isVisible
+                  visibleSections.stats
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-20"
                 }`}
@@ -106,18 +157,6 @@ const Stats2 = () => {
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/0 via-blue-400/10 to-indigo-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Mobile Indicator */}
-          <div className="flex justify-center gap-2 mt-8 ">
-            {stats.map((_, index) => (
-              <div
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  activeIndex === index ? "bg-blue-400 w-6" : "bg-white/20"
-                }`}
-              />
             ))}
           </div>
         </div>

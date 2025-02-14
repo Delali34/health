@@ -2,12 +2,11 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { motion } from "framer-motion";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 const paragraphStyle = {
@@ -45,14 +44,7 @@ const stories = [
 ];
 
 export default function SuccessStories() {
-  const progressCircle = useRef(null);
-  const progressContent = useRef(null);
   const [isOpen, setIsOpen] = useState(Array(stories.length).fill(false));
-
-  const onAutoplayTimeLeft = (s, time, progress) => {
-    progressCircle.current.style.setProperty("--progress", 1 - progress);
-    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-  };
 
   const toggleDescription = (index) => {
     const newIsOpen = [...isOpen];
@@ -78,7 +70,7 @@ export default function SuccessStories() {
         {/* Main Content */}
         <div className="relative z-10">
           {/* Header */}
-          <div className="text-center mb-20 opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
+          <div className="text-center mb-16 opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
             <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-transparent">
               Success Stories
             </h2>
@@ -90,64 +82,56 @@ export default function SuccessStories() {
           </div>
 
           {/* Swiper */}
-          <Swiper
-            spaceBetween={30}
-            centeredSlides={true}
-            autoplay={{
-              delay: 15000,
-              disableOnInteraction: false,
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[Autoplay, Pagination, Navigation]}
-            onAutoplayTimeLeft={onAutoplayTimeLeft}
-            className="mySwiper"
-          >
-            {stories.map((story, index) => (
-              <SwiperSlide key={index}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                  className="flex items-center justify-center h-full"
-                >
-                  <div className="max-w-[700px] text-left flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white/10 backdrop-blur-sm p-6 text-white border border-white/10 rounded-3xl hover:border-white/20 transition-all duration-500">
-                    <div className="w-[200px] h-[200px] relative overflow-hidden rounded-2xl">
-                      <Image
-                        src={story.image}
-                        alt="Success Story"
-                        fill
-                        className="object-cover"
-                      />
+          <div className="mt-12">
+            {" "}
+            {/* Adjusted margin to move Swiper down */}
+            <Swiper
+              spaceBetween={30}
+              centeredSlides={true}
+              autoplay={{
+                delay: 15000,
+                disableOnInteraction: false,
+              }}
+              navigation={true}
+              modules={[Autoplay, Navigation]}
+              className="mySwiper"
+            >
+              {stories.map((story, index) => (
+                <SwiperSlide key={index}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2 }}
+                    className="flex items-center justify-center h-full"
+                  >
+                    <div className="max-w-[700px] text-left flex flex-col items-center mx-auto px-5 text-[12px] md:text-[16px] bg-white/10 backdrop-blur-sm p-6 text-white border border-white/10 rounded-3xl hover:border-white/20 transition-all duration-500">
+                      <div className="w-[200px] h-[200px] relative overflow-hidden rounded-2xl">
+                        <Image
+                          src={story.image}
+                          alt="Success Story"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <p
+                        className="mt-4 text-gray-200"
+                        style={isOpen[index] ? null : paragraphStyle}
+                      >
+                        {story.text}
+                      </p>
+                      <button
+                        className="mt-2 text-blue-400 underline cursor-pointer"
+                        onClick={() => toggleDescription(index)}
+                      >
+                        {isOpen[index] ? "Read less" : "Read more"}
+                      </button>
                     </div>
-                    <p
-                      className="mt-4 text-gray-200"
-                      style={isOpen[index] ? null : paragraphStyle}
-                    >
-                      {story.text}
-                    </p>
-                    <button
-                      className="mt-2 text-blue-400 underline cursor-pointer"
-                      onClick={() => toggleDescription(index)}
-                    >
-                      {isOpen[index] ? "Read less" : "Read more"}
-                    </button>
-                  </div>
-                </motion.div>
-              </SwiperSlide>
-            ))}
-
-            {/* Autoplay Progress */}
-            <div className="autoplay-progress" slot="container-end">
-              <svg viewBox="0 0 48 48" ref={progressCircle}>
-                <circle cx="24" cy="24" r="20"></circle>
-              </svg>
-              <span ref={progressContent}></span>
-            </div>
-          </Swiper>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </div>
     </section>

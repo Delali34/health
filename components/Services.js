@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
 const serviceContent = {
   heading: {
@@ -116,30 +115,11 @@ const Services = () => {
                   <p className="text-gray-300 leading-relaxed">
                     {item.description}
                   </p>
-                  <motion.button
-                    className="group inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm md:text-base font-medium transition-colors"
-                    whileHover={{ x: 10 }}
-                  >
-                    <span>Learn more</span>
-                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
-                  </motion.button>
                 </div>
 
                 {/* Hover Effect */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/0 via-blue-400/10 to-indigo-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
-            ))}
-          </div>
-
-          {/* Mobile Indicator */}
-          <div className="flex justify-center gap-2 mt-8">
-            {serviceContent.items.map((_, index) => (
-              <div
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  activeIndex === index ? "bg-blue-400 w-6" : "bg-white/20"
-                }`}
-              />
             ))}
           </div>
         </div>

@@ -1,304 +1,181 @@
 "use client";
-import React, { useCallback, useEffect, useState, useRef } from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import { getPosts } from "@/services/index";
-import { useTypewriter, Cursor } from "react-simple-typewriter";
-import Typewriter from "typewriter-effect";
 
-const blogContent = {
-  heading: {
-    headingSubTitle: "",
-    headingTitle: "Our Latest Articles",
-    description: "Get more insights from our latest posts",
-  },
-  recentBlog: [
-    {
-      permalink: "#_",
-      featuredImg: "/image2.jpg",
-      title: "10 Essential Tips for Protecting Your Home from Burglaries",
-      exerpt:
-        "Hypertension, waist pains and diabetic conditions topped the list of health-related problems Africa Health Promotion Organisation (AfricaHPO) recorded at a day’s free health screening exercise it organised at New Ningo",
-      author: {
-        img: "/image5.jpg",
-        name: "Africa HPO",
-        titleRole: "Health Promotion",
-      },
-    },
-    {
-      permalink: "#_",
-      featuredImg: "/image2.jpg",
-      title: "10 Essential Tips for Protecting Your Home from Burglaries",
-      exerpt:
-        "Hypertension, waist pains and diabetic conditions topped the list of health-related problems Africa Health Promotion Organisation (AfricaHPO) recorded at a day’s free health screening exercise it organised at New Ningo",
-      author: {
-        img: "/image5.jpg",
-        name: "Africa HPO",
-        titleRole: "Health Promotion",
-      },
-    },
-    {
-      permalink: "#_",
-      featuredImg: "/image3.jpg",
-      title: "10 Essential Tips for Protecting Your Home from Burglaries",
-      exerpt:
-        "Hypertension, waist pains and diabetic conditions topped the list of health-related problems Africa Health Promotion Organisation (AfricaHPO) recorded at a day’s free health screening exercise it organised at New Ningo",
-      author: {
-        img: "/image5.jpg",
-        name: "Africa HPO",
-        titleRole: "Health Promotion",
-      },
-    },
-    {
-      permalink: "#_",
-      featuredImg: "/image4.jpg",
-      title: "10 Essential Tips for Protecting Your Home from Burglaries",
-      exerpt:
-        "Hypertension, waist pains and diabetic conditions topped the list of health-related problems Africa Health Promotion Organisation (AfricaHPO) recorded at a day’s free health screening exercise it organised at New Ningo",
-      author: {
-        img: "/image5.jpg",
-        name: "Africa HPO",
-        titleRole: "Health Promotion",
-      },
-    },
-    {
-      permalink: "#_",
-      featuredImg: "/image2.jpg",
-      title: "10 Essential Tips for Protecting Your Home from Burglaries",
-      exerpt:
-        "Hypertension, waist pains and diabetic conditions topped the list of health-related problems Africa Health Promotion Organisation (AfricaHPO) recorded at a day’s free health screening exercise it organised at New Ningo",
-      author: {
-        img: "/image5.jpg",
-        name: "Africa HPO",
-        titleRole: "Health Promotion",
-      },
-    },
-  ],
-  cta: {
-    href: "/blog",
-    label: "To View All posts",
-    labelSuffix: "Click here",
-  },
-};
-
-const RecentBlog = ({ post }) => {
-  useEffect(() => {
-    AOS.init({
-      duration: 700,
-      easing: "slide",
-      once: true,
-    });
-  });
-  const [slideIndex, setSlideIndex] = useState(0);
-  const [isEnd, setIsEnd] = useState(null);
-  const [isBeginning, setIsBeginning] = useState(null);
-  const sliderRef = useRef(null);
-
-  useEffect(() => {
-    setIsEnd(sliderRef.current?.swiper.isEnd);
-    setIsBeginning(sliderRef.current?.swiper.isBeginning);
-  });
-
-  const prevHandler = useCallback(() => {
-    if (!sliderRef.current) return;
-    sliderRef.current.swiper.slidePrev();
-  });
-  const nextHandler = useCallback(() => {
-    if (!sliderRef.current) return;
-    sliderRef.current.swiper.slideNext();
-  });
+const BlogSection = () => {
   const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await getPosts();
-        setPosts(data.slice(0, 5)); // Only keep the first 5 posts
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      }
-    }
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    fetchData();
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const fetchedPosts = await getPosts();
+        console.log("Fetched posts:", fetchedPosts); // Debug log
+        const processedPosts = fetchedPosts?.edges || fetchedPosts || [];
+        setPosts(processedPosts.slice(0, 6));
+      } catch (err) {
+        console.error("Error fetching posts:", err); // Debug log
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPosts();
   }, []);
 
-  const [text] = useTypewriter({
-    words: ["News", "Updates", "Campaignes", "Articles"],
-    loop: false,
-    delaySpeed: 1500,
-  });
+  // Debug log for rendered posts
+  useEffect(() => {
+    console.log("Current posts state:", posts);
+  }, [posts]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-900"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-500">
+        Error loading posts: {error}
+      </div>
+    );
+  }
+
   return (
-    <section className="py-20 bg-light overflow-x-hidden font-mont">
-      <div className="container px-4 mx-auto">
-        <div className="lg:flex justify-between items-center mb-10">
-          <div className="lg:w-5/12 mb-10 lg:mb-0">
-            <span
-              className="inline-block z-50 py-0.5 pl-3 text-heading font-semibold relative mb-7 before:content-[''] before:absolute before:w-2/3 before:bg-yellowLight before:left-0 before:top-0 before:bottom-0 before:-z-10 "
-              data-aos="fade-up"
-            >
-              {blogContent.heading.headingSubTitle}
-            </span>
-            <div
-              className="text-heading text-2xl lg:text-4xl font-bold mb-5 gap-2 flex items-center"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <h1 className="text-black  text-2xl  font-bold">
-                Get Our Latest
-              </h1>
-              <span className="text-blue-500 text-2xl">
-                <Typewriter
-                  options={{
-                    strings: ["Updates", "Campaigns", "News"],
-                    autoStart: true,
-                    loop: true,
-                    pauseFor: 5000,
-                  }}
-                />
-              </span>
-            </div>
-            <p
-              className="text-body leading-relaxed"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              {" "}
-              {blogContent.heading.description}
-            </p>
-          </div>
-          <div
-            className="lg:w-5/12 text-left lg:text-right"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <div className="inline-flex ml-auto space-x-3">
-              <div
-                onClick={prevHandler}
-                className={`${
-                  isBeginning == true
-                    ? "opacity-30 bg-[#E1E7EA] cursor-auto"
-                    : "opacity-100 hover:bg-primary"
-                } group transition-all duration-300 ease-in-out w-12 h-12 cursor-pointer bg-[#E1E7EA] rounded-full inline-flex justify-center items-center`}
-              >
-                <BiChevronLeft
-                  className={`text-3xl text-primary transition-all duration-300 ease-in-out group-hover:text-white ${
-                    isBeginning == true
-                      ? "group-hover:!text-primary"
-                      : "group-hover:text-white"
-                  }`}
-                />
-              </div>
-              <div
-                onClick={nextHandler}
-                className={`${
-                  isEnd == true
-                    ? "opacity-30 bg-[#E1E7EA] cursor-auto"
-                    : "opacity-100 hover:bg-primary"
-                } group transition-all duration-300 ease-in-out w-12 h-12 cursor-pointer bg-[#E1E7EA] rounded-full inline-flex justify-center items-center`}
-              >
-                <BiChevronRight
-                  className={`text-3xl text-primary transition-all duration-300 ease-in-out group-hover:text-white ${
-                    isEnd == true
-                      ? "group-hover:!text-primary"
-                      : "group-hover:text-white"
-                  }`}
-                />
-              </div>
-            </div>
-          </div>
+    <section className="relative font-mont min-h-screen bg-white overflow-hidden">
+      {/* Background and other elements remain the same */}
+      <div className="absolute opacity-15 inset-0 bg-[linear-gradient(to_right,#1e3a8a_1px,transparent_1px),linear-gradient(to_bottom,#1e3a8a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#172554_70%,transparent_110%)]" />
+
+      <div className="relative max-w-7xl mx-auto px-4 py-24">
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-400/20 rounded-full blur-xl animate-pulse" />
+          <div className="absolute bottom-1/3 right-1/3 w-40 h-40 bg-indigo-400/20 rounded-full blur-xl animate-pulse delay-700" />
         </div>
-        <Swiper
-          breakpoints={{
-            640: {
-              width: 640,
-              slidesPerView: 1,
-            },
-            768: {
-              width: 768,
-              slidesPerView: 2,
-            },
-            968: {
-              width: 968,
-              slidesPerView: 2,
-            },
-          }}
-          ref={sliderRef}
-          speed={700}
-          spaceBetween={30}
-          onSlideChange={(swiper) => setSlideIndex(swiper.activeIndex)}
-          className="z-50 py-32 mb-24 relative flex items-stretch !overflow-visible before:content-[''] before:z-50 before:py-32 before:right-full before:w-screen before:absolute before:-top-5 before:-bottom-5 before:bg-light"
-        >
-          {posts.map(({ node: post }, index) => (
-            <SwiperSlide className="overflow-visible h-full" key={index}>
-              <div
-                className="p-5 rounded-lg bg-white relative mt-10"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <Link
-                  href={`/post/${post.slug}`}
-                  className="relative -mt-10 inline-block overflow-hidden rounded-lg mb-4"
+
+        {/* Header section remains the same */}
+        <div className="relative z-10">
+          <div className="text-center mb-20">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-6xl font-bold mb-6 bg-gradient-to-r from-black via-blue-900 to-black bg-clip-text text-transparent"
+            >
+              Latest Updates
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-lg text-black"
+            >
+              Get insights from our latest articles
+            </motion.p>
+            <div className="h-1 w-20 bg-blue-900 mx-auto rounded-full mt-4" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
+            {posts.map((post, index) => {
+              const postData = post.node || post;
+              // Debug log for individual post data
+              console.log("Processing post:", postData);
+
+              // Check if we have a valid slug
+              const slug = postData?.slug || "";
+              if (!slug) {
+                console.warn("Missing slug for post:", postData);
+              }
+
+              const postUrl = `/post/${slug}`;
+              console.log("Generated URL:", postUrl); // Debug log
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                  className="group relative bg-[#172554] rounded-xl overflow-hidden hover:shadow-xl transition-all duration-500"
                 >
-                  {post.featuredImage?.url ? (
-                    <Image
-                      src={post.featuredImage.url}
-                      width={782}
-                      height={467}
-                      alt={post.title || "Post image"}
-                    />
-                  ) : (
-                    <div style={{ width: "782px", height: "467px" }}>
-                      Image not available
-                    </div>
-                  )}
-                </Link>
-                <div className="text-primary ">
-                  <h2 className="lg:text-xl">
-                    #{post.categories[0]?.name || "Category"}
-                  </h2>
-                </div>
-                <h2 className="text-heading text-[13px] font-bold  mb-5 mt-2">
+                  {/* Debug element to show URL */}
+                  <div className="hidden">{postUrl}</div>
+
                   <Link
-                    href={`/post/${post.slug}`}
-                    className="relative text-heading"
+                    href={postUrl}
+                    className="block cursor-pointer"
+                    onClick={(e) => {
+                      console.log("Link clicked:", postUrl); // Debug log
+                    }}
                   >
-                    {post.title}
+                    <div className="relative h-48 w-full overflow-hidden">
+                      <Image
+                        src={postData.featuredImage?.url || "/placeholder.jpg"}
+                        alt={postData.title || "Blog post"}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#172554]/90" />
+                    </div>
+
+                    <div className="p-6 space-y-4">
+                      <div className="text-blue-400 text-sm">
+                        #{postData.categories?.[0]?.name || "Uncategorized"}
+                      </div>
+                      <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        {postData.title || "Untitled Post"}
+                      </h3>
+                      <p className="text-gray-300 leading-relaxed line-clamp-3">
+                        {postData.excerpt || "No excerpt available"}
+                      </p>
+                    </div>
                   </Link>
-                </h2>
-                <p className="relative mb-6 text-[10px]">
-                  {post.excerpt || "No excerpt available."}
-                </p>
-                {/* Add author and other post details as needed */}
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div
-          className="mx-auto flex items-center justify-center "
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          <Link
-            href={blogContent.cta.href}
-            className="duration-300 transition-all ease-in-out py-3 px-6 flex border rounded-full space-x-3 items-center hover:border-gray-400"
+                </motion.div>
+              );
+            })}
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="flex justify-center mt-12"
           >
-            {blogContent.cta.label}{" "}
-            <strong className="text-primary pl-1 font-semibold">
-              {blogContent.cta.labelSuffix}
-            </strong>
-            <span className="text-gray-300"></span>
-            <span className="bg-primary rounded-full w-8 h-8 flex items-center justify-center">
-              <BiChevronRight className="w-6 h-6 text-white" />
-            </span>
-          </Link>
+            <Link
+              href="/blog"
+              className="inline-flex items-center space-x-2 px-6 py-3 bg-[#172554] text-white rounded-full hover:bg-blue-900 transition-colors duration-300"
+            >
+              <span>View All Articles</span>
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </Link>
+          </motion.div>
+
+          {/* View All Link section remains the same */}
         </div>
       </div>
     </section>
   );
 };
 
-export default RecentBlog;
+export default BlogSection;
