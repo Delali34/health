@@ -164,7 +164,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-center pt-8 border-t border-white/10">
-          <p className="text-gray-400">Copyright © 2024. Africa HPO</p>
+          <p className="text-gray-400">Copyright © 2025. Africa HPO</p>
         </div>
       </div>
     </footer>
