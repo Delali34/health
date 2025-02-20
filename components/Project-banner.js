@@ -21,6 +21,9 @@ const ProjectBanner = () => {
 
           {/* Text Content */}
           <div className="flex flex-col justify-center space-y-4">
+            <h4 className="inline-flex items-center text-xs space-x-2 bg-white/10 hover:bg-white/20 text-white px-6 py-2 transition-colors duration-200 w-fit">
+              New project launched
+            </h4>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
               Learning by doing: A peer-led mental health education programme in
               Ghanaian senior high schools
@@ -52,7 +55,7 @@ const ProjectBanner = () => {
             >
               <div className="p-6 pt-0">
                 <div className="bg-white/10 rounded-xl p-6">
-                  <p className="text-lg leading-relaxed">
+                  <p className="md:text-lg text-sm leading-relaxed">
                     Learning by Doing is a peer-led program that promotes
                     antibullying education and mental health awareness in 12
                     senior high schools across six regions of Ghana: Northern,
