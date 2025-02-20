@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import ProjectBanner from "./Project-banner";
 
 const serviceContent = {
   heading: {
@@ -84,6 +85,7 @@ const Services = () => {
             </p>
             <div className="h-1 w-20 bg-blue-900 mx-auto rounded-full mt-4" />
           </div>
+          <ProjectBanner />
 
           {/* Stats Display */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
