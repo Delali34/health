@@ -9,7 +9,7 @@ const ProjectBanner = () => {
     <div className="w-full bg-gradient-to-r from-blue-900 to-indigo-900 text-white mb-12 rounded-xl overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Main Banner Content */}
-        <div className="grid md:grid-cols-2 gap-6 p-6">
+        <div className=" p-6">
           {/* Image Section */}
           {/* <div className="relative h-64 md:h-full min-h-[250px] rounded-lg overflow-hidden">
             <img
