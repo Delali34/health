@@ -11,13 +11,13 @@ const ProjectBanner = () => {
         {/* Main Banner Content */}
         <div className="grid md:grid-cols-2 gap-6 p-6">
           {/* Image Section */}
-          <div className="relative h-64 md:h-full min-h-[250px] rounded-lg overflow-hidden">
+          {/* <div className="relative h-64 md:h-full min-h-[250px] rounded-lg overflow-hidden">
             <img
               src="/school.jpg"
               alt="Mental Health Education Programme"
               className="absolute inset-0 w-full h-full object-cover"
             />
-          </div>
+          </div> */}
 
           {/* Text Content */}
           <div className="flex flex-col justify-center space-y-4">
