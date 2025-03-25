@@ -155,7 +155,8 @@ const Navbar = () => {
 
           {/* WhatsApp Button */}
           <Link
-            href="https://wa.me/233246622156"
+            href="https://wa.me/233541214175"
+            target="_blank"
             className="hidden lg:flex items-center bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full space-x-2 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
           >
             <FaWhatsapp className="text-lg" />

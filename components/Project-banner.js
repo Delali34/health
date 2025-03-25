@@ -11,16 +11,16 @@ const ProjectBanner = () => {
         {/* Main Banner Content */}
         <div className=" p-6">
           {/* Image Section */}
-          {/* <div className="relative h-64 md:h-full min-h-[250px] rounded-lg overflow-hidden">
+          <div className="relative h-64 md:h-full min-h-[450px] rounded-lg overflow-hidden">
             <img
-              src="/school.jpg"
+              src="/school.jpeg"
               alt="Mental Health Education Programme"
               className="absolute inset-0 w-full h-full object-cover"
             />
-          </div> */}
+          </div>
 
           {/* Text Content */}
-          <div className="flex flex-col justify-center space-y-4">
+          <div className="flex flex-col mt-5 justify-center space-y-4">
             <h4 className="inline-flex items-center text-xs space-x-2 bg-white/10 hover:bg-white/20 text-white px-6 py-2 transition-colors duration-200 w-fit">
               New project launched
             </h4>
