@@ -18,10 +18,12 @@ const ApplicationDetailsModal = ({
     await onUpdateStatus(application.id, newStatus);
   };
 
-  const handleViewCV = () => {
-    // Assuming the cvFile field contains a URL to the stored file
-    if (application.cvFile) {
-      window.open(application.cvFile, "_blank");
+  // Replace the view CV function with a download function
+  // Update the handleDownloadCV function in your ApplicationDetailsModal component
+  const handleDownloadCV = () => {
+    if (application.id && application.cvFile) {
+      // Use our proxy API to handle the download
+      window.open(`/api/downloads/${application.id}`, "_blank");
     }
   };
 
@@ -175,10 +177,10 @@ const ApplicationDetailsModal = ({
                     {application.cvFileName || "CV Document"}
                   </span>
                   <button
-                    onClick={handleViewCV}
+                    onClick={handleDownloadCV}
                     className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
                   >
-                    View CV
+                    Download CV
                   </button>
                 </div>
               </div>

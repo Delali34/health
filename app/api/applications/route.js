@@ -11,32 +11,43 @@ cloudinary.config({
 });
 
 // Helper function to handle file upload to Cloudinary
+// In your app/api/applications/route.js, update the uploadToCloudinary function
 async function uploadToCloudinary(file) {
   try {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Create a temporary file path in memory
-    const dataURI = `data:${file.type};base64,${buffer.toString("base64")}`;
+    // Clean the filename
+    const originalName = file.name;
+    const baseName = originalName.replace(/\.[^/.]+$/, "");
+    const safeBaseName = baseName
+      .replace(/[()[\]{}'"\/\\,;:#<>]/g, "")
+      .replace(/\s+/g, "-");
 
-    // Upload to Cloudinary
+    const uniqueId = Date.now();
+    const safePublicId = `cv-uploads/${uniqueId}-${safeBaseName}`;
+
+    // Upload to Cloudinary with proper delivery type and access mode
+    const dataURI = `data:${file.type};base64,${buffer.toString("base64")}`;
     const result = await cloudinary.uploader.upload(dataURI, {
-      folder: "cv-uploads",
+      folder: "",
       resource_type: "auto",
-      public_id: `${Date.now()}-${file.name.replace(/\s+/g, "-")}`,
+      public_id: safePublicId,
+      use_filename: false,
+      access_mode: "public", // Ensure public access to the file
+      type: "upload", // Regular upload type for public access
     });
 
     return {
-      fileName: file.name,
-      filePath: result.secure_url, // Store the Cloudinary URL instead of local path
-      publicId: result.public_id, // Store this if you need to delete files later
+      fileName: originalName,
+      filePath: result.secure_url,
+      publicId: result.public_id,
     };
   } catch (error) {
     console.error("Error uploading to Cloudinary:", error);
     throw new Error(`File upload failed: ${error.message}`);
   }
 }
-
 export async function POST(req) {
   try {
     // Get form data
