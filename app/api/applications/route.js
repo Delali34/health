@@ -1,38 +1,38 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import sendApplicationConfirmationEmail from "@/lib/email";
-import { writeFile, mkdir } from "fs/promises";
-import { join } from "path";
-import { existsSync } from "fs";
+import { v2 as cloudinary } from "cloudinary";
 
-// Helper function to ensure upload directory exists
-async function ensureUploadDirectory() {
-  const uploadDir = join(process.cwd(), "public", "uploads");
-  if (!existsSync(uploadDir)) {
-    await mkdir(uploadDir, { recursive: true });
-  }
-  return uploadDir;
-}
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
-// Helper function to handle file upload
-async function saveFile(file) {
+// Helper function to handle file upload to Cloudinary
+async function uploadToCloudinary(file) {
   try {
-    const uploadDir = await ensureUploadDirectory();
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Create a unique file name
-    const uniqueName = `${Date.now()}-${file.name}`;
-    const path = join(uploadDir, uniqueName);
+    // Create a temporary file path in memory
+    const dataURI = `data:${file.type};base64,${buffer.toString("base64")}`;
 
-    // Write the file
-    await writeFile(path, buffer);
+    // Upload to Cloudinary
+    const result = await cloudinary.uploader.upload(dataURI, {
+      folder: "cv-uploads",
+      resource_type: "auto",
+      public_id: `${Date.now()}-${file.name.replace(/\s+/g, "-")}`,
+    });
+
     return {
       fileName: file.name,
-      filePath: `/uploads/${uniqueName}`,
+      filePath: result.secure_url, // Store the Cloudinary URL instead of local path
+      publicId: result.public_id, // Store this if you need to delete files later
     };
   } catch (error) {
-    console.error("Error saving file:", error);
+    console.error("Error uploading to Cloudinary:", error);
     throw new Error(`File upload failed: ${error.message}`);
   }
 }
@@ -73,7 +73,8 @@ export async function POST(req) {
       }
 
       try {
-        cvData = await saveFile(cvFile);
+        // Upload to Cloudinary instead of saving locally
+        cvData = await uploadToCloudinary(cvFile);
       } catch (uploadError) {
         return NextResponse.json(
           { error: uploadError.message },
@@ -132,8 +133,9 @@ export async function POST(req) {
         volunteerHistory: volunteerHistory,
         competencies: competencies,
         status: "pending",
-        cvFile: cvData?.filePath || null,
+        cvFile: cvData?.filePath || null, // This now stores Cloudinary URL
         cvFileName: cvData?.fileName || null,
+        cvPublicId: cvData?.publicId || null, // Store this for potential future deletion
       },
       include: {
         jobPosting: true,

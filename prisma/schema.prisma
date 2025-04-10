@@ -34,8 +34,9 @@ model JobApplication {
   email       String
   telephone   String
   
-  cvFile      String?  // URL/path to stored CV file
+  cvFile      String?  // URL to Cloudinary file
   cvFileName  String?  // Original file name
+  cvPublicId  String?  // Cloudinary public_id for file management
 
   // Education
   educationHistory Json[]  // Array of education history objects
