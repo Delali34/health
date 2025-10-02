@@ -3,12 +3,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { prisma } from "@/lib/prisma";
 import ApplicationDetailsModal from "@/components/ApplicationDetailsModal";
 import AdminLogin from "@/components/AdminLogin";
 
 export default function AdminCareersPage() {
-  // All hooks must be at the top level, before any conditional logic
   const [isEditingJob, setIsEditingJob] = useState(false);
   const [editingJob, setEditingJob] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,23 +24,19 @@ export default function AdminCareersPage() {
     isActive: true,
   });
 
-  // Combine the authentication check and data fetching in a single useEffect
   useEffect(() => {
-    // Check authentication status
     const authStatus = sessionStorage.getItem("isAdminAuthenticated");
     setIsAuthenticated(authStatus === "true");
     setIsLoading(false);
 
-    // Only fetch data if authenticated
     if (authStatus === "true") {
       fetchJobs();
       fetchApplications();
     }
-  }, []); // Empty dependency array means this runs once on mount
+  }, []);
 
   const handleLogin = () => {
     setIsAuthenticated(true);
-    // Fetch data after successful login
     fetchJobs();
     fetchApplications();
   };
@@ -81,7 +75,7 @@ export default function AdminCareersPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...newJob,
-          requirements: newJob.requirements.filter((req) => req.trim() !== ""), // Filter out empty requirements
+          requirements: newJob.requirements.filter((req) => req.trim() !== ""),
         }),
       });
 
@@ -90,7 +84,7 @@ export default function AdminCareersPage() {
       }
 
       const data = await response.json();
-      setJobs([...jobs, data]); // Update local state with the new job
+      setJobs([...jobs, data]);
       setIsAddingJob(false);
       setNewJob({
         title: "",
@@ -99,12 +93,13 @@ export default function AdminCareersPage() {
         requirements: [],
         isActive: true,
       });
-      await fetchJobs(); // Refresh the jobs list
+      await fetchJobs();
     } catch (error) {
       console.error("Error adding job:", error);
       alert("Failed to add job. Please try again.");
     }
   };
+
   const handleEditJob = async (e) => {
     e.preventDefault();
     try {
@@ -127,7 +122,7 @@ export default function AdminCareersPage() {
       setJobs(jobs.map((job) => (job.id === updatedJob.id ? updatedJob : job)));
       setIsEditingJob(false);
       setEditingJob(null);
-      await fetchJobs(); // Refresh the jobs list
+      await fetchJobs();
     } catch (error) {
       console.error("Error updating job:", error);
       alert("Failed to update job. Please try again.");
@@ -212,6 +207,7 @@ export default function AdminCareersPage() {
     });
     return grouped;
   };
+
   const groupedApplications = groupApplicationsByJob();
 
   if (isLoading) {
@@ -236,8 +232,8 @@ export default function AdminCareersPage() {
         </div>
 
         {isAddingJob && (
-          <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
-            <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
+          <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
               <h2 className="text-2xl font-bold mb-4">Add New Job</h2>
               <form onSubmit={handleAddJob} className="space-y-4">
                 <div>
@@ -354,10 +350,11 @@ export default function AdminCareersPage() {
             ))}
           </div>
         </div>
+
         {/* Edit Job Modal */}
         {isEditingJob && editingJob && (
-          <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
-            <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
+          <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
               <h2 className="text-2xl font-bold mb-4">Edit Job</h2>
               <form onSubmit={handleEditJob} className="space-y-4">
                 <div>
@@ -448,6 +445,7 @@ export default function AdminCareersPage() {
             </div>
           </div>
         )}
+
         {/* Applications List */}
         <div className="bg-white shadow-md rounded-lg p-6">
           <h2 className="text-2xl font-bold mb-4">Applications</h2>
@@ -465,7 +463,7 @@ export default function AdminCareersPage() {
                           Name
                         </th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Education
+                          Email
                         </th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Status
@@ -481,13 +479,8 @@ export default function AdminCareersPage() {
                           <td className="px-6 py-4 whitespace-nowrap">
                             {`${application.firstName} ${application.surname}`}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            {Array.isArray(application.educationHistory) &&
-                            application.educationHistory.length > 0
-                              ? application.educationHistory[
-                                  application.educationHistory.length - 1
-                                ].level
-                              : "N/A"}
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                            {application.email}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <span

@@ -18,8 +18,6 @@ const ApplicationDetailsModal = ({
     await onUpdateStatus(application.id, newStatus);
   };
 
-  // Replace the view CV function with a download function
-  // Update the handleDownloadCV function in your ApplicationDetailsModal component
   const handleDownloadCV = () => {
     if (application.id && application.cvFile) {
       // Use our proxy API to handle the download
@@ -29,191 +27,161 @@ const ApplicationDetailsModal = ({
 
   return (
     isOpen && (
-      <div className="fixed inset-0 bg-black bg-opacity-25 flex items-center justify-center p-4">
-        <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+      <div className="fixed inset-0 bg-black bg-opacity-25 flex items-center justify-center p-4 z-50">
+        <div className="bg-white rounded-lg w-full max-w-3xl max-h-[90vh] overflow-y-auto">
           <div className="p-6 space-y-6">
-            <div className="flex justify-between items-start">
-              <h2 className="text-2xl font-bold">Application Details</h2>
+            {/* Header */}
+            <div className="flex justify-between items-start border-b pb-4">
+              <h2 className="text-2xl font-bold text-gray-900">
+                Application Details
+              </h2>
               <button
                 onClick={onClose}
-                className="text-gray-500 hover:text-gray-700 text-xl"
+                className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
               >
                 &times;
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
+            {/* Personal Information */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-gray-900 border-b pb-2">
+                Personal Information
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">
-                    Personal Information
-                  </h3>
-                  <div className="space-y-2">
-                    <p>
-                      <span className="font-medium">Name:</span>{" "}
-                      {application.firstName} {application.middleName}{" "}
-                      {application.surname}
-                    </p>
-                    <p>
-                      <span className="font-medium">Email:</span>{" "}
-                      {application.email}
-                    </p>
-                    <p>
-                      <span className="font-medium">Phone:</span>{" "}
-                      {application.telephone}
-                    </p>
-                    <p>
-                      <span className="font-medium">Location:</span>{" "}
-                      {application.district}, {application.region}
-                    </p>
-                  </div>
+                  <p className="text-sm text-gray-600">Full Name</p>
+                  <p className="font-medium text-gray-900">
+                    {application.firstName}{" "}
+                    {application.middleName && `${application.middleName} `}
+                    {application.surname}
+                  </p>
                 </div>
-
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">
-                    Education History
-                  </h3>
-                  <div className="space-y-4">
-                    {application.educationHistory.map((edu, index) => (
-                      <div
-                        key={index}
-                        className="border-l-2 border-gray-200 pl-4"
-                      >
-                        <p className="font-medium">{edu.program}</p>
-                        <p className="text-sm text-gray-600">
-                          {edu.level} - {edu.institution}
-                        </p>
-                        <p className="text-sm">
-                          Completed: {edu.yearCompleted}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-sm text-gray-600">Email</p>
+                  <p className="font-medium text-gray-900">
+                    {application.email}
+                  </p>
                 </div>
-              </div>
-
-              <div className="space-y-4">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Work History</h3>
-                  <div className="space-y-4">
-                    {application.workHistory.length > 0 ? (
-                      application.workHistory.map((work, index) => (
-                        <div
-                          key={index}
-                          className="border-l-2 border-gray-200 pl-4"
-                        >
-                          <p className="font-medium">{work.position}</p>
-                          <p className="text-sm text-gray-600">
-                            {work.yearStarted} - {work.yearEnded}
-                          </p>
-                          <p className="text-sm">{work.achievements}</p>
-                        </div>
-                      ))
-                    ) : (
-                      <p className="text-gray-500 italic">No work history</p>
-                    )}
-                  </div>
+                  <p className="text-sm text-gray-600">Phone</p>
+                  <p className="font-medium text-gray-900">
+                    {application.telephone}
+                  </p>
                 </div>
-
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">
-                    Volunteer History
-                  </h3>
-                  <div className="space-y-4">
-                    {application.volunteerHistory.length > 0 ? (
-                      application.volunteerHistory.map((volunteer, index) => (
-                        <div
-                          key={index}
-                          className="border-l-2 border-gray-200 pl-4"
-                        >
-                          <p className="font-medium">{volunteer.position}</p>
-                          <p className="text-sm text-gray-600">
-                            {volunteer.yearStarted} - {volunteer.yearEnded}
-                          </p>
-                          <p className="text-sm">{volunteer.achievement}</p>
-                        </div>
-                      ))
-                    ) : (
-                      <p className="text-gray-500 italic">
-                        No volunteer history
-                      </p>
-                    )}
-                  </div>
+                  <p className="text-sm text-gray-600">Location</p>
+                  <p className="font-medium text-gray-900">
+                    {application.district}, {application.region}
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Competencies</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {Object.entries(application.competencies).map(
-                  ([key, value]) => (
-                    <div key={key} className="bg-gray-50 p-2 rounded">
-                      <p className="text-sm font-medium">
-                        {key
-                          .replace(/([A-Z])/g, " $1")
-                          .replace(/^./, (str) => str.toUpperCase())}
-                      </p>
-                      <p className="text-lg">{value}/10</p>
-                    </div>
-                  )
-                )}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Selected Role</h3>
-              <p className="text-lg">
-                {application.jobPosting?.title ||
-                  "Role information unavailable"}
-              </p>
-            </div>
-            {/* Add CV section */}
-            {application.cvFile && (
+            {/* Applied Position */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-gray-900 border-b pb-2">
+                Applied Position
+              </h3>
               <div>
-                <h3 className="text-lg font-semibold mb-2">CV Document</h3>
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-gray-600">
-                    {application.cvFileName || "CV Document"}
-                  </span>
+                <p className="text-sm text-gray-600">Job Title</p>
+                <p className="font-medium text-gray-900">
+                  {application.jobPosting?.title ||
+                    "Position information unavailable"}
+                </p>
+              </div>
+            </div>
+
+            {/* CV Document */}
+            {application.cvFile && (
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900 border-b pb-2">
+                  CV Document
+                </h3>
+                <div className="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-blue-100 p-2 rounded">
+                      <svg
+                        className="w-6 h-6 text-blue-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-900">
+                        {application.cvFileName || "CV Document"}
+                      </p>
+                      <p className="text-sm text-gray-500">Click to download</p>
+                    </div>
+                  </div>
                   <button
                     onClick={handleDownloadCV}
-                    className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                   >
-                    Download CV
+                    Download
                   </button>
                 </div>
               </div>
             )}
 
-            <div className="border-t pt-4 mt-6">
-              <div className="flex justify-between items-center">
+            {/* Application Metadata */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-gray-900 border-b pb-2">
+                Application Information
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <span className="font-medium mr-2">Current Status:</span>
+                  <p className="text-sm text-gray-600">Submitted On</p>
+                  <p className="font-medium text-gray-900">
+                    {new Date(application.createdAt).toLocaleDateString(
+                      "en-US",
+                      {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      }
+                    )}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">Current Status</p>
                   <span
-                    className={`px-2 py-1 rounded ${
+                    className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
                       statusColors[application.status]
                     }`}
                   >
-                    {application.status}
+                    {application.status.charAt(0).toUpperCase() +
+                      application.status.slice(1)}
                   </span>
                 </div>
-                <div className="space-x-2">
-                  <button
-                    onClick={() => handleStatusUpdate("accepted")}
-                    disabled={application.status === "accepted"}
-                    className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:bg-green-400"
-                  >
-                    Accept
-                  </button>
-                  <button
-                    onClick={() => handleStatusUpdate("rejected")}
-                    disabled={application.status === "rejected"}
-                    className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 disabled:bg-red-400"
-                  >
-                    Reject
-                  </button>
-                </div>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="border-t pt-4 mt-6">
+              <div className="flex justify-end space-x-3">
+                <button
+                  onClick={() => handleStatusUpdate("rejected")}
+                  disabled={application.status === "rejected"}
+                  className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                >
+                  {application.status === "rejected" ? "Rejected" : "Reject"}
+                </button>
+                <button
+                  onClick={() => handleStatusUpdate("accepted")}
+                  disabled={application.status === "accepted"}
+                  className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                >
+                  {application.status === "accepted" ? "Accepted" : "Accept"}
+                </button>
               </div>
             </div>
           </div>

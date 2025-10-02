@@ -49,9 +49,9 @@ export default function CareersPage() {
           <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-8 text-white">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">{job.title}</h1>
             <div className="flex flex-wrap gap-4 text-sm mt-4">
-              {/* <div className="flex items-center px-3 py-1 bg-white/10 rounded-full">
+              <div className="flex items-center px-3 py-1 bg-white/10 rounded-full">
                 <span>{job.department}</span>
-              </div> */}
+              </div>
             </div>
           </div>
 
@@ -62,23 +62,43 @@ export default function CareersPage() {
                   <h2 className="text-2xl font-semibold text-gray-900 mb-4">
                     About the Role
                   </h2>
-                  <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                    {job.description}
-                  </p>
+                  <div className="text-gray-700 leading-relaxed space-y-4">
+                    {job.description
+                      .split("\n")
+                      .map(
+                        (paragraph, index) =>
+                          paragraph.trim() && <p key={index}>{paragraph}</p>
+                      )}
+                  </div>
                 </section>
 
                 <section>
                   <h2 className="text-2xl font-semibold text-gray-900 mb-4">
                     Requirements
                   </h2>
-                  <ul className="space-y-4 text-gray-700">
-                    {job.requirements.map((requirement, index) => (
-                      <div>
-                        <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full " />
-                        <span>{requirement}</span>
-                      </div>
-                    ))}
-                  </ul>
+                  <div className="space-y-3">
+                    {job.requirements.map((requirement, index) => {
+                      const trimmedReq = requirement.trim();
+                      const isBullet = trimmedReq.startsWith("*");
+                      const text = isBullet
+                        ? trimmedReq.substring(1).trim()
+                        : trimmedReq;
+
+                      return isBullet ? (
+                        <div
+                          key={index}
+                          className="flex items-start text-gray-700"
+                        >
+                          <span className="inline-block w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0" />
+                          <span className="flex-1">{text}</span>
+                        </div>
+                      ) : (
+                        <p key={index} className="text-gray-700">
+                          {text}
+                        </p>
+                      );
+                    })}
+                  </div>
                 </section>
               </div>
 

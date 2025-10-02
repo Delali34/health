@@ -11,7 +11,6 @@ cloudinary.config({
 });
 
 // Helper function to handle file upload to Cloudinary
-// In your app/api/applications/route.js, update the uploadToCloudinary function
 async function uploadToCloudinary(file) {
   try {
     const bytes = await file.arrayBuffer();
@@ -34,8 +33,8 @@ async function uploadToCloudinary(file) {
       resource_type: "auto",
       public_id: safePublicId,
       use_filename: false,
-      access_mode: "public", // Ensure public access to the file
-      type: "upload", // Regular upload type for public access
+      access_mode: "public",
+      type: "upload",
     });
 
     return {
@@ -48,6 +47,7 @@ async function uploadToCloudinary(file) {
     throw new Error(`File upload failed: ${error.message}`);
   }
 }
+
 export async function POST(req) {
   try {
     // Get form data
@@ -84,7 +84,7 @@ export async function POST(req) {
       }
 
       try {
-        // Upload to Cloudinary instead of saving locally
+        // Upload to Cloudinary
         cvData = await uploadToCloudinary(cvFile);
       } catch (uploadError) {
         return NextResponse.json(
@@ -97,37 +97,6 @@ export async function POST(req) {
     // Parse the JSON data
     const data = JSON.parse(formData.get("data"));
 
-    // Rest of your existing application processing code...
-    const educationHistory = Array.isArray(data.educationHistory)
-      ? data.educationHistory.map((edu) => ({
-          level: edu.level,
-          program: edu.program,
-          yearCompleted: edu.yearCompleted,
-          institution: edu.institution,
-        }))
-      : [];
-
-    const workHistory = Array.isArray(data.workHistory)
-      ? data.workHistory.map((work) => ({
-          position: work.position,
-          yearStarted: work.yearStarted,
-          yearEnded: work.yearEnded,
-          achievements: work.achievements,
-        }))
-      : [];
-
-    const volunteerHistory = Array.isArray(data.volunteerHistory)
-      ? data.volunteerHistory.map((volunteer) => ({
-          position: volunteer.position,
-          yearStarted: volunteer.yearStarted,
-          yearEnded: volunteer.yearEnded,
-          achievement: volunteer.achievement,
-        }))
-      : [];
-
-    const competencies =
-      typeof data.competencies === "object" ? data.competencies : {};
-
     // Create application with included jobPosting relation and CV data
     const application = await prisma.jobApplication.create({
       data: {
@@ -139,14 +108,10 @@ export async function POST(req) {
         district: data.district,
         email: data.email,
         telephone: data.telephone,
-        educationHistory: educationHistory,
-        workHistory: workHistory,
-        volunteerHistory: volunteerHistory,
-        competencies: competencies,
         status: "pending",
-        cvFile: cvData?.filePath || null, // This now stores Cloudinary URL
+        cvFile: cvData?.filePath || null,
         cvFileName: cvData?.fileName || null,
-        cvPublicId: cvData?.publicId || null, // Store this for potential future deletion
+        cvPublicId: cvData?.publicId || null,
       },
       include: {
         jobPosting: true,

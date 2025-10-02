@@ -1,4 +1,3 @@
-// prisma/schema.prisma
 generator client {
   provider = "prisma-client-js"
 }
@@ -37,18 +36,6 @@ model JobApplication {
   cvFile      String?  // URL to Cloudinary file
   cvFileName  String?  // Original file name
   cvPublicId  String?  // Cloudinary public_id for file management
-
-  // Education
-  educationHistory Json[]  // Array of education history objects
-  
-  // Employment History
-  workHistory Json[]  // Array of work history objects
-  
-  // Volunteer History
-  volunteerHistory Json[]  // Array of volunteer history objects
-  
-  // Competencies
-  competencies Json  // Object containing all competency ratings
   
   createdAt   DateTime @default(now())
   status      String   @default("pending")  // pending, reviewed, accepted, rejected
