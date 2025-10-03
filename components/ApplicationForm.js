@@ -285,11 +285,14 @@ export default function ApplicationForm({ job, onBack }) {
 
       {/* CV Upload Section */}
       <div className="bg-white shadow-md rounded-lg p-6 space-y-6">
-        <h2 className="text-2xl font-bold text-gray-900">CV Upload</h2>
+        <h2 className="text-2xl font-bold text-gray-900">
+          CV and Application letter Upload
+        </h2>
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Upload your CV (PDF or Word, max 3MB)
+              Please upload CV and application letter as 1 file (PDF or Word,
+              max 3MB)
             </label>
             <input
               type="file"
