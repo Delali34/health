@@ -267,7 +267,7 @@ const Navbar = () => {
 
               <div className="p-4 border-t">
                 <Link
-                  href="https://wa.me/233246622156"
+                  href="https://wa.me/233541214175"
                   className="flex items-center justify-center space-x-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full transition-all duration-300 shadow-md"
                   onClick={toggleMenu}
                 >
