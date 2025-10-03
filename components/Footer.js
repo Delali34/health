@@ -61,7 +61,7 @@ const footerContent = {
     ],
   },
   social: [
-    { icon: <FaWhatsappSquare />, href: "https://wa.me/233246622156" },
+    { icon: <FaWhatsappSquare />, href: "https://wa.me/233541214175" },
     {
       icon: <FaLinkedin />,
       href: "https://www.linkedin.com/company/africahpo",
