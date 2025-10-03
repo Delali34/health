@@ -127,7 +127,7 @@ export default function CareersPage() {
       {/* Hero Section */}
       <header className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center">
+          <h1 className="text-4xl md:text-5xl pt-10 lg:text-6xl font-bold text-center">
             Apply for a Job
           </h1>
 
